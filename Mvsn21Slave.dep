@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>3950361129</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\Debug\Obj\main.r90</file>
+            <file>$PROJ_DIR$\include\DataBase.h</file>
+            <file>$PROJ_DIR$\include\Crc.h</file>
+            <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom48.inc</file>
+            <file>$PROJ_DIR$\include\Adc.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\Debug\Exe\Mvsn21Slave.d90</file>
+            <file>$PROJ_DIR$\Debug\Obj\Mvsn21Slave.pbd</file>
+            <file>$PROJ_DIR$\Debug\Obj\Adc.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\Device.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\Crc.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\Driver.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\DataBase.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\InputDevice.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\MeasurementChannel.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\Mvsn21.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\Platform.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\Timer.__cstat.et</file>
+            <file>$PROJ_DIR$\include\Mvsn21.h</file>
+            <file>$PROJ_DIR$\src\Timer.cpp</file>
+            <file>$PROJ_DIR$\src\Platform.cpp</file>
+            <file>$PROJ_DIR$\src\Mvsn21.cpp</file>
+            <file>$PROJ_DIR$\src\InputDevice.cpp</file>
+            <file>$PROJ_DIR$\include\DataTypes.h</file>
+            <file>$PROJ_DIR$\include\InputDevice.h</file>
+            <file>$PROJ_DIR$\src\MeasurementChannel.cpp</file>
+            <file>$PROJ_DIR$\src\main.cpp</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\pgmspace.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\errno.h</file>
+            <file>$TOOLKIT_DIR$\inc\inavr.h</file>
+            <file>$TOOLKIT_DIR$\inc\iom48.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdio.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\MeasurementChannel.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\Platform.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\Timer.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\Mvsn21.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\DataBase.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\Crc.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\Device.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\Driver.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\Adc.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\InputDevice.r90</file>
+            <file>$PROJ_DIR$\main.cpp</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdlib.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\assert.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yfuns.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdarg.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ystdio.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
+            <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+            <file>$PROJ_DIR$\include\Platform.h</file>
+            <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+            <file>$PROJ_DIR$\include\Device.h</file>
+            <file>$PROJ_DIR$\include\Driver.h</file>
+            <file>$PROJ_DIR$\include\Timer.h</file>
+            <file>$PROJ_DIR$\src\Crc.cpp</file>
+            <file>$PROJ_DIR$\Debug\Exe\Mvsn21Slave.hex</file>
+            <file>$PROJ_DIR$\src\Adc.cpp</file>
+            <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+            <file>$PROJ_DIR$\src\Device.cpp</file>
+            <file>$PROJ_DIR$\src\DataBase.cpp</file>
+            <file>$PROJ_DIR$\src\Driver.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\Adc.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\Crc.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\DataBase.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\Device.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\Driver.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\InputDevice.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\MeasurementChannel.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\Mvsn21.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\Platform.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\Timer.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+            <file>$PROJ_DIR$\include\MeasurementChannel.h</file>
+            <file>$PROJ_DIR$\include\Configuration.h</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\src\Timer.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 18</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 74</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 35</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 76 32 75 31 81 46 52 44 80 50 54 57 61 28 30 48 29 47 77 78 51 79 49 45 53 3</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 53 61 81 76 75 77 51 79 80 78 28 48 45 32 50 49 52 31 54 3 30 44 29 46 47 57</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Platform.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 17</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 73</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 34</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 48 3 51 77 81 75 45 28 47 76 49 61 30 29 78 79 24 83 19 52 32 44 46 80 50 31 54 56 53 55 82</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 53 61 81 76 75 77 51 79 80 78 28 48 45 32 50 49 52 31 54 3 30 44 29 46 47 19 55 56 82 24 83</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Mvsn21.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 16</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 72</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 36</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 76 47 32 61 56 28 75 31 48 2 81 24 80 30 29 50 54 45 53 55 82 77 78 51 79 83 52 44 46 49 3 19</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 19 81 76 75 77 51 79 80 78 55 56 82 24 83 53 61 28 48 45 32 50 49 52 31 54 3 30 44 29 46 47 2</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\InputDevice.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 13</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 70</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 42</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 79 77 75 76 57 78 81 80 51 25</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 25 81 76 75 77 51 79 80 78 57</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\MeasurementChannel.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 15</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 71</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 33</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 80 76 32 75 30 31 61 29 28 48 47 50 54 53 81 77 78 51 79 52 44 46 49 45 82 3</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 82 81 76 75 77 51 79 80 78 53 61 28 48 45 32 50 49 52 31 54 3 30 44 29 46 47</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\main.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 14</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 5</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 0</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 75 81 31 46 76 32 61 19 52 44 80 50 54 45 24 83 57 28 30 48 29 47 77 78 51 79 49 3 56 53 55 82</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 53 61 81 76 75 77 51 79 80 78 28 48 45 32 50 49 52 31 54 3 30 44 29 46 47 57 19 55 56 82 24 83</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main.cpp</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 5</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 0</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Crc.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 10</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 66</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 38</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 75 76 77 51 78 79 2 80 81</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 81 76 75 77 51 79 80 78 2</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Adc.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 65</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 80 61 81 29 76 75 30 32 31 28 48 47 50 54 53 77 78 51 79 52 44 46 49 45 4 3</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 4 81 76 75 77 51 79 80 78 53 61 28 48 45 32 50 49 52 31 54 3 30 44 29 46 47</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Device.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 9</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 68</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 39</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 78 76 81 75 77 80 51 79 55 56</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 55 81 76 75 77 51 79 80 78 56</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\DataBase.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 12</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 67</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 37</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 78 76 81 75 77 80 51 79 1</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 1 81 76 75 77 51 79 80 78</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Driver.cpp</name>
+            <outputs>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 11</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 69</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 40</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 78 76 81 75 77 80 51 79 56</file>
+                </tool>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 56 81 76 75 77 51 79 80 78</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 6 59</file>
+                </tool>
+            </outputs>
+        </file>
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\src\Adc.cpp</name>
+            <tool>ICCAVR</tool>
+        </forcedrebuild>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>
