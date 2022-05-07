@@ -281,11 +281,11 @@
                 </option>
                 <option>
                     <name>CCListAssFile</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CCListAssSource</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CCEnableRemarks</name>
@@ -335,7 +335,7 @@
                 <option>
                     <name>CCAllowList</name>
                     <version>3</version>
-                    <state>000000</state>
+                    <state>101010</state>
                 </option>
                 <option>
                     <name>CCCrossCallPassesList</name>
@@ -388,11 +388,11 @@
                 </option>
                 <option>
                     <name>IExtraOptions</name>
-                    <state></state>
+                    <state>--string_literals_in_flash</state>
                 </option>
                 <option>
                     <name>IExtraOptionsCheck</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CCMultibyteSupport</name>
@@ -409,6 +409,7 @@
                 <option>
                     <name>newCCIncludePaths</name>
                     <state>D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include</state>
+                    <state>D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -495,11 +496,11 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>0</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>0</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>IccLang</name>
@@ -548,7 +549,7 @@
                 </option>
                 <option>
                     <name>CDebug</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>ADefines</name>
@@ -2105,22 +2106,16 @@
         <name>$PROJ_DIR$\src\Crc.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\src\DataBase.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\src\Device.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\src\Driver.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\src\InputDevice.cpp</name>
-    </file>
-    <file>
         <name>$PROJ_DIR$\src\main.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\src\MeasurementChannel.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\Modbus\Modbus.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\Modbus\ModbusRTU.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\src\Mvsn21.cpp</name>

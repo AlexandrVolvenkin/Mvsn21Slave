@@ -5,6 +5,8 @@
 -I
 D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include
 -I
+D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus
+-I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\avr\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\avr\inc\dlib\c
@@ -12,6 +14,8 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\avr\inc\dlib\c
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\avr\inc\dlib\ecpp
 -I
 D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include
+-I
+D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

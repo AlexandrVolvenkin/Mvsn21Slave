@@ -55,8 +55,8 @@ public:
         DATA_WAIT	= 0x01,			// Ожидание готовности данных
     };
 
-    CMeasurementChannel();
-    virtual ~CMeasurementChannel();
+//    CMeasurementChannel();
+//    virtual ~CMeasurementChannel();
     static uint8_t StatusCheck(uint16_t );
 
 protected:

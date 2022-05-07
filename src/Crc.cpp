@@ -95,89 +95,89 @@ unsigned short usCrc16(unsigned char *puiSource, unsigned short nusLength)
 //    }
 //}
 
-//-----------------------------------------------------------------------------------------------------
-// вычисляет двухбайтовую контрольную сумму.
-unsigned short usCrcSummTwoByteCalculation(
-    unsigned char *puiSource,
-    unsigned int nuiNbyte)
-{
-    unsigned short usData;
-
-    usData = 0;
-    do
-    {
-        usData += (unsigned short)*puiSource++;
-        nuiNbyte--;
-    }
-    while (nuiNbyte);
-
-    return usData;
-}
-
-//-----------------------------------------------------------------------------------------------------
-// сравнивает двухбайтовую контрольную сумму.
-int iCrcSummTwoByteCompare(unsigned char *puiSource,
-                           unsigned int nuiNbyte)
-{
-    unsigned short usData;
-
-    usData = 0;
-    do
-    {
-        usData += (unsigned short)*puiSource++;
-        nuiNbyte--;
-    }
-    while (nuiNbyte);
-
-    if ((unsigned char)usData  == *puiSource++)
-    {
-
-        if ((unsigned char)(usData >> 8)  == *puiSource)
-        {
-            return 1;
-        }
-    }
-    return -1;
-}
-
-//-----------------------------------------------------------------------------------------------------
-// вычисляет однобайтовую контрольную сумму.
-uint8_t usCrcSummOneByteCalculation(
-    uint8_t *puiSource,
-    uint16_t nuiNbyte)
-{
-    uint8_t uiData = 0;
-
-    for (int8_t i = 0; i < nuiNbyte; i++)
-    {
-        uiData += puiSource[i];
-    }
-
-    return uiData;
-}
-
-//-----------------------------------------------------------------------------------------------------
-// сравнивает однобайтовую контрольную сумму.
-int iCrcSummOneByteCompare(unsigned char *puiSource,
-                           unsigned int nuiNbyte)
-{
-    unsigned char ucData;
-
-    ucData = 0;
-    do
-    {
-        ucData += *puiSource++;
-        nuiNbyte--;
-    }
-    while ((nuiNbyte) != 0);
-
-    if (ucData == *puiSource)
-    {
-        return 1;
-    }
-    else
-    {
-        return -1;
-    }
-}
+////-----------------------------------------------------------------------------------------------------
+//// вычисляет двухбайтовую контрольную сумму.
+//unsigned short usCrcSummTwoByteCalculation(
+//    unsigned char *puiSource,
+//    unsigned int nuiNbyte)
+//{
+//    unsigned short usData;
+//
+//    usData = 0;
+//    do
+//    {
+//        usData += (unsigned short)*puiSource++;
+//        nuiNbyte--;
+//    }
+//    while (nuiNbyte);
+//
+//    return usData;
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//// сравнивает двухбайтовую контрольную сумму.
+//int iCrcSummTwoByteCompare(unsigned char *puiSource,
+//                           unsigned int nuiNbyte)
+//{
+//    unsigned short usData;
+//
+//    usData = 0;
+//    do
+//    {
+//        usData += (unsigned short)*puiSource++;
+//        nuiNbyte--;
+//    }
+//    while (nuiNbyte);
+//
+//    if ((unsigned char)usData  == *puiSource++)
+//    {
+//
+//        if ((unsigned char)(usData >> 8)  == *puiSource)
+//        {
+//            return 1;
+//        }
+//    }
+//    return -1;
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//// вычисляет однобайтовую контрольную сумму.
+//uint8_t usCrcSummOneByteCalculation(
+//    uint8_t *puiSource,
+//    uint16_t nuiNbyte)
+//{
+//    uint8_t uiData = 0;
+//
+//    for (int8_t i = 0; i < nuiNbyte; i++)
+//    {
+//        uiData += puiSource[i];
+//    }
+//
+//    return uiData;
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//// сравнивает однобайтовую контрольную сумму.
+//int iCrcSummOneByteCompare(unsigned char *puiSource,
+//                           unsigned int nuiNbyte)
+//{
+//    unsigned char ucData;
+//
+//    ucData = 0;
+//    do
+//    {
+//        ucData += *puiSource++;
+//        nuiNbyte--;
+//    }
+//    while ((nuiNbyte) != 0);
+//
+//    if (ucData == *puiSource)
+//    {
+//        return 1;
+//    }
+//    else
+//    {
+//        return -1;
+//    }
+//}
 

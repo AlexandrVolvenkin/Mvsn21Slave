@@ -1,0 +1,1163 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          07/May/2022  09:26:25
+// Copyright 1996-2018 IAR Systems AB.
+//
+//    Source file  =  
+//        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Mvsn21.cpp
+//    Command line =  
+//        -f C:\Users\ghost\AppData\Local\Temp\EW7DE4.tmp
+//        (--string_literals_in_flash
+//        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Mvsn21.cpp --cpu=m48
+//        -ms -o D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\Obj -lB
+//        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List
+//        --initializers_in_flash --root_variables --no_inline --no_cross_call
+//        --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e -I
+//        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include\ -I
+//        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ --eeprom_size
+//        256 --dlib --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded
+//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -Om --eec++)
+//    Locale       =  Russian_RUS.1251
+//    List file    =  
+//        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List\Mvsn21.s90
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME Mvsn21
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        ERROR
+//NOTE: This module defines or uses C++ features that are not
+//      accessible from assembler code. Assembling this file will
+//      not produce an equivalent object file to the one produced
+//      by the C++ compiler.
+
+        EXTERN ?need_segment_init
+
+        PUBWEAK `?<Segment init: NEAR_Z>`
+        PUBLIC ??MeasureFsm
+        PUBWEAK ??MeasureIsComlete
+        PUBLIC ??auiDiscreteInputBitData
+        PUBLIC ??axChipsChannelsData
+        PUBLIC ??m_aucRtuCoilsArray
+        PUBLIC ??m_aucRtuDiscreteInputsArray
+        PUBLIC ??m_aucRtuHoldingRegistersArray
+        PUBLIC ??m_aucRtuInputRegistersArray
+        PUBLIC ??m_aui8ReceiveMessageBuff
+        PUBLIC ??m_aui8TransmitMessageBuff
+        PUBLIC ??m_uiChannel
+        PUBLIC ??m_uiFlowControl
+        PUBLIC ??m_uiMeasureFlowControl
+        PUBLIC ??m_uiMessageLength
+        PUBLIC ??m_uiType
+        PUBWEAK _A_ACSR
+        PUBWEAK _A_ADC
+        PUBWEAK _A_ADCSRA
+        PUBWEAK _A_ADCSRB
+        PUBWEAK _A_ADMUX
+        PUBWEAK _A_ASSR
+        PUBWEAK _A_CLKPR
+        PUBWEAK _A_DDRB
+        PUBWEAK _A_DDRC
+        PUBWEAK _A_DDRD
+        PUBWEAK _A_DIDR0
+        PUBWEAK _A_DIDR1
+        PUBWEAK _A_EEAR
+        PUBWEAK _A_EECR
+        PUBWEAK _A_EEDR
+        PUBWEAK _A_EICRA
+        PUBWEAK _A_EIFR
+        PUBWEAK _A_EIMSK
+        PUBWEAK _A_GPIOR0
+        PUBWEAK _A_GPIOR1
+        PUBWEAK _A_GPIOR2
+        PUBWEAK _A_GTCCR
+        PUBWEAK _A_ICR1
+        PUBWEAK _A_MCUCR
+        PUBWEAK _A_MCUSR
+        PUBWEAK _A_OCR0A
+        PUBWEAK _A_OCR0B
+        PUBWEAK _A_OCR1A
+        PUBWEAK _A_OCR1B
+        PUBWEAK _A_OCR2A
+        PUBWEAK _A_OCR2B
+        PUBWEAK _A_OSCCAL
+        PUBWEAK _A_PCICR
+        PUBWEAK _A_PCIFR
+        PUBWEAK _A_PCMSK0
+        PUBWEAK _A_PCMSK1
+        PUBWEAK _A_PCMSK2
+        PUBWEAK _A_PINB
+        PUBWEAK _A_PINC
+        PUBWEAK _A_PIND
+        PUBWEAK _A_PORTB
+        PUBWEAK _A_PORTC
+        PUBWEAK _A_PORTD
+        PUBWEAK _A_PRR
+        PUBWEAK _A_SMCR
+        PUBWEAK _A_SP
+        PUBWEAK _A_SPCR
+        PUBWEAK _A_SPDR
+        PUBWEAK _A_SPMCSR
+        PUBWEAK _A_SPSR
+        PUBWEAK _A_SREG
+        PUBWEAK _A_TCCR0A
+        PUBWEAK _A_TCCR0B
+        PUBWEAK _A_TCCR1A
+        PUBWEAK _A_TCCR1B
+        PUBWEAK _A_TCCR1C
+        PUBWEAK _A_TCCR2A
+        PUBWEAK _A_TCCR2B
+        PUBWEAK _A_TCNT0
+        PUBWEAK _A_TCNT1
+        PUBWEAK _A_TCNT2
+        PUBWEAK _A_TIFR0
+        PUBWEAK _A_TIFR1
+        PUBWEAK _A_TIFR2
+        PUBWEAK _A_TIMSK0
+        PUBWEAK _A_TIMSK1
+        PUBWEAK _A_TIMSK2
+        PUBWEAK _A_TWAMR
+        PUBWEAK _A_TWAR
+        PUBWEAK _A_TWBR
+        PUBWEAK _A_TWCR
+        PUBWEAK _A_TWDR
+        PUBWEAK _A_TWSR
+        PUBWEAK _A_UBRR0
+        PUBWEAK _A_UCSR0A
+        PUBWEAK _A_UCSR0B
+        PUBWEAK _A_UCSR0C
+        PUBWEAK _A_UDR0
+        PUBWEAK _A_WDTCSR
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+
+`?<Name CMvsn21 19>` SYMBOL "CMvsn21"
+??auiDiscreteInputBitData SYMBOL "auiDiscreteInputBitData", `?<Name CMvsn21 19>`
+??axChipsChannelsData SYMBOL "axChipsChannelsData", `?<Name CMvsn21 19>`
+??m_aucRtuCoilsArray SYMBOL "m_aucRtuCoilsArray", `?<Name CMvsn21 19>`
+??m_aucRtuDiscreteInputsArray SYMBOL "m_aucRtuDiscreteInputsArray", `?<Name CMvsn21 19>`
+??m_aucRtuHoldingRegistersArray SYMBOL "m_aucRtuHoldingRegistersArray", `?<Name CMvsn21 19>`
+??m_aucRtuInputRegistersArray SYMBOL "m_aucRtuInputRegistersArray", `?<Name CMvsn21 19>`
+??m_aui8ReceiveMessageBuff SYMBOL "m_aui8ReceiveMessageBuff", `?<Name CMvsn21 19>`
+??m_aui8TransmitMessageBuff SYMBOL "m_aui8TransmitMessageBuff", `?<Name CMvsn21 19>`
+??m_uiChannel       SYMBOL "m_uiChannel", `?<Name CMvsn21 19>`
+??m_uiFlowControl   SYMBOL "m_uiFlowControl", `?<Name CMvsn21 19>`
+??m_uiMeasureFlowControl SYMBOL "m_uiMeasureFlowControl", `?<Name CMvsn21 19>`
+??m_uiMessageLength SYMBOL "m_uiMessageLength", `?<Name CMvsn21 19>`
+??m_uiType          SYMBOL "m_uiType", `?<Name CMvsn21 19>`
+
+        EXTERN ??ChannelSelect
+        EXTERN ??Disable
+        EXTERN ??Enable
+        EXTERN ??GetMeasureValue
+        EXTERN ??Start
+        EXTERN ??StatusCheck
+        EXTERN ??Stop
+
+// D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Mvsn21.cpp
+//    1 //-----------------------------------------------------------------------------------------------------
+//    2 //  Source      : FileName.cpp
+//    3 //  Created     : 01.06.2022
+//    4 //  Author      : Alexandr Volvenkin
+//    5 //  email       : aav-36@mail.ru
+//    6 //  GitHub      : https://github.com/AlexandrVolvenkin
+//    7 //-----------------------------------------------------------------------------------------------------
+//    8 
+//    9 #include "Mvsn21.h"
+//   10 #include "Platform.h"
+
+        ASEGN ABSOLUTE:DATA:ROOT,0c6H
+// union <unnamed> volatile __io _A_UDR0
+_A_UDR0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0c4H
+// union <unnamed> volatile __io _A_UBRR0
+_A_UBRR0:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:ROOT,0c2H
+// union <unnamed> volatile __io _A_UCSR0C
+_A_UCSR0C:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0c1H
+// union <unnamed> volatile __io _A_UCSR0B
+_A_UCSR0B:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0c0H
+// union <unnamed> volatile __io _A_UCSR0A
+_A_UCSR0A:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0bdH
+// union <unnamed> volatile __io _A_TWAMR
+_A_TWAMR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0bcH
+// union <unnamed> volatile __io _A_TWCR
+_A_TWCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0bbH
+// union <unnamed> volatile __io _A_TWDR
+_A_TWDR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0baH
+// union <unnamed> volatile __io _A_TWAR
+_A_TWAR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0b9H
+// union <unnamed> volatile __io _A_TWSR
+_A_TWSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0b8H
+// union <unnamed> volatile __io _A_TWBR
+_A_TWBR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0b6H
+// union <unnamed> volatile __io _A_ASSR
+_A_ASSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0b4H
+// union <unnamed> volatile __io _A_OCR2B
+_A_OCR2B:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0b3H
+// union <unnamed> volatile __io _A_OCR2A
+_A_OCR2A:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0b2H
+// union <unnamed> volatile __io _A_TCNT2
+_A_TCNT2:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0b1H
+// union <unnamed> volatile __io _A_TCCR2B
+_A_TCCR2B:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,0b0H
+// union <unnamed> volatile __io _A_TCCR2A
+_A_TCCR2A:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,08aH
+// union <unnamed> volatile __io _A_OCR1B
+_A_OCR1B:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:ROOT,088H
+// union <unnamed> volatile __io _A_OCR1A
+_A_OCR1A:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:ROOT,086H
+// union <unnamed> volatile __io _A_ICR1
+_A_ICR1:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:ROOT,084H
+// union <unnamed> volatile __io _A_TCNT1
+_A_TCNT1:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:ROOT,082H
+// union <unnamed> volatile __io _A_TCCR1C
+_A_TCCR1C:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,081H
+// union <unnamed> volatile __io _A_TCCR1B
+_A_TCCR1B:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,080H
+// union <unnamed> volatile __io _A_TCCR1A
+_A_TCCR1A:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,07fH
+// union <unnamed> volatile __io _A_DIDR1
+_A_DIDR1:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,07eH
+// union <unnamed> volatile __io _A_DIDR0
+_A_DIDR0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,07cH
+// union <unnamed> volatile __io _A_ADMUX
+_A_ADMUX:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,07bH
+// union <unnamed> volatile __io _A_ADCSRB
+_A_ADCSRB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,07aH
+// union <unnamed> volatile __io _A_ADCSRA
+_A_ADCSRA:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,078H
+// union <unnamed> volatile __io _A_ADC
+_A_ADC:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:ROOT,070H
+// union <unnamed> volatile __io _A_TIMSK2
+_A_TIMSK2:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,06fH
+// union <unnamed> volatile __io _A_TIMSK1
+_A_TIMSK1:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,06eH
+// union <unnamed> volatile __io _A_TIMSK0
+_A_TIMSK0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,06dH
+// union <unnamed> volatile __io _A_PCMSK2
+_A_PCMSK2:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,06cH
+// union <unnamed> volatile __io _A_PCMSK1
+_A_PCMSK1:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,06bH
+// union <unnamed> volatile __io _A_PCMSK0
+_A_PCMSK0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,069H
+// union <unnamed> volatile __io _A_EICRA
+_A_EICRA:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,068H
+// union <unnamed> volatile __io _A_PCICR
+_A_PCICR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,066H
+// union <unnamed> volatile __io _A_OSCCAL
+_A_OSCCAL:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,064H
+// union <unnamed> volatile __io _A_PRR
+_A_PRR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,061H
+// union <unnamed> volatile __io _A_CLKPR
+_A_CLKPR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,060H
+// union <unnamed> volatile __io _A_WDTCSR
+_A_WDTCSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,05fH
+// union <unnamed> volatile __io _A_SREG
+_A_SREG:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,05dH
+// union <unnamed> volatile __io _A_SP
+_A_SP:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:ROOT,057H
+// union <unnamed> volatile __io _A_SPMCSR
+_A_SPMCSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,055H
+// union <unnamed> volatile __io _A_MCUCR
+_A_MCUCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,054H
+// union <unnamed> volatile __io _A_MCUSR
+_A_MCUSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,053H
+// union <unnamed> volatile __io _A_SMCR
+_A_SMCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,050H
+// union <unnamed> volatile __io _A_ACSR
+_A_ACSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,04eH
+// union <unnamed> volatile __io _A_SPDR
+_A_SPDR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,04dH
+// union <unnamed> volatile __io _A_SPSR
+_A_SPSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,04cH
+// union <unnamed> volatile __io _A_SPCR
+_A_SPCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,04bH
+// union <unnamed> volatile __io _A_GPIOR2
+_A_GPIOR2:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,04aH
+// union <unnamed> volatile __io _A_GPIOR1
+_A_GPIOR1:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,048H
+// union <unnamed> volatile __io _A_OCR0B
+_A_OCR0B:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,047H
+// union <unnamed> volatile __io _A_OCR0A
+_A_OCR0A:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,046H
+// union <unnamed> volatile __io _A_TCNT0
+_A_TCNT0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,045H
+// union <unnamed> volatile __io _A_TCCR0B
+_A_TCCR0B:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,044H
+// union <unnamed> volatile __io _A_TCCR0A
+_A_TCCR0A:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,043H
+// union <unnamed> volatile __io _A_GTCCR
+_A_GTCCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,041H
+// union <unnamed> volatile __io _A_EEAR
+_A_EEAR:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:ROOT,040H
+// union <unnamed> volatile __io _A_EEDR
+_A_EEDR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,03fH
+// union <unnamed> volatile __io _A_EECR
+_A_EECR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,03eH
+// union <unnamed> volatile __io _A_GPIOR0
+_A_GPIOR0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,03dH
+// union <unnamed> volatile __io _A_EIMSK
+_A_EIMSK:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,03cH
+// union <unnamed> volatile __io _A_EIFR
+_A_EIFR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,03bH
+// union <unnamed> volatile __io _A_PCIFR
+_A_PCIFR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,037H
+// union <unnamed> volatile __io _A_TIFR2
+_A_TIFR2:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,036H
+// union <unnamed> volatile __io _A_TIFR1
+_A_TIFR1:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,035H
+// union <unnamed> volatile __io _A_TIFR0
+_A_TIFR0:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,02bH
+// union <unnamed> volatile __io _A_PORTD
+_A_PORTD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,02aH
+// union <unnamed> volatile __io _A_DDRD
+_A_DDRD:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,029H
+// union <unnamed> volatile __io _A_PIND
+_A_PIND:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,028H
+// union <unnamed> volatile __io _A_PORTC
+_A_PORTC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,027H
+// union <unnamed> volatile __io _A_DDRC
+_A_DDRC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,026H
+// union <unnamed> volatile __io _A_PINC
+_A_PINC:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,025H
+// union <unnamed> volatile __io _A_PORTB
+_A_PORTB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,024H
+// union <unnamed> volatile __io _A_DDRB
+_A_DDRB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:ROOT,023H
+// union <unnamed> volatile __io _A_PINB
+_A_PINB:
+        DS8 1
+
+        RSEG CODE:CODE:NOROOT(1)
+// __version_3 bool CAdc::MeasureIsComlete()
+??MeasureIsComlete:
+        LDS     R16, _A_ADCSRA
+        MOV     R17, R16
+        SBRS    R17, 4
+        RJMP    ??MeasureIsComlete_1
+        LDS     R16, 122
+        ORI     R16, 0x10
+        STS     122, R16
+        LDI     R16, 1
+        RET
+??MeasureIsComlete_1:
+        LDI     R16, 0
+        RET
+        REQUIRE _A_ADCSRA
+//   11 #include "Crc.h"
+//   12 
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   13 uint8_t CMvsn21::m_uiType;
+??m_uiType:
+        DS8 1
+//   14 //CDriver* CMvsn21::m_pxDriver;
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   15 uint8_t CMvsn21::m_uiFlowControl;
+??m_uiFlowControl:
+        DS8 1
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   16 uint16_t CMvsn21::m_uiMessageLength;
+??m_uiMessageLength:
+        DS8 2
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   17 uint8_t CMvsn21::m_uiChannel;
+//   18 uint8_t CMvsn21::m_uiMeasureFlowControl;
+//   19 TChipChannelData CMvsn21::axChipsChannelsData[CHIP_NUMBER];
+??axChipsChannelsData:
+        DS8 24
+??m_uiChannel:
+        DS8 1
+??m_uiMeasureFlowControl:
+        DS8 1
+//   20 //CMeasurementChannel CMvsn21::axMasterMeasurementChannels[];
+//   21 //CMeasurementChannel CMvsn21::axSlave1MeasurementChannels[];
+//   22 //CMeasurementChannel CMvsn21::axSlave2MeasurementChannels[];
+//   23 // Сопоставление входа каналу.
+//   24 //__flash TChannelRemap CMvsn21::axMeasurementChannelRemap[] =
+//   25 //{
+//   26 //    // Нумерация входов сверху вниз.
+//   27 //    // разъём X1.
+//   28 //    {0, 6},
+//   29 //    {0, 7},
+//   30 //    {0, 0},
+//   31 //    {0, 1},
+//   32 //    {0, 2},
+//   33 //    {0, 3},
+//   34 //    // разъём X2.
+//   35 //    {0, 4},
+//   36 //    {0, 5},
+//   37 //    {1, 6},
+//   38 //    {1, 7},
+//   39 //    {1, 0},
+//   40 //    {1, 1},
+//   41 //    // разъём X3.
+//   42 //    {1, 2},
+//   43 //    {1, 3},
+//   44 //    {1, 4},
+//   45 //    {1, 5},
+//   46 //    {2, 6},
+//   47 //    {2, 7},
+//   48 //    // разъём X4.
+//   49 //    {2, 0},
+//   50 //    {2, 1},
+//   51 //    {2, 2},
+//   52 //    {2, 3},
+//   53 //    {2, 4},
+//   54 //    {2, 5},
+//   55 //};
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   56 uint8_t CMvsn21::auiDiscreteInputBitData[];
+??auiDiscreteInputBitData:
+        DS8 12
+//   57 
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   58 uint8_t CMvsn21::m_aucRtuCoilsArray[];
+??m_aucRtuCoilsArray:
+        DS8 16
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   59 uint8_t CMvsn21::m_aucRtuDiscreteInputsArray[];
+??m_aucRtuDiscreteInputsArray:
+        DS8 16
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   60 uint16_t CMvsn21::m_aucRtuHoldingRegistersArray[];
+??m_aucRtuHoldingRegistersArray:
+        DS8 16
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   61 uint16_t CMvsn21::m_aucRtuInputRegistersArray[];
+??m_aucRtuInputRegistersArray:
+        DS8 16
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   62 uint8_t CMvsn21::m_aui8ReceiveMessageBuff[];
+??m_aui8ReceiveMessageBuff:
+        DS8 32
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
+//   63 uint8_t CMvsn21::m_aui8TransmitMessageBuff[];
+??m_aui8TransmitMessageBuff:
+        DS8 32
+//   64 //uint8_t CMvsn21::m_auiSpiRxBuffer[];
+//   65 //uint8_t CMvsn21::m_auiSpiTxBuffer[];
+//   66 
+//   67 ////-----------------------------------------------------------------------------------------------------
+//   68 //CMvsn21::CMvsn21(uint8_t uiType, CDriver* pxDriver)// :
+//   69 ////    m_uiType(uiType),
+//   70 ////    m_pxDriver(pxDriver)
+//   71 //{
+//   72 //
+//   73 //}
+//   74 
+//   75 ////-----------------------------------------------------------------------------------------------------
+//   76 //CMvsn21::CMvsn21(uint8_t uiType)// :
+//   77 ////    m_uiType(uiType),
+//   78 ////    m_pxDriver(pxDriver)
+//   79 //{
+//   80 //
+//   81 //}
+//   82 //
+//   83 ////-----------------------------------------------------------------------------------------------------
+//   84 //CMvsn21::~CMvsn21()
+//   85 //{
+//   86 //    //dtor
+//   87 //}
+//   88 
+//   89 ////-----------------------------------------------------------------------------------------------------
+//   90 //void CMvsn21::SlaveSelectInterruptEnable(void)
+//   91 //{
+//   92 //
+//   93 //}
+//   94 //
+//   95 ////-----------------------------------------------------------------------------------------------------
+//   96 //void CMvsn21::SlaveSelectInterruptDisable(void)
+//   97 //{
+//   98 //
+//   99 //}
+//  100 //
+//  101 ////-----------------------------------------------------------------------------------------------------
+//  102 //void CMvsn21::SpiBusExchangeEnable(void)
+//  103 //{
+//  104 //    CPlatform::Int0InterruptEnable();
+//  105 //    m_uiFlowControl = FSM_START;
+//  106 //}
+//  107 //
+//  108 ////-----------------------------------------------------------------------------------------------------
+//  109 //void CMvsn21::SpiBusExchangeDisable(void)
+//  110 //{
+//  111 //    CPlatform::Int0InterruptDisable();
+//  112 //}
+//  113 //
+//  114 ////-----------------------------------------------------------------------------------------------------
+//  115 //void CMvsn21::Reset(void)
+//  116 //{
+//  117 //    m_uiMessageLength = 0;
+//  118 //    CSpi::Reset();
+//  119 //}
+//  120 //
+//  121 ////-----------------------------------------------------------------------------------------------------
+//  122 //uint8_t CMvsn21::Select(void)
+//  123 //{
+//  124 //    return CSpi::ByteIsReceived();
+//  125 //}
+//  126 //
+//  127 ////-----------------------------------------------------------------------------------------------------
+//  128 //int16_t CMvsn21::Exchange(void)
+//  129 //{
+//  130 //    return CSpi::Exchange();
+//  131 //}
+//  132 //
+//  133 ////-----------------------------------------------------------------------------------------------------------------
+//  134 //uint8_t CMvsn21::FrameIsReceived(void)
+//  135 //{
+//  136 //    return CSpi::m_bfDataExchangeIsOccur;
+//  137 //};
+//  138 //
+//  139 ////-----------------------------------------------------------------------------------------------------------------
+//  140 //uint16_t CMvsn21::GetFrameLength(void)
+//  141 //{
+//  142 //    return CSpi::GetFrameLength();
+//  143 //}
+//  144 //
+//  145 ////-----------------------------------------------------------------------------------------------------------------
+//  146 //int8_t CMvsn21::FrameCheck(void)
+//  147 //{
+//  148 ////    if (CUart::m_nuiRxBuffByteCounter < _MIN_MESSAGE_LENGTH)
+//  149 ////    {
+//  150 ////        return 0;
+//  151 ////    }
+//  152 ////
+//  153 ////    uint16_t uiCrc = ((static_cast<uint16_t>(m_puiRxBuffer[CUart::m_nuiRxBuffByteCounter - 2]) << 8) |
+//  154 ////                      (static_cast<uint16_t>(m_puiRxBuffer[CUart::m_nuiRxBuffByteCounter - 1])));
+//  155 ////
+//  156 ////    if (usCrc16(m_puiRxBuffer,
+//  157 ////                (CUart::m_nuiRxBuffByteCounter - _MVSN21_RTU_CHECKSUM_LENGTH)) == uiCrc)
+//  158 ////    {
+//  159 ////        return 1;
+//  160 ////    }
+//  161 ////    else
+//  162 ////    {
+//  163 ////        return 0;
+//  164 ////    }
+//  165 //}
+//  166 //
+//  167 ////-----------------------------------------------------------------------------------------------------------------
+//  168 //int8_t CMvsn21::FrameCheck(uint8_t *puiSource, uint16_t uiLength)
+//  169 //{
+//  170 ////    if (uiLength < _MIN_MESSAGE_LENGTH)
+//  171 ////    {
+//  172 ////        return 0;
+//  173 ////    }
+//  174 ////
+//  175 ////    uint16_t uiCrc = ((static_cast<uint16_t>(puiSource[uiLength - 2]) << 8) |
+//  176 ////                      (static_cast<uint16_t>(puiSource[uiLength - 1])));
+//  177 ////
+//  178 ////    if (usCrc16(puiSource,
+//  179 ////                (uiLength - _MVSN21_RTU_CHECKSUM_LENGTH)) == uiCrc)
+//  180 ////    {
+//  181 ////        return 1;
+//  182 ////    }
+//  183 ////    else
+//  184 ////    {
+//  185 ////        return 0;
+//  186 ////    }
+//  187 //}
+//  188 
+//  189 ////-----------------------------------------------------------------------------------------------------
+//  190 //void CMvsn21::ChannelsToDiscreteInput(void)
+//  191 //{
+//  192 //    uint8_t uiLength = 0;
+//  193 //    uint8_t *puiMessage = auiDiscreteInputBitData;
+//  194 ////    TChannelRemap __flash *pxMeasurementChannelRemap;
+//  195 ////    pxMeasurementChannelRemap = &axMeasurementChannelRemap[0];
+//  196 //
+//  197 //    // Протокол обмена данными по шине Spi.
+//  198 //    // Первый байт - пустой.
+//  199 //    puiMessage[uiLength++] = 0;
+//  200 ////    // Второй байт - "эхо".
+//  201 ////    puiMessage[uiLength++] = COMMAND_READ_DATA;
+//  202 //    // Третий байт - команда обмен данными.
+//  203 //    puiMessage[uiLength++] = COMMAND_READ_DATA;
+//  204 //
+//  205 //
+//  206 //    // Следующие шесть байт - данные состояния дискретных входов.
+//  207 //    // Упакуем двухбитовые данные состояния измерительных каналов всех чипов в дискретные входы.
+//  208 //    // i - индекс дискретных входов.
+//  209 //    for (int8_t i = 0; i < DISCRETE_INPUT_NUMBER; )
+//  210 //    {
+//  211 //        puiMessage[uiLength] = 0;
+//  212 ////        // Упакуем двухбитовые данные состояния восьми измерительных каналов одного чипа в дискретные входы.
+//  213 //        // Упакуем двухбитовые данные состояния четырёх измерительных каналов в байт по четыре дискретных входа.
+//  214 //        for (int8_t j= 0;
+//  215 //                j < (CHANNELS_IN_BYTE * MEASURE_CHANNEL_STATE_BIT_NUMBER);
+//  216 //                j += MEASURE_CHANNEL_STATE_BIT_NUMBER)
+//  217 //        {
+//  218 //            // Упаковали все данные состояния измерительных каналов?
+//  219 //            if (i < DISCRETE_INPUT_NUMBER)
+//  220 //            {
+//  221 //                // Отобразим данные состояния измерительных каналов на дискретные входы во временный буфер.
+//  222 //                puiMessage[uiLength] |=
+//  223 //                    // Следующие два бита в байте.
+//  224 //                    // Выберем канал по индексу чипа, карты сопоставления измерительных каналов со входами модуля.
+//  225 //                    ((axChipsChannelsData[axMeasurementChannelRemap[i].uiChip].
+//  226 //                      // Выберем канал по индексу входа модуля, карты сопоставления измерительных каналов со входами модуля.
+//  227 //                      axMeasurementChannels[axMeasurementChannelRemap[i].uiChannel].
+//  228 //                      // Состояние измерительного канала занимает два младших бита.
+//  229 //                      m_uiState & 0x03) << j);
+//  230 //                // Следующий дискретный вход.
+//  231 //                i++;
+//  232 //            }
+//  233 //            else
+//  234 //            {
+//  235 //                // Упаковали все данные состояния измерительных каналов.
+//  236 //                goto EndStateDataPack;
+//  237 //            }
+//  238 //        }
+//  239 //        // Следующий байт.
+//  240 //        uiLength++;
+//  241 //        puiMessage[uiLength] = 0;
+//  242 //    }
+//  243 //
+//  244 //EndStateDataPack:
+//  245 //
+//  246 //    // Последний байт - сумма всех байт начиная с третьего(пустой байт и "эхо" не учитываются).
+//  247 //    puiMessage[uiLength] =
+//  248 //        usCrcSummOneByteCalculation(&puiMessage[2], (uiLength - 2));
+//  249 //}
+//  250 
+//  251 ////-----------------------------------------------------------------------------------------------------------------
+//  252 //int16_t CMvsn21::ReportType(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiLength)
+//  253 //{
+//  254 ////    *(puiResponse - 1) = 4;
+//  255 ////    puiResponse[0] = 2;
+//  256 //    uint8_t uiCrc = (COMMAND_REPORT_TYPE + MODULE_TYPE_MVSN21);
+//  257 ////    puiResponse[uiLength++] = 0;
+//  258 //    puiResponse[uiLength++] = COMMAND_REPORT_TYPE;
+//  259 //    puiResponse[uiLength++] = MODULE_TYPE_MVSN21;
+//  260 //    puiResponse[uiLength++] = uiCrc;
+//  261 //
+//  262 //    return uiLength;
+//  263 //}
+//  264 //
+//  265 ////-----------------------------------------------------------------------------------------------------------------
+//  266 //int16_t CMvsn21::ReadData(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiLength)
+//  267 //{
+//  268 ////    // Закончено измерение входных каналов?
+//  269 ////    if (m_uiMeasureFlowControl == FSM_IDDLE)
+//  270 ////    {
+//  271 //    memcpy(puiResponse, auiDiscreteInputBitData, 10);
+//  272 ////    }
+//  273 ////    else
+//  274 ////    {
+//  275 ////        // Протокол обмена данными по шине Spi.
+//  276 ////        // Первый байт - пустой.
+//  277 ////        puiResponse[uiLength++] = 0;
+//  278 ////        // Второй байт - "эхо".
+//  279 ////        puiResponse[uiLength++] = COMMAND_DATA_NOT_READY;
+//  280 ////        // Третий байт - команда обмен данными.
+//  281 ////        puiResponse[uiLength++] = COMMAND_DATA_NOT_READY;
+//  282 ////
+//  283 ////
+//  284 //////    // Последний байт - сумма всех байт начиная с третьего(пустой байт и "эхо" не учитываются).
+//  285 //////    puiMessage[uiLength] =
+//  286 //////        usCrcSummOneByteCalculation(&puiMessage[2], (uiLength - 2));
+//  287 ////    }
+//  288 //    return uiLength;
+//  289 //}
+//  290 
+//  291 ////-----------------------------------------------------------------------------------------------------------------
+//  292 //int16_t CMvsn21::SpiReply(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiFrameLength)
+//  293 //{
+//  294 //    uint16_t uiLength = uiFrameLength;
+//  295 //    // Какой поступил запрос?
+//  296 //    switch (puiRequest[0])
+//  297 //    {
+//  298 //    case COMMAND_REPORT_TYPE:
+//  299 //        uiLength = ReportType(puiRequest, puiResponse, uiLength);
+//  300 //        break;
+//  301 //
+//  302 //    case COMMAND_READ_DATA:
+//  303 //        uiLength = ReadData(puiRequest, puiResponse, uiLength);
+//  304 //        break;
+//  305 //
+//  306 //    case COMMAND_READ_DATA_BASE:
+//  307 ////        uiLength = ReadHoldingRegisters(puiRequest, puiResponse, uiLength);
+//  308 //        break;
+//  309 //
+//  310 //    case COMMAND_WRITE_DATA_BASE:
+//  311 ////        uiLength = ReadInputRegisters(puiRequest, puiResponse, uiLength);
+//  312 //        break;
+//  313 //
+//  314 //    default:
+//  315 //        break;
+//  316 //    }
+//  317 //    return uiLength;
+//  318 //}
+//  319 
+//  320 ////-----------------------------------------------------------------------------------------------------------------
+//  321 //void CMvsn21::SpiFsm(void)
+//  322 //{
+//  323 //    int16_t iReceivedCounter;
+//  324 //
+//  325 //    switch (m_uiFlowControl)
+//  326 //    {
+//  327 //    case FSM_IDDLE:
+//  328 //        break;
+//  329 //
+//  330 //    case FSM_START:
+//  331 //        Reset();
+//  332 //        m_uiFlowControl = FSM_WAITING_MESSAGE;
+//  333 //        break;
+//  334 //
+//  335 //    case FSM_WAITING_MESSAGE:
+//  336 //        if (Select())
+//  337 //        {
+//  338 //            iReceivedCounter = Exchange();
+//  339 //
+//  340 //            if (iReceivedCounter > 0)
+//  341 //            {
+//  342 //                m_uiMessageLength += iReceivedCounter;
+//  343 //
+//  344 //                if (SpiReply(CSpi::m_puiRxBuffer, CSpi::m_puiTxBuffer, m_uiMessageLength))
+//  345 //                {
+//  346 //                    m_uiFlowControl = FSM_DATA_EXCHANGE_END_WAITING;
+//  347 //                }
+//  348 //                else
+//  349 //                {
+//  350 //                    m_uiFlowControl = FSM_IDDLE;
+//  351 //                }
+//  352 //            }
+//  353 //            else if (iReceivedCounter == -1)
+//  354 //            {
+//  355 //                m_uiFlowControl = FSM_IDDLE;
+//  356 //            }
+//  357 //        }
+//  358 //
+//  359 //        break;
+//  360 //
+//  361 //    case FSM_DATA_EXCHANGE_END_WAITING:
+//  362 //
+//  363 //        break;
+//  364 //
+//  365 //    default:
+//  366 //        break;
+//  367 //    }
+//  368 //
+//  369 //}
+//  370 
+//  371 ////-----------------------------------------------------------------------------------------------------
+//  372 //uint8_t CMvsn21::ContinuousMeasure(void)
+//  373 //{
+//  374 //    if (m_uiChannel < MEASURE_CHANNEL_NUMBER)
+//  375 //    {
+//  376 //        CAdc::ChannelSelect(m_uiChannel++);
+//  377 //        CAdc::Start();
+//  378 //        return 0;
+//  379 //    }
+//  380 //    else
+//  381 //    {
+//  382 //        return 1;
+//  383 //    }
+//  384 //}
+//  385 
+//  386 //-----------------------------------------------------------------------------------------------------
+
+        RSEG CODE:CODE:NOROOT(1)
+//  387 void CMvsn21::MeasureFsm(void)
+??MeasureFsm:
+//  388 {
+        LDS     R16, (??axChipsChannelsData + 25)
+        SUBI    R16, 1
+        BREQ    ??MeasureFsm_1
+        SUBI    R16, 9
+        BREQ    ??MeasureFsm_2
+        RET
+//  389     switch (m_uiMeasureFlowControl)
+//  390     {
+//  391     case FSM_IDDLE:
+//  392         break;
+//  393 
+//  394     case FSM_START:
+//  395         m_uiChannel = 0;
+??MeasureFsm_1:
+        LDI     R16, 0
+        STS     (??axChipsChannelsData + 24), R16
+//  396         CAdc::ChannelSelect(m_uiChannel);
+        RCALL   ??ChannelSelect
+//  397         CAdc::Enable();
+        RCALL   ??Enable
+//  398         CAdc::Start();
+        RCALL   ??Start
+//  399         m_uiMeasureFlowControl = FSM_CONTINUOUS_MEASURE;
+        LDI     R16, 10
+        STS     (??axChipsChannelsData + 25), R16
+//  400         break;
+        RET
+//  401 
+//  402     case FSM_CONTINUOUS_MEASURE:
+//  403         if (CAdc::MeasureIsComlete())
+??MeasureFsm_2:
+        RCALL   ??MeasureIsComlete
+        TST     R16
+        BREQ    ??MeasureFsm_3
+//  404         {
+//  405             uint16_t uiData = CAdc::GetMeasureValue();
+        RCALL   ??GetMeasureValue
+//  406             axChipsChannelsData[MASTER_CHIP_ADDRESS].axMeasurementChannels[m_uiChannel].m_uiState =
+//  407                 CMeasurementChannel::StatusCheck(CAdc::GetMeasureValue());
+        RCALL   ??GetMeasureValue
+        RCALL   ??StatusCheck
+        LDS     R18, (??axChipsChannelsData + 24)
+        LDI     R19, 0
+        LDI     R30, LOW(??axChipsChannelsData)
+        LDI     R31, (??axChipsChannelsData) >> 8
+        ADD     R30, R18
+        ADC     R31, R19
+        STD     Z+16, R16
+//  408             m_uiChannel++;
+        LDS     R16, (??axChipsChannelsData + 24)
+        INC     R16
+        STS     (??axChipsChannelsData + 24), R16
+//  409             if (m_uiChannel < MEASURE_CHANNEL_NUMBER)
+        LDS     R16, (??axChipsChannelsData + 24)
+        CPI     R16, 8
+        BRCC    ??MeasureFsm_4
+//  410             {
+//  411                 CAdc::Stop();
+        RCALL   ??Stop
+//  412                 CAdc::ChannelSelect(m_uiChannel);
+        LDS     R16, (??axChipsChannelsData + 24)
+        RCALL   ??ChannelSelect
+//  413                 CAdc::Start();
+        RCALL   ??Start
+        RET
+//  414             }
+//  415             else
+//  416             {
+//  417                 CAdc::Disable();
+??MeasureFsm_4:
+        RCALL   ??Disable
+//  418 //                ChannelsToDiscreteInput();
+//  419                 m_uiMeasureFlowControl = FSM_IDDLE;
+        LDI     R16, 0
+        STS     (??axChipsChannelsData + 25), R16
+//  420             }
+//  421         }
+//  422         break;
+//  423 
+//  424     default:
+//  425         break;
+//  426     }
+//  427 }
+??MeasureFsm_3:
+        RET
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01fH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,020H
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,021H
+__?EEARL:
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: NEAR_Z>`:
+        DC16    SFE(NEAR_Z) - SFB(NEAR_Z)
+        DC16    SFB(NEAR_Z)
+        DC16    0
+        REQUIRE ?need_segment_init
+
+        END
+//  428 
+//  429 
+//  430 
+//  431 
+//  432 
+//  433 
+//  434 
+//  435 ////-----------------------------------------------------------------------------------------------------
+//  436 //CMvsn21Driver::CMvsn21Driver(uint8_t uiType) :
+//  437 //
+//  438 //    m_uiType(uiType),
+//  439 //{
+//  440 //
+//  441 //}
+//  442 //
+//  443 ////-----------------------------------------------------------------------------------------------------
+//  444 //CMvsn21Driver::~CMvsn21Driver()
+//  445 //{
+//  446 //
+//  447 //}
+//  448 //
+//  449 ////-----------------------------------------------------------------------------------------------------
+//  450 //uint16_t CMvsn21Driver::TypeReport(uint8_t *puiDestination, uint16_t uiLength)
+//  451 //{
+//  452 //
+//  453 //}
+// 
+//  87 bytes in segment ABSOLUTE
+// 130 bytes in segment CODE
+//   6 bytes in segment INITTAB
+// 170 bytes in segment NEAR_Z
+// 
+// 102 bytes of CODE memory (+ 34 bytes shared)
+// 170 bytes of DATA memory (+ 87 bytes shared)
+//
+//Errors: none
+//Warnings: 1

@@ -2157,22 +2157,16 @@
         <name>$PROJ_DIR$\src\Crc.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\src\DataBase.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\src\Device.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\src\Driver.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\src\InputDevice.cpp</name>
-    </file>
-    <file>
         <name>$PROJ_DIR$\src\main.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\src\MeasurementChannel.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\Modbus\Modbus.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\Modbus\ModbusRTU.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\src\Mvsn21.cpp</name>

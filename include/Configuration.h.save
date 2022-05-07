@@ -13,28 +13,43 @@
 //-----------------------------------------------------------------------------------------------------
 
 
-    enum
-    {
-        MASTER_DATA_EXCHANGE_MAX_MESSAGE_LENGTH = 64,
-        MEASURE_CHANNEL_NUMBER = 8,
-        DISCRETE_INPUT_NUMBER = 24,
-        MEASURE_CHANNEL_STATE_BIT_NUMBER = 2,
-        CHANNELS_IN_BYTE = 4,
-        CHIP_NUMBER = 3,
-        SLAVE_1_CHIP_ADDRESS = 0,
-        SLAVE_2_CHIP_ADDRESS = 1,
-        MASTER_CHIP_ADDRESS = 2,
-    };
+enum
+{
+    MODBUS_RTU_BAUD_RATE = 9600UL,
+    MODBUS_RTU_MAX_ADU_LENGTH = 256,
+    SPI_BUFFER_LENGTH = 64,
+    SPI_MAX_BUS_ADDRESS = 16,
+// 2 - смещение на данные в массиве RX SPI. 0 - команда запроса, 1 - "эхо" команды запроса.
+    SPI_DATA_BYTE_OFFSET = 3,
+// 1 - смещение на команду в массиве RX SPI.
+    SPI_COMMAND_BYTE_OFFSET = 2,
+    SPI_COMMAND_BYTE_LENGTH = 1,
+    ONE_BYTE_CRC_LENGTH = 1,
+    TWO_BYTE_CRC_LENGTH = 2,
+};
 
-    typedef enum
-    {
-        // длина заголовка вложенного сообщения.
-        HEADER_LENGTH = 3,
-        CRC_LENGTH = 2,
-        TAIL_LENGTH = CRC_LENGTH,
-        MESSAGE_BAG_MAX_LENGTH = 32,
-        MIN_MESSAGE_LENGTH = 4,
-    };
+enum
+{
+    MASTER_DATA_EXCHANGE_MAX_MESSAGE_LENGTH = 64,
+    MEASURE_CHANNEL_NUMBER = 8,
+    DISCRETE_INPUT_NUMBER = 24,
+    MEASURE_CHANNEL_STATE_BIT_NUMBER = 2,
+    CHANNELS_IN_BYTE = 4,
+    CHIP_NUMBER = 3,
+    SLAVE_1_CHIP_ADDRESS = 0,
+    SLAVE_2_CHIP_ADDRESS = 1,
+    MASTER_CHIP_ADDRESS = 2,
+};
+
+typedef enum
+{
+    // длина заголовка вложенного сообщения.
+    HEADER_LENGTH = 3,
+    CRC_LENGTH = 2,
+    TAIL_LENGTH = CRC_LENGTH,
+    MESSAGE_BAG_MAX_LENGTH = 32,
+    MIN_MESSAGE_LENGTH = 4,
+};
 
 
 //-----------------------------------------------------------------------------------------------------

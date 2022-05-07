@@ -149,8 +149,8 @@ public:
 //        FSM_DATA_EXCHANGE_END_WAITING,
 //    };
 
-    CAdc();
-    virtual ~CAdc();
+//    CAdc();
+//    virtual ~CAdc();
     static void Init();
     static void ChannelSelect(uint8_t );
     static void StartSingle(void);
@@ -178,6 +178,7 @@ public:
             return 0;
         }
     };
+    static uint16_t GetMeasureValue(void);
 //    static __interrupt void SIG_ADC(void);
 
 protected:
@@ -245,7 +246,7 @@ class CUart
 public:
     enum
     {
-        UART_MAX_BUFF_LENGTH = 256,
+        UART_MAX_BUFF_LENGTH = 64,
         UART_INTERMEDIATE_BUFF_LENGTH = 16
     };
 
@@ -256,55 +257,64 @@ public:
           volatile uint8_t * , volatile uint8_t ,
           volatile uint8_t * , volatile uint8_t );
     virtual ~CUart();
-
+    
+void CUart::UartBind(volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
+                volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
+                volatile uint8_t *ucsrc, volatile uint8_t *udr,
+                volatile uint8_t *rs485ddr, volatile uint8_t rs485ddpin,
+                volatile uint8_t *rs485port, volatile uint8_t rs485pin)
 //-----------------------------------------------------------------------------------------------------
-    void UdreInterruptHandler(void);
-    void TxcInterruptHandler(void);
-    void RecvInterruptHandler(void);
-    void Init(uint32_t ,
+    static void UdreInterruptHandler(void);
+    static void TxcInterruptHandler(void);
+    static void RecvInterruptHandler(void);
+    static void Init(uint32_t ,
               uint8_t ,
               uint8_t ,
               uint8_t  ,
               uint8_t *,
               uint8_t *);
-    void Reset(void);
-    void Enable(void);
-    void Disable(void);
-    void Rs485RtsOn(void);
-    void Rs485RtsOff(void);
-    int16_t Write(uint8_t * , uint16_t );
-    int16_t Read(uint8_t * );
-    int16_t Read(void);
-    uint8_t FrameIsSended(void)
+    static void Reset(void);
+    static void Enable(void);
+    static void Disable(void);
+    static void Rs485RtsOn(void);
+    static void Rs485RtsOff(void);
+    static int16_t Write(uint8_t * , uint16_t );
+    static int16_t Read(uint8_t * , uint16_t );
+    static int16_t Read(void);
+    uint8_t ByteIsReceived(void)
     {
-        return m_bfDataExchangeIsOccur;
+        return m_bfByteIsReceived;
+    }
+    static uint8_t FrameIsSended(void)
+    {
+        return m_bfFrameIsSended;
     };
-    uint16_t GetFrameLength(void)
+    static uint16_t GetFrameLength(void)
     {
         return m_nuiRxBuffByteCounter;
     };
 
 //-----------------------------------------------------------------------------------------------------
 //private:
-    volatile uint8_t* m_UBRRH;
-    volatile uint8_t* m_UBRRL;
-    volatile uint8_t* m_UCSRA;
-    volatile uint8_t* m_UCSRB;
-    volatile uint8_t* m_UCSRC;
-    volatile uint8_t* m_UDR;
-    volatile uint8_t* m_rs485ddr;
-    volatile uint8_t m_rs485ddpin;
-    volatile uint8_t* m_rs485port;
-    volatile uint8_t m_rs485pin;
+    static volatile uint8_t* m_UBRRH;
+    static volatile uint8_t* m_UBRRL;
+    static volatile uint8_t* m_UCSRA;
+    static volatile uint8_t* m_UCSRB;
+    static volatile uint8_t* m_UCSRC;
+    static volatile uint8_t* m_UDR;
+    static volatile uint8_t* m_rs485ddr;
+    static volatile uint8_t m_rs485ddpin;
+    static volatile uint8_t* m_rs485port;
+    static volatile uint8_t m_rs485pin;
 
-    uint8_t* m_puiTxBuffer;
-    uint16_t m_nuiTxBuffByteCounter;
-    uint8_t* m_puiRxBuffer;
-    uint16_t m_nuiRxBuffByteCounter;
-//    uint8_t m_auiIntermediateBuff[UART_INTERMEDIATE_BUFF_LENGTH];
-    bool m_bfByteIsReceived;
-    bool m_bfDataExchangeIsOccur;
-    bool m_bfRxBuffOverflow;
+    static uint8_t* m_puiTxBuffer;
+    static uint16_t m_nuiTxBuffByteCounter;
+    static uint8_t* m_puiRxBuffer;
+    static uint16_t m_nuiRxBuffByteCounter;
+    static uint8_t m_auiIntermediateBuff[UART_INTERMEDIATE_BUFF_LENGTH];
+    static bool m_bfByteIsReceived;
+    static bool m_bfFrameIsSended;
+    static bool m_bfRxBuffOverflow;
 
 //protected:
 
@@ -319,8 +329,8 @@ public:
 class CEeprom
 {
 public:
-    CEeprom();
-    virtual ~CEeprom();
+//    CEeprom();
+//    virtual ~CEeprom();
     static uint8_t Read(uint8_t * , uint16_t , uint16_t );
     static uint8_t Write(uint16_t , uint8_t * , uint16_t );
     static uint8_t ReadByte(uint16_t );
@@ -335,97 +345,97 @@ private:
 
 
 
-//-----------------------------------------------------------------------------------------------------
-enum
-{
-    SPI_SS5 = 2,     // PD2 - Вход прерывания от Master
-    SPI_MOSI = 3,    // PB2 - Вход SPI
-    SPI_MISO = 4,    // PB3 - Выход SPI
-    SPI_SCK = 5     // PB5 - Вход для синхроимпульсов
-};
-
-enum
-{
-    SPI_MAX_BUFF_LENGTH = 64,
-};
-
-class CSpi
-{
-public:
-    CSpi();
-    virtual ~CSpi();
-
-    static void Init(uint8_t * , uint8_t * );
-    static void Enable(void);
-    static void Disable(void);
-    static void RecvInterruptHandler(void);
-    static int16_t Exchange(void);
-    static uint8_t Read(uint8_t * , uint16_t , uint16_t );
-    static uint8_t Write(uint16_t , uint8_t * , uint16_t );
-    static void Reset(void);
-//-----------------------------------------------------------------------------------------------------
-    static uint8_t DataExchangeInProgress(void)
-    {
-        return m_bfDataExchangeInProgress;
-    }
-//-----------------------------------------------------------------------------------------------------
-    static void DataExchangeInProgressClear(void)
-    {
-        m_bfDataExchangeInProgress = 0;
-    }
-//-----------------------------------------------------------------------------------------------------
-    static void DataExchangeInProgressSet(void)
-    {
-        m_bfDataExchangeInProgress = 1;
-    }
-//-----------------------------------------------------------------------------------------------------
-    static uint8_t DataExchangeIsOccur(void)
-    {
-        return m_bfDataExchangeIsOccur;
-    }
-//-----------------------------------------------------------------------------------------------------
-    static void DataExchangeIsOccurSet(void)
-    {
-        m_bfDataExchangeIsOccur = 1;
-    };
-//-----------------------------------------------------------------------------------------------------
-    static void DataExchangeIsOccurClear(void)
-    {
-        m_bfDataExchangeIsOccur = 0;
-    }
-//-----------------------------------------------------------------------------------------------------
-    static uint8_t ByteIsReceived(void)
-    {
-        return m_bfByteIsReceived;
-    }
-//-----------------------------------------------------------------------------------------------------
-    static void ByteIsReceivedClear(void)
-    {
-        m_bfByteIsReceived = 0;
-    }
-//-----------------------------------------------------------------------------------------------------
-    static uint16_t GetFrameLength(void)
-    {
-        return m_nuiBuffByteCounter;
-    }
-
-    static const uint8_t BUFFER_LENGTH = 16;
-//-----------------------------------------------------------------------------------------------------
-//private:
-    static uint8_t m_uiExchangeByte;
-    static uint8_t* m_puiRxBuffer;
-    static uint8_t* m_puiTxBuffer;
-    static uint16_t m_nuiBuffByteCounter;
-    static uint16_t m_uiReceivedByteCounter;
-    static bool m_bfByteIsReceived;
-    static bool m_bfByteIsTransmited;
-    static bool m_bfDataExchangeInProgress;
-    static bool m_bfDataExchangeIsOccur;
-    static bool m_bfRxBuffOverflow;
-    static uint8_t m_auiSpiRxBuffer[BUFFER_LENGTH];
-    static uint8_t m_auiSpiTxBuffer[BUFFER_LENGTH];
-
-};
+////-----------------------------------------------------------------------------------------------------
+//enum
+//{
+//    SPI_SS5 = 2,     // PD2 - Вход прерывания от Master
+//    SPI_MOSI = 3,    // PB2 - Вход SPI
+//    SPI_MISO = 4,    // PB3 - Выход SPI
+//    SPI_SCK = 5     // PB5 - Вход для синхроимпульсов
+//};
+//
+//enum
+//{
+//    SPI_MAX_BUFF_LENGTH = 64,
+//};
+//
+//class CSpi
+//{
+//public:
+//    CSpi();
+//    virtual ~CSpi();
+//
+//    static void Init(uint8_t * , uint8_t * );
+//    static void Enable(void);
+//    static void Disable(void);
+//    static void RecvInterruptHandler(void);
+//    static int16_t Exchange(void);
+//    static uint8_t Read(uint8_t * , uint16_t , uint16_t );
+//    static uint8_t Write(uint16_t , uint8_t * , uint16_t );
+//    static void Reset(void);
+////-----------------------------------------------------------------------------------------------------
+//    static uint8_t DataExchangeInProgress(void)
+//    {
+//        return m_bfDataExchangeInProgress;
+//    }
+////-----------------------------------------------------------------------------------------------------
+//    static void DataExchangeInProgressClear(void)
+//    {
+//        m_bfDataExchangeInProgress = 0;
+//    }
+////-----------------------------------------------------------------------------------------------------
+//    static void DataExchangeInProgressSet(void)
+//    {
+//        m_bfDataExchangeInProgress = 1;
+//    }
+////-----------------------------------------------------------------------------------------------------
+//    static uint8_t DataExchangeIsOccur(void)
+//    {
+//        return m_bfDataExchangeIsOccur;
+//    }
+////-----------------------------------------------------------------------------------------------------
+//    static void DataExchangeIsOccurSet(void)
+//    {
+//        m_bfDataExchangeIsOccur = 1;
+//    };
+////-----------------------------------------------------------------------------------------------------
+//    static void DataExchangeIsOccurClear(void)
+//    {
+//        m_bfDataExchangeIsOccur = 0;
+//    }
+////-----------------------------------------------------------------------------------------------------
+//    static uint8_t ByteIsReceived(void)
+//    {
+//        return m_bfByteIsReceived;
+//    }
+////-----------------------------------------------------------------------------------------------------
+//    static void ByteIsReceivedClear(void)
+//    {
+//        m_bfByteIsReceived = 0;
+//    }
+////-----------------------------------------------------------------------------------------------------
+//    static uint16_t GetFrameLength(void)
+//    {
+//        return m_nuiBuffByteCounter;
+//    }
+//
+//    static const uint8_t BUFFER_LENGTH = 16;
+////-----------------------------------------------------------------------------------------------------
+////private:
+//    static uint8_t m_uiExchangeByte;
+//    static uint8_t* m_puiRxBuffer;
+//    static uint8_t* m_puiTxBuffer;
+//    static uint16_t m_nuiBuffByteCounter;
+//    static uint16_t m_uiReceivedByteCounter;
+//    static bool m_bfByteIsReceived;
+//    static bool m_bfByteIsTransmited;
+//    static bool m_bfDataExchangeInProgress;
+//    static bool m_bfDataExchangeIsOccur;
+//    static bool m_bfRxBuffOverflow;
+//    static uint8_t m_auiSpiRxBuffer[BUFFER_LENGTH];
+//    static uint8_t m_auiSpiTxBuffer[BUFFER_LENGTH];
+//
+//};
 //-----------------------------------------------------------------------------------------------------
 
 
@@ -436,8 +446,8 @@ public:
 class CPlatform
 {
 public:
-    CPlatform();
-    virtual ~CPlatform();
+//    CPlatform();
+//    virtual ~CPlatform();
 
 //    static const uint32_t F_CPU = 7372800;
 
@@ -491,40 +501,40 @@ public:
         return m_uiSystemTick;
     }
 
-//-----------------------------------------------------------------------------------------------------
-    static void StatusLedSetPinOutput(void)
-    {
-        DDRD |=  BIT(DDD3);
-    };
-
-//-----------------------------------------------------------------------------------------------------
-    static void StatusLedOn(void)
-    {
-        PORTD &= ~BIT(PD3);
-    };
-
-//-----------------------------------------------------------------------------------------------------
-    static void StatusLedOff(void)
-    {
-        PORTD |=  BIT(PD3);
-    };
-//-----------------------------------------------------------------------------------------------------------------
-    static void TxLedSetPinOutput(void)
-    {
-        DDRD |=  BIT(DDD3);
-    };
-
-//-----------------------------------------------------------------------------------------------------------------
-    static void TxLedOn(void)
-    {
-        PORTD &= ~BIT(PD3);
-    };
-
-//-----------------------------------------------------------------------------------------------------------------
-    static void TxLedOff(void)
-    {
-        PORTD |=  BIT(PD3);
-    };
+////-----------------------------------------------------------------------------------------------------
+//    static void StatusLedSetPinOutput(void)
+//    {
+//        DDRD |=  BIT(DDD3);
+//    };
+//
+////-----------------------------------------------------------------------------------------------------
+//    static void StatusLedOn(void)
+//    {
+//        PORTD &= ~BIT(PD3);
+//    };
+//
+////-----------------------------------------------------------------------------------------------------
+//    static void StatusLedOff(void)
+//    {
+//        PORTD |=  BIT(PD3);
+//    };
+////-----------------------------------------------------------------------------------------------------------------
+//    static void TxLedSetPinOutput(void)
+//    {
+//        DDRD |=  BIT(DDD3);
+//    };
+//
+////-----------------------------------------------------------------------------------------------------------------
+//    static void TxLedOn(void)
+//    {
+//        PORTD &= ~BIT(PD3);
+//    };
+//
+////-----------------------------------------------------------------------------------------------------------------
+//    static void TxLedOff(void)
+//    {
+//        PORTD |=  BIT(PD3);
+//    };
 
 
 //-----------------------------------------------------------------------------------------------------
@@ -534,7 +544,7 @@ public:
 
     static CUart* m_pxUart0;
     static CUart* m_pxUart1;
-    static CSpi* m_pxSpi;
+//    static CSpi* m_pxSpi;
     static uint8_t uiSlaveSelectIsHigh;
 
 //-----------------------------------------------------------------------------------------------------

@@ -11,17 +11,17 @@
 // ATMega48
 
 bool CAdc::m_fbMeasureIsComlete;
-//-----------------------------------------------------------------------------------------------------
-CAdc::CAdc()
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------
-CAdc::~CAdc()
-{
-
-}
+////-----------------------------------------------------------------------------------------------------
+//CAdc::CAdc()
+//{
+//
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//CAdc::~CAdc()
+//{
+//
+//}
 
 //-----------------------------------------------------------------------------------------------------
 void CAdc::Init(void)
@@ -109,22 +109,67 @@ uint16_t CAdc::GetMeasureValue(void)
 
 
 
-//-----------------------------------------------------------------------------------------------------
-CUart::CUart()
-{
+volatile uint8_t* CUart::m_UBRRH;
+volatile uint8_t* CUart::m_UBRRL;
+volatile uint8_t* CUart::m_UCSRA;
+volatile uint8_t* CUart::m_UCSRB;
+volatile uint8_t* CUart::m_UCSRC;
+volatile uint8_t* CUart::m_UDR;
+volatile uint8_t* CUart::m_rs485ddr;
+volatile uint8_t CUart::m_rs485ddpin;
+volatile uint8_t* CUart::m_rs485port;
+volatile uint8_t CUart::m_rs485pin;
 
-}
+uint8_t* CUart::m_puiTxBuffer;
+uint16_t CUart::m_nuiTxBuffByteCounter;
+uint8_t* CUart::m_puiRxBuffer;
+uint16_t CUart::m_nuiRxBuffByteCounter;
+uint8_t CUart::m_auiIntermediateBuff[UART_INTERMEDIATE_BUFF_LENGTH];
+bool CUart::m_bfByteIsReceived;
+bool CUart::m_bfFrameIsSended;
+bool CUart::m_bfRxBuffOverflow;
+
+////-----------------------------------------------------------------------------------------------------
+//CUart::CUart()
+//{
+//
+//}
+
+////-----------------------------------------------------------------------------------------------------
+//CUart::CUart(volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
+//             volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
+//             volatile uint8_t *ucsrc, volatile uint8_t *udr,
+//             volatile uint8_t *rs485ddr, volatile uint8_t rs485ddpin,
+//             volatile uint8_t *rs485port, volatile uint8_t rs485pin) :
+//    m_UBRRH(ubrrh), m_UBRRL(ubrrl), m_UCSRA(ucsra),
+//    m_UCSRB(ucsrb), m_UCSRC(ucsrc), m_UDR(udr),
+//    m_rs485ddr(rs485ddr), m_rs485ddpin(rs485ddpin), m_rs485port(rs485port), m_rs485pin(rs485pin)
+//{
+//    if (m_rs485ddr)
+//    {
+//        *m_rs485ddr |= Bit(m_rs485ddpin);
+//        *m_rs485port &= ~(Bit(m_rs485pin));
+//    }
+//}
 
 //-----------------------------------------------------------------------------------------------------
-CUart::CUart(volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
-             volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
-             volatile uint8_t *ucsrc, volatile uint8_t *udr,
-             volatile uint8_t *rs485ddr, volatile uint8_t rs485ddpin,
-             volatile uint8_t *rs485port, volatile uint8_t rs485pin) :
-    m_UBRRH(ubrrh), m_UBRRL(ubrrl), m_UCSRA(ucsra),
-    m_UCSRB(ucsrb), m_UCSRC(ucsrc), m_UDR(udr),
-    m_rs485ddr(rs485ddr), m_rs485ddpin(rs485ddpin), m_rs485port(rs485port), m_rs485pin(rs485pin)
+void CUart::UartBind(volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
+                volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
+                volatile uint8_t *ucsrc, volatile uint8_t *udr,
+                volatile uint8_t *rs485ddr, volatile uint8_t rs485ddpin,
+                volatile uint8_t *rs485port, volatile uint8_t rs485pin)
 {
+    m_UBRRH = ubrrh;
+    m_UBRRL = ubrrl;
+    m_UCSRA = ucsra;
+    m_UCSRB = ucsrb;
+    m_UCSRC = ucsrc;
+    m_UDR = udr;
+    m_rs485ddr = rs485ddr;
+    m_rs485ddpin = rs485ddpin;
+    m_rs485port = rs485port;
+    m_rs485pin = rs485pin;
+
     if (m_rs485ddr)
     {
         *m_rs485ddr |= Bit(m_rs485ddpin);
@@ -132,11 +177,11 @@ CUart::CUart(volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
     }
 }
 
-//-----------------------------------------------------------------------------------------------------
-CUart::~CUart()
-{
-
-}
+////-----------------------------------------------------------------------------------------------------
+//CUart::~CUart()
+//{
+//
+//}
 
 //-----------------------------------------------------------------------------------------------------
 void CUart::Init(uint32_t ulBaudRate,
@@ -197,7 +242,7 @@ void CUart::Reset(void)
 {
     m_nuiRxBuffByteCounter = 0;
     m_bfByteIsReceived = 0;
-    m_bfDataExchangeIsOccur = 0;
+    m_bfFrameIsSended = 0;
     m_bfRxBuffOverflow = 0;
 }
 
@@ -215,17 +260,17 @@ void CUart::Disable(void)
     *m_UCSRB &= ~((1 << RXEN0) | (1 << RXCIE0));
 }
 
-//-----------------------------------------------------------------------------------------------------
-void CUart::Rs485RtsOn(void)
-{
-    *m_rs485port |= (1 << m_rs485pin);
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CUart::Rs485RtsOff(void)
-{
-    *m_rs485port &= ~(1 << m_rs485pin);
-}
+////-----------------------------------------------------------------------------------------------------
+//void CUart::Rs485RtsOn(void)
+//{
+//    *m_rs485port |= (1 << m_rs485pin);
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//void CUart::Rs485RtsOff(void)
+//{
+//    *m_rs485port &= ~(1 << m_rs485pin);
+//}
 
 //-----------------------------------------------------------------------------------------------------
 int16_t CUart::Write(uint8_t *puiSource, uint16_t uiLength)
@@ -236,10 +281,10 @@ int16_t CUart::Write(uint8_t *puiSource, uint16_t uiLength)
     *m_UCSRA &= ~(1 << RXC0);
     *m_UCSRB &= ~((1 << RXEN0) | (1 << RXCIE0));
 
-    if (m_rs485ddr)
-    {
-        Rs485RtsOn();
-    }
+//    if (m_rs485ddr)
+//    {
+//        Rs485RtsOn();
+//    }
 //    UDR0 = *pucUsartTxBuff++;
     //    UCSR0B |= (1 << TXEN0) | (1 << TXCIE0);
     *m_UCSRA |= (1 << TXC0) | (1 << UDRE0);
@@ -249,71 +294,110 @@ int16_t CUart::Write(uint8_t *puiSource, uint16_t uiLength)
 }
 
 //-----------------------------------------------------------------------------------------------------
-int16_t CUart::Read(uint8_t *puiDestination)
+int16_t CUart::Read(uint8_t *puiDestination, uint16_t uiLength)
 {
-    if (m_bfByteIsReceived)
+    m_bfByteIsReceived = 0;
+
+    if (m_bfRxBuffOverflow)
     {
-        m_bfByteIsReceived = 0;
+        return -1;
+    }
 
-        m_puiRxBuffer = puiDestination;
-
-        if (m_bfRxBuffOverflow)
-        {
-            return -1;
-        }
-
-        if ((UART_INTERMEDIATE_BUFFER_LENGTH - 1) <= m_nuiRxBuffByteCounter)
-        {
-            return -1;
-        }
-        else if (m_nuiRxBuffByteCounter)
-        {
-
-//            for (int16_t i = 0; i < m_nuiRxBuffByteCounter; i++)
-//            {
-//                pucDestination[i] = m_auiIntermediateBuff[i];
-//            }
+    if (uiLength <= m_nuiRxBuffByteCounter)
+    {
+        return -1;
+    }
+    else if (m_nuiRxBuffByteCounter)
+    {
+//        *m_UCSRB &= ~((1 << RXEN0) | (1 << RXCIE0));
+        CPlatform::InterruptDisable();
 //
-//            uint8_t uiCounter = m_nuiRxBuffByteCounter;
-//            m_nuiRxBuffByteCounter = 0;
-//            return uiCounter;
-            return m_nuiRxBuffByteCounter;
-        }
-        else if (0 == m_nuiRxBuffByteCounter)
+        for (int16_t i = 0; i < m_nuiRxBuffByteCounter; i++)
         {
-            return 0;
+            puiDestination[i] = m_auiIntermediateBuff[i];
         }
-    }
-    return 0;
-}
 
-//-----------------------------------------------------------------------------------------------------
-int16_t CUart::Read(void)
-{
-    if (m_bfByteIsReceived)
+        uint8_t uiCounter = m_nuiRxBuffByteCounter;
+        m_nuiRxBuffByteCounter = 0;
+
+//        *m_UCSRB |= (1 << RXEN0) | (1 << RXCIE0);
+        CPlatform::InterruptEnable();
+
+        return uiCounter;
+    }
+    else if (0 == m_nuiRxBuffByteCounter)
     {
-        m_bfByteIsReceived = 0;
-
-        if (m_bfRxBuffOverflow)
-        {
-            return -1;
-        }
-
-        if ((UART_INTERMEDIATE_BUFFER_LENGTH - 1) <= m_nuiRxBuffByteCounter)
-        {
-            return -1;
-        }
-        else if (m_nuiRxBuffByteCounter)
-        {
-            return m_nuiRxBuffByteCounter;
-        }
-        else if (0 == m_nuiRxBuffByteCounter)
-        {
-            return 0;
-        }
+        return 0;
     }
     return 0;
 }
+
+////-----------------------------------------------------------------------------------------------------
+//int16_t CUart::Read(uint8_t *puiDestination)
+//{
+//    if (m_bfByteIsReceived)
+//    {
+//        m_bfByteIsReceived = 0;
+//
+//        m_puiRxBuffer = puiDestination;
+//
+//        if (m_bfRxBuffOverflow)
+//        {
+//            return -1;
+//        }
+//
+//        if ((UART_INTERMEDIATE_BUFFER_LENGTH - 1) <= m_nuiRxBuffByteCounter)
+//        {
+//            return -1;
+//        }
+//        else if (m_nuiRxBuffByteCounter)
+//        {
+//
+////            for (int16_t i = 0; i < m_nuiRxBuffByteCounter; i++)
+////            {
+////                pucDestination[i] = m_auiIntermediateBuff[i];
+////            }
+////
+////            uint8_t uiCounter = m_nuiRxBuffByteCounter;
+////            m_nuiRxBuffByteCounter = 0;
+////            return uiCounter;
+//            return m_nuiRxBuffByteCounter;
+//        }
+//        else if (0 == m_nuiRxBuffByteCounter)
+//        {
+//            return 0;
+//        }
+//    }
+//    return 0;
+//}
+
+////-----------------------------------------------------------------------------------------------------
+//int16_t CUart::Read(void)
+//{
+//    if (m_bfByteIsReceived)
+//    {
+//        m_bfByteIsReceived = 0;
+//
+//        if (m_bfRxBuffOverflow)
+//        {
+//            return -1;
+//        }
+//
+//        if ((UART_INTERMEDIATE_BUFFER_LENGTH - 1) <= m_nuiRxBuffByteCounter)
+//        {
+//            return -1;
+//        }
+//        else if (m_nuiRxBuffByteCounter)
+//        {
+//            return m_nuiRxBuffByteCounter;
+//        }
+//        else if (0 == m_nuiRxBuffByteCounter)
+//        {
+//            return 0;
+//        }
+//    }
+//    return 0;
+//}
 
 //-----------------------------------------------------------------------------------------------------
 void CUart::UdreInterruptHandler(void)
@@ -334,13 +418,13 @@ void CUart::TxcInterruptHandler(void)
 {
     *m_UCSRB &= ~((1 << TXEN0) | (1 << TXCIE0));
 
-    if (m_rs485ddr)
-    {
-        Rs485RtsOff();
-    }
+//    if (m_rs485ddr)
+//    {
+//        Rs485RtsOff();
+//    }
     *m_UCSRA |= (1 << RXC0);
     *m_UCSRB |= (1 << RXEN0) | (1 << RXCIE0);
-    m_bfDataExchangeIsOccur = 1;
+    m_bfFrameIsSended = 1;
     return;
 }
 
@@ -367,7 +451,7 @@ void CUart::RecvInterruptHandler(void)
 #pragma vector = USART_UDRE_vect
 __interrupt void SIG_UART0_DATA(void)
 {
-    CPlatform::m_pxUart0 -> UdreInterruptHandler();
+    CUart::UdreInterruptHandler();
 }
 
 //-----------------------------------------------------------------------------------------------------
@@ -375,7 +459,7 @@ __interrupt void SIG_UART0_DATA(void)
 #pragma vector = USART_TX_vect
 __interrupt void SIG_UART0_TXC(void)
 {
-    CPlatform::m_pxUart0 -> TxcInterruptHandler();
+    CUart::TxcInterruptHandler();
 }
 
 //-----------------------------------------------------------------------------------------------------
@@ -383,7 +467,7 @@ __interrupt void SIG_UART0_TXC(void)
 #pragma vector = USART_RX_vect
 __interrupt void SIG_UART0_RECV(void)
 {
-    CPlatform::m_pxUart0 -> RecvInterruptHandler();
+    CUart::RecvInterruptHandler();
 }
 
 //-----------------------------------------------------------------------------------------------------
@@ -392,17 +476,17 @@ __interrupt void SIG_UART0_RECV(void)
 
 
 
-//----------------------------------------- EEPROM ----------------------------------------------------------------
-CEeprom::CEeprom()
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------
-CEeprom::~CEeprom()
-{
-
-}
+////----------------------------------------- EEPROM ----------------------------------------------------------------
+//CEeprom::CEeprom()
+//{
+//
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//CEeprom::~CEeprom()
+//{
+//
+//}
 
 // SFR_W_N(0x21, EEAR, Dummy15, Dummy14, Dummy13, Dummy12, Dummy11, Dummy10, Dummy9, Dummy8, EEAR7, EEAR6, EEAR5, EEAR4, EEAR3, EEAR2, EEAR1, EEAR0)
 // SFR_B_N(0x20, EEDR, EEDR7, EEDR6, EEDR5, EEDR4, EEDR3, EEDR2, EEDR1, EEDR0)
@@ -465,169 +549,169 @@ uint8_t CEeprom::Write(uint16_t uiEepromDestination, uint8_t *pucRamSourse, uint
 
 
 
-//----------------------------------------- CSpi ----------------------------------------------------------------
-uint8_t CSpi::m_uiExchangeByte;
-uint8_t* CSpi::m_puiRxBuffer;
-uint8_t* CSpi::m_puiTxBuffer;
-uint16_t CSpi::m_nuiBuffByteCounter;
-uint16_t CSpi::m_uiReceivedByteCounter;
-bool CSpi::m_bfByteIsReceived;
-bool CSpi::m_bfByteIsTransmited;
-bool CSpi::m_bfDataExchangeInProgress;
-bool CSpi::m_bfDataExchangeIsOccur;
-bool CSpi::m_bfRxBuffOverflow;
-uint8_t CSpi::m_auiSpiRxBuffer[];
-uint8_t CSpi::m_auiSpiTxBuffer[];
-
-//-----------------------------------------------------------------------------------------------------
-CSpi::CSpi()
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------
-CSpi::~CSpi()
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CSpi::Init(uint8_t *puiRxBuffer, uint8_t *puiTxBuffer)
-{
-//    m_puiRxBuffer = m_auiSpiRxBuffer;
-//    m_puiTxBuffer = m_auiSpiTxBuffer;
-    m_puiRxBuffer = puiRxBuffer;
-    m_puiTxBuffer = puiTxBuffer;
-//    // Master mode.
-//    SPCR = 0;
-//    SPCR  |= (BIT(SPR1));		// Slave,  57600.
+////----------------------------------------- CSpi ----------------------------------------------------------------
+//uint8_t CSpi::m_uiExchangeByte;
+//uint8_t* CSpi::m_puiRxBuffer;
+//uint8_t* CSpi::m_puiTxBuffer;
+//uint16_t CSpi::m_nuiBuffByteCounter;
+//uint16_t CSpi::m_uiReceivedByteCounter;
+//bool CSpi::m_bfByteIsReceived;
+//bool CSpi::m_bfByteIsTransmited;
+//bool CSpi::m_bfDataExchangeInProgress;
+//bool CSpi::m_bfDataExchangeIsOccur;
+//bool CSpi::m_bfRxBuffOverflow;
+//uint8_t CSpi::m_auiSpiRxBuffer[];
+//uint8_t CSpi::m_auiSpiTxBuffer[];
 //
-//    DDRB  |= (BIT(SPI_MOSI));
-
-    // Slave mode.
-    DDRB  |= (Bit(SPI_MISO) | Bit(DDB1));
-    SPCR |= (1 << SPR1);
-};
-
-//-----------------------------------------------------------------------------------------------------
-void CSpi::Enable(void)
-{
+////-----------------------------------------------------------------------------------------------------
+//CSpi::CSpi()
+//{
+//
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//CSpi::~CSpi()
+//{
+//
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//void CSpi::Init(uint8_t *puiRxBuffer, uint8_t *puiTxBuffer)
+//{
+////    m_puiRxBuffer = m_auiSpiRxBuffer;
+////    m_puiTxBuffer = m_auiSpiTxBuffer;
+//    m_puiRxBuffer = puiRxBuffer;
+//    m_puiTxBuffer = puiTxBuffer;
+////    // Master mode.
+////    SPCR = 0;
+////    SPCR  |= (BIT(SPR1));		// Slave,  57600.
+////
+////    DDRB  |= (BIT(SPI_MOSI));
+//
 //    // Slave mode.
 //    DDRB  |= (Bit(SPI_MISO) | Bit(DDB1));
-    // разрешим SS.
-    PORTB &= ~Bit(PB1);
-    // разрешим SPI.
-    // разрешим прерывание SPI_STC.
-    SPCR |= ((1 << SPE) | (1 << SPIE));
-    SPDR = 0;
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CSpi::Disable(void)
-{
-    // Slave mode.
-//    // запретим прерывание SPI_STC.
-//    PORTB &= ~(Bit(SPI_MOSI) | Bit(SPI_MISO) | Bit(SPI_SCK));
-//    DDRB  &= ~(Bit(SPI_MOSI) | Bit(SPI_MISO) | Bit(SPI_SCK));
-    // запретим SS.
-    PORTB |= Bit(PB1);
-    SPCR &= ~((1 << SPE) | (1 << SPIE));
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CSpi::Reset(void)
-{
-    m_nuiBuffByteCounter = 0;
-    m_uiReceivedByteCounter = 0;
-    m_bfByteIsReceived = 0;
-    m_bfByteIsTransmited = 0;
-    m_bfDataExchangeInProgress = 0;
-    m_bfDataExchangeIsOccur = 0;
-    m_bfRxBuffOverflow = 0;
-    m_uiExchangeByte = 0;
-}
-
-//-----------------------------------------------------------------------------------------------------
-int16_t CSpi::Exchange(void)
-{
-    m_bfByteIsReceived = 0;
-
-    if (m_bfRxBuffOverflow)
-    {
-        return -1;
-    }
-    if (BUFFER_LENGTH <= m_nuiBuffByteCounter)
-    {
-        return -1;
-    }
-    else if (m_nuiBuffByteCounter)
-    {
-//        CPlatform::InterruptDisable();
-
-//        *puiDestination = m_uiExchangeByte;
-//        m_uiExchangeByte = 0x78;//*puiSourse;
-
-        uint8_t uiCounter = m_nuiBuffByteCounter;
-//        m_nuiBuffByteCounter = 0;
-
-//        CPlatform::InterruptEnable();
-
-        return uiCounter;
-    }
-    else if (0 == m_nuiBuffByteCounter)
-    {
-        return 0;
-    }
-
-    return 0;
-}
-
-//-----------------------------------------------------------------------------------------------------
-uint8_t CSpi::Read(uint8_t *pucRamDestination, uint16_t uiEepromSourse, uint16_t nuiLength)
-{
-
-    return 1;
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CSpi::RecvInterruptHandler(void)
-{
-//    SPDR = m_uiExchangeByte;
-//    m_uiExchangeByte = SPDR;
-//    // буфер приёма не переполнен?
-//    if (m_nuiBuffByteCounter <
-//            SPI_MAX_BUFF_LENGTH)
+//    SPCR |= (1 << SPR1);
+//};
+//
+////-----------------------------------------------------------------------------------------------------
+//void CSpi::Enable(void)
+//{
+////    // Slave mode.
+////    DDRB  |= (Bit(SPI_MISO) | Bit(DDB1));
+//    // разрешим SS.
+//    PORTB &= ~Bit(PB1);
+//    // разрешим SPI.
+//    // разрешим прерывание SPI_STC.
+//    SPCR |= ((1 << SPE) | (1 << SPIE));
+//    SPDR = 0;
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//void CSpi::Disable(void)
+//{
+//    // Slave mode.
+////    // запретим прерывание SPI_STC.
+////    PORTB &= ~(Bit(SPI_MOSI) | Bit(SPI_MISO) | Bit(SPI_SCK));
+////    DDRB  &= ~(Bit(SPI_MOSI) | Bit(SPI_MISO) | Bit(SPI_SCK));
+//    // запретим SS.
+//    PORTB |= Bit(PB1);
+//    SPCR &= ~((1 << SPE) | (1 << SPIE));
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//void CSpi::Reset(void)
+//{
+//    m_nuiBuffByteCounter = 0;
+//    m_uiReceivedByteCounter = 0;
+//    m_bfByteIsReceived = 0;
+//    m_bfByteIsTransmited = 0;
+//    m_bfDataExchangeInProgress = 0;
+//    m_bfDataExchangeIsOccur = 0;
+//    m_bfRxBuffOverflow = 0;
+//    m_uiExchangeByte = 0;
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//int16_t CSpi::Exchange(void)
+//{
+//    m_bfByteIsReceived = 0;
+//
+//    if (m_bfRxBuffOverflow)
 //    {
-//        m_nuiBuffByteCounter++;
-//        m_bfByteIsReceived = 1;
+//        return -1;
 //    }
-//    else
+//    if (BUFFER_LENGTH <= m_nuiBuffByteCounter)
 //    {
-//        // не инкрементируем m_nuiBuffByteCounter, чтобы не выйти за границы буфера.
-//        // установим флаг - произошел обмен данными по SPI.
-//        m_bfRxBuffOverflow = 1;
-//        m_bfByteIsReceived = 1;
+//        return -1;
 //    }
-
-
-//    SPDR = m_uiExchangeByte;
-//    m_puiRxBuffer[m_nuiBuffByteCounter] = SPDR;
-//    m_uiExchangeByte = m_puiTxBuffer[m_nuiBuffByteCounter];
-//    // буфер приёма не переполнен?
-//    if (m_nuiBuffByteCounter <
-//            SPI_MAX_BUFF_LENGTH)
+//    else if (m_nuiBuffByteCounter)
 //    {
-//        m_nuiBuffByteCounter++;
-//        m_bfByteIsReceived = 1;
+////        CPlatform::InterruptDisable();
+//
+////        *puiDestination = m_uiExchangeByte;
+////        m_uiExchangeByte = 0x78;//*puiSourse;
+//
+//        uint8_t uiCounter = m_nuiBuffByteCounter;
+////        m_nuiBuffByteCounter = 0;
+//
+////        CPlatform::InterruptEnable();
+//
+//        return uiCounter;
 //    }
-//    else
+//    else if (0 == m_nuiBuffByteCounter)
 //    {
-//        // не инкрементируем m_nuiBuffByteCounter, чтобы не выйти за границы буфера.
-//        // установим флаг - произошел обмен данными по SPI.
-//        m_bfRxBuffOverflow = 1;
-//        m_bfByteIsReceived = 1;
+//        return 0;
 //    }
-}
+//
+//    return 0;
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//uint8_t CSpi::Read(uint8_t *pucRamDestination, uint16_t uiEepromSourse, uint16_t nuiLength)
+//{
+//
+//    return 1;
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//void CSpi::RecvInterruptHandler(void)
+//{
+////    SPDR = m_uiExchangeByte;
+////    m_uiExchangeByte = SPDR;
+////    // буфер приёма не переполнен?
+////    if (m_nuiBuffByteCounter <
+////            SPI_MAX_BUFF_LENGTH)
+////    {
+////        m_nuiBuffByteCounter++;
+////        m_bfByteIsReceived = 1;
+////    }
+////    else
+////    {
+////        // не инкрементируем m_nuiBuffByteCounter, чтобы не выйти за границы буфера.
+////        // установим флаг - произошел обмен данными по SPI.
+////        m_bfRxBuffOverflow = 1;
+////        m_bfByteIsReceived = 1;
+////    }
+//
+//
+////    SPDR = m_uiExchangeByte;
+////    m_puiRxBuffer[m_nuiBuffByteCounter] = SPDR;
+////    m_uiExchangeByte = m_puiTxBuffer[m_nuiBuffByteCounter];
+////    // буфер приёма не переполнен?
+////    if (m_nuiBuffByteCounter <
+////            SPI_MAX_BUFF_LENGTH)
+////    {
+////        m_nuiBuffByteCounter++;
+////        m_bfByteIsReceived = 1;
+////    }
+////    else
+////    {
+////        // не инкрементируем m_nuiBuffByteCounter, чтобы не выйти за границы буфера.
+////        // установим флаг - произошел обмен данными по SPI.
+////        m_bfRxBuffOverflow = 1;
+////        m_bfByteIsReceived = 1;
+////    }
+//}
 
 ////-----------------------------------------------------------------------------------------------------
 //#pragma vector = SPI_STC_vect
@@ -670,99 +754,99 @@ void CSpi::RecvInterruptHandler(void)
 
 
 //-----------------------------------------------------------------------------------------------------
-// delay
-void delay_ms(uint16_t millisecs)
-{
-    while(millisecs--)
-    {
-        delay_us(1000);
-    }
-}
-void delay_s(uint16_t secs)
-{
-    while(secs--)
-    {
-        __delay_cycles(F_CPU);
-    }
-}
-void delay_mins(uint16_t minutes)
-{
-    while(minutes--)
-    {
-        __delay_cycles(60*F_CPU);
-    }
-}
+//// delay
+//void delay_ms(uint16_t millisecs)
+//{
+//    while(millisecs--)
+//    {
+//        delay_us(1000);
+//    }
+//}
+//void delay_s(uint16_t secs)
+//{
+//    while(secs--)
+//    {
+//        __delay_cycles(F_CPU);
+//    }
+//}
+//void delay_mins(uint16_t minutes)
+//{
+//    while(minutes--)
+//    {
+//        __delay_cycles(60*F_CPU);
+//    }
+//}
 
 //-----------------------------------------------------------------------------------------------------
 uint16_t CPlatform::m_uiSystemTick;
 CUart* CPlatform::m_pxUart0;
 CUart* CPlatform::m_pxUart1;
-CSpi* CPlatform::m_pxSpi;
+//CSpi* CPlatform::m_pxSpi;
 uint8_t CPlatform::uiSlaveSelectIsHigh;
 
-//-----------------------------------------------------------------------------------------------------
-CPlatform::CPlatform()
-{
+////-----------------------------------------------------------------------------------------------------
+//CPlatform::CPlatform()
+//{
+//
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//CPlatform::~CPlatform()
+//{
+//
+//}
 
-}
-
-//-----------------------------------------------------------------------------------------------------
-CPlatform::~CPlatform()
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------
-// INT0
-//-----------------------------------------------------------------------------------------------------
-void CPlatform::Int0InterruptEnable(void)
-{
-    // установим прерывание INT0 по переднему фронту(ожидание конца обмена данными по SPI).
-    EICRA &= ~(Bit(ISC01) | Bit(ISC00));
-    EICRA |= (Bit(ISC01) | Bit(ISC00));
-    // разрешение внешнего прерывания INT0.
-    EIMSK |= Bit(INT0);
-}
-//-----------------------------------------------------------------------------------------------------
-void CPlatform::Int0InterruptDisable(void)
-{
-    // запретим внешнее прерывание INT0.
-    EIMSK &= ~Bit(INT0);
-}
-
-//-----------------------------------------------------------------------------------------------------
-#pragma vector = INT0_vect
-__interrupt void SIG_INT0(void)
-{
-    // прерывание INT0 произошло по переднему фронту(закончен обмен данными по SPI)?
-    if (!(BIT_IS_SET(PIND, SPI_SS5)))
-    {
-        // прерывание INT0 произошло по переднему фронту(закончен обмен данными по SPI).
-        // установим флаг - вход SS0 переходил в 1(запущен демон ПАС).
-        CPlatform::uiSlaveSelectIsHigh = 1;
-        CSpi::DataExchangeInProgressClear();
-        // запретим SPI.
-        CSpi::Disable();
-        // установим прерывание INT0 по переднему фронту(ожидание конца обмена данными по SPI).
-        EICRA &= ~(Bit(ISC01) | Bit(ISC00));
-        EICRA |= (Bit(ISC01) | Bit(ISC00));
-        // установим флаг - произошел обмен данными по SPI.
-        CSpi::DataExchangeIsOccurSet();
-        CMvsn21::FlowControlSet(CMvsn21::FSM_IDDLE);
-        CPlatform::TxLedOff();
-    }
-    else
-    {
-        CSpi::DataExchangeInProgressSet();
-        CSpi::Enable();
-        // установим прерывание INT0 по заднему фронту(ожидание начала обмена данными по SPI).
-        EICRA &= ~(Bit(ISC01) | Bit(ISC00));
-        EICRA |= (Bit(ISC01));
-        CMvsn21::FlowControlSet(CMvsn21::FSM_START);
-        CMvsn21::MeasureFlowControlSet(CMvsn21::FSM_START);
-        CPlatform::TxLedOn();
-    }
-}
+////-----------------------------------------------------------------------------------------------------
+//// INT0
+////-----------------------------------------------------------------------------------------------------
+//void CPlatform::Int0InterruptEnable(void)
+//{
+//    // установим прерывание INT0 по переднему фронту(ожидание конца обмена данными по SPI).
+//    EICRA &= ~(Bit(ISC01) | Bit(ISC00));
+//    EICRA |= (Bit(ISC01) | Bit(ISC00));
+//    // разрешение внешнего прерывания INT0.
+//    EIMSK |= Bit(INT0);
+//}
+////-----------------------------------------------------------------------------------------------------
+//void CPlatform::Int0InterruptDisable(void)
+//{
+//    // запретим внешнее прерывание INT0.
+//    EIMSK &= ~Bit(INT0);
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//#pragma vector = INT0_vect
+//__interrupt void SIG_INT0(void)
+//{
+//    // прерывание INT0 произошло по переднему фронту(закончен обмен данными по SPI)?
+//    if (!(BIT_IS_SET(PIND, SPI_SS5)))
+//    {
+//        // прерывание INT0 произошло по переднему фронту(закончен обмен данными по SPI).
+//        // установим флаг - вход SS0 переходил в 1(запущен демон ПАС).
+//        CPlatform::uiSlaveSelectIsHigh = 1;
+//        CSpi::DataExchangeInProgressClear();
+//        // запретим SPI.
+//        CSpi::Disable();
+//        // установим прерывание INT0 по переднему фронту(ожидание конца обмена данными по SPI).
+//        EICRA &= ~(Bit(ISC01) | Bit(ISC00));
+//        EICRA |= (Bit(ISC01) | Bit(ISC00));
+//        // установим флаг - произошел обмен данными по SPI.
+//        CSpi::DataExchangeIsOccurSet();
+//        CMvsn21::FlowControlSet(CMvsn21::FSM_IDDLE);
+//        CPlatform::TxLedOff();
+//    }
+//    else
+//    {
+//        CSpi::DataExchangeInProgressSet();
+//        CSpi::Enable();
+//        // установим прерывание INT0 по заднему фронту(ожидание начала обмена данными по SPI).
+//        EICRA &= ~(Bit(ISC01) | Bit(ISC00));
+//        EICRA |= (Bit(ISC01));
+//        CMvsn21::FlowControlSet(CMvsn21::FSM_START);
+//        CMvsn21::MeasureFlowControlSet(CMvsn21::FSM_START);
+//        CPlatform::TxLedOn();
+//    }
+//}
 
 //-----------------------------------------------------------------------------------------------------
 void SystemTickInit(void)
@@ -859,8 +943,8 @@ __interrupt void SystemTickInterrupt(void)
 void CPlatform::Init(void)
 {
     SystemTickInit();
-    StatusLedSetPinOutput();
-    TxLedSetPinOutput();
+//    StatusLedSetPinOutput();
+//    TxLedSetPinOutput();
 }
 
 

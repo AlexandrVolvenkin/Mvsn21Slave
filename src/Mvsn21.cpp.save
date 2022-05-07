@@ -21,38 +21,38 @@ TChipChannelData CMvsn21::axChipsChannelsData[CHIP_NUMBER];
 //CMeasurementChannel CMvsn21::axSlave1MeasurementChannels[];
 //CMeasurementChannel CMvsn21::axSlave2MeasurementChannels[];
 // Сопоставление входа каналу.
-__flash TChannelRemap CMvsn21::axMeasurementChannelRemap[] =
-{
-    // Нумерация входов сверху вниз.
-    // разъём X1.
-    {0, 6},
-    {0, 7},
-    {0, 0},
-    {0, 1},
-    {0, 2},
-    {0, 3},
-    // разъём X2.
-    {0, 4},
-    {0, 5},
-    {1, 6},
-    {1, 7},
-    {1, 0},
-    {1, 1},
-    // разъём X3.
-    {1, 2},
-    {1, 3},
-    {1, 4},
-    {1, 5},
-    {2, 6},
-    {2, 7},
-    // разъём X4.
-    {2, 0},
-    {2, 1},
-    {2, 2},
-    {2, 3},
-    {2, 4},
-    {2, 5},
-};
+//__flash TChannelRemap CMvsn21::axMeasurementChannelRemap[] =
+//{
+//    // Нумерация входов сверху вниз.
+//    // разъём X1.
+//    {0, 6},
+//    {0, 7},
+//    {0, 0},
+//    {0, 1},
+//    {0, 2},
+//    {0, 3},
+//    // разъём X2.
+//    {0, 4},
+//    {0, 5},
+//    {1, 6},
+//    {1, 7},
+//    {1, 0},
+//    {1, 1},
+//    // разъём X3.
+//    {1, 2},
+//    {1, 3},
+//    {1, 4},
+//    {1, 5},
+//    {2, 6},
+//    {2, 7},
+//    // разъём X4.
+//    {2, 0},
+//    {2, 1},
+//    {2, 2},
+//    {2, 3},
+//    {2, 4},
+//    {2, 5},
+//};
 uint8_t CMvsn21::auiDiscreteInputBitData[];
 
 //-----------------------------------------------------------------------------------------------------
@@ -69,105 +69,105 @@ CMvsn21::~CMvsn21()
     //dtor
 }
 
-//-----------------------------------------------------------------------------------------------------
-void CMvsn21::SlaveSelectInterruptEnable(void)
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CMvsn21::SlaveSelectInterruptDisable(void)
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CMvsn21::SpiBusExchangeEnable(void)
-{
-    CPlatform::Int0InterruptEnable();
-    m_uiFlowControl = FSM_START;
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CMvsn21::SpiBusExchangeDisable(void)
-{
-    CPlatform::Int0InterruptDisable();
-}
-
-//-----------------------------------------------------------------------------------------------------
-void CMvsn21::Reset(void)
-{
-    m_uiMessageLength = 0;
-    CSpi::Reset();
-}
-
-//-----------------------------------------------------------------------------------------------------
-uint8_t CMvsn21::Select(void)
-{
-    return CSpi::ByteIsReceived();
-}
-
-//-----------------------------------------------------------------------------------------------------
-int16_t CMvsn21::Exchange(void)
-{
-    return CSpi::Exchange();
-}
-
-//-----------------------------------------------------------------------------------------------------------------
-uint8_t CMvsn21::FrameIsReceived(void)
-{
-    return CSpi::m_bfDataExchangeIsOccur;
-};
-
-//-----------------------------------------------------------------------------------------------------------------
-uint16_t CMvsn21::GetFrameLength(void)
-{
-    return CSpi::GetFrameLength();
-}
-
-//-----------------------------------------------------------------------------------------------------------------
-int8_t CMvsn21::FrameCheck(void)
-{
-//    if (m_pxDevice -> m_nuiRxBuffByteCounter < _MIN_MESSAGE_LENGTH)
-//    {
-//        return 0;
-//    }
+////-----------------------------------------------------------------------------------------------------
+//void CMvsn21::SlaveSelectInterruptEnable(void)
+//{
 //
-//    uint16_t uiCrc = ((static_cast<uint16_t>(m_puiRxBuffer[m_pxDevice -> m_nuiRxBuffByteCounter - 2]) << 8) |
-//                      (static_cast<uint16_t>(m_puiRxBuffer[m_pxDevice -> m_nuiRxBuffByteCounter - 1])));
+//}
 //
-//    if (usCrc16(m_puiRxBuffer,
-//                (m_pxDevice -> m_nuiRxBuffByteCounter - _MVSN21_RTU_CHECKSUM_LENGTH)) == uiCrc)
-//    {
-//        return 1;
-//    }
-//    else
-//    {
-//        return 0;
-//    }
-}
-
-//-----------------------------------------------------------------------------------------------------------------
-int8_t CMvsn21::FrameCheck(uint8_t *puiSource, uint16_t uiLength)
-{
-//    if (uiLength < _MIN_MESSAGE_LENGTH)
-//    {
-//        return 0;
-//    }
+////-----------------------------------------------------------------------------------------------------
+//void CMvsn21::SlaveSelectInterruptDisable(void)
+//{
 //
-//    uint16_t uiCrc = ((static_cast<uint16_t>(puiSource[uiLength - 2]) << 8) |
-//                      (static_cast<uint16_t>(puiSource[uiLength - 1])));
+//}
 //
-//    if (usCrc16(puiSource,
-//                (uiLength - _MVSN21_RTU_CHECKSUM_LENGTH)) == uiCrc)
-//    {
-//        return 1;
-//    }
-//    else
-//    {
-//        return 0;
-//    }
-}
+////-----------------------------------------------------------------------------------------------------
+//void CMvsn21::SpiBusExchangeEnable(void)
+//{
+//    CPlatform::Int0InterruptEnable();
+//    m_uiFlowControl = FSM_START;
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//void CMvsn21::SpiBusExchangeDisable(void)
+//{
+//    CPlatform::Int0InterruptDisable();
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//void CMvsn21::Reset(void)
+//{
+//    m_uiMessageLength = 0;
+//    CSpi::Reset();
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//uint8_t CMvsn21::Select(void)
+//{
+//    return CSpi::ByteIsReceived();
+//}
+//
+////-----------------------------------------------------------------------------------------------------
+//int16_t CMvsn21::Exchange(void)
+//{
+//    return CSpi::Exchange();
+//}
+//
+////-----------------------------------------------------------------------------------------------------------------
+//uint8_t CMvsn21::FrameIsReceived(void)
+//{
+//    return CSpi::m_bfDataExchangeIsOccur;
+//};
+//
+////-----------------------------------------------------------------------------------------------------------------
+//uint16_t CMvsn21::GetFrameLength(void)
+//{
+//    return CSpi::GetFrameLength();
+//}
+//
+////-----------------------------------------------------------------------------------------------------------------
+//int8_t CMvsn21::FrameCheck(void)
+//{
+////    if (m_pxDevice -> m_nuiRxBuffByteCounter < _MIN_MESSAGE_LENGTH)
+////    {
+////        return 0;
+////    }
+////
+////    uint16_t uiCrc = ((static_cast<uint16_t>(m_puiRxBuffer[m_pxDevice -> m_nuiRxBuffByteCounter - 2]) << 8) |
+////                      (static_cast<uint16_t>(m_puiRxBuffer[m_pxDevice -> m_nuiRxBuffByteCounter - 1])));
+////
+////    if (usCrc16(m_puiRxBuffer,
+////                (m_pxDevice -> m_nuiRxBuffByteCounter - _MVSN21_RTU_CHECKSUM_LENGTH)) == uiCrc)
+////    {
+////        return 1;
+////    }
+////    else
+////    {
+////        return 0;
+////    }
+//}
+//
+////-----------------------------------------------------------------------------------------------------------------
+//int8_t CMvsn21::FrameCheck(uint8_t *puiSource, uint16_t uiLength)
+//{
+////    if (uiLength < _MIN_MESSAGE_LENGTH)
+////    {
+////        return 0;
+////    }
+////
+////    uint16_t uiCrc = ((static_cast<uint16_t>(puiSource[uiLength - 2]) << 8) |
+////                      (static_cast<uint16_t>(puiSource[uiLength - 1])));
+////
+////    if (usCrc16(puiSource,
+////                (uiLength - _MVSN21_RTU_CHECKSUM_LENGTH)) == uiCrc)
+////    {
+////        return 1;
+////    }
+////    else
+////    {
+////        return 0;
+////    }
+//}
 
 //-----------------------------------------------------------------------------------------------------
 void CMvsn21::ChannelsToDiscreteInput(void)
@@ -271,85 +271,85 @@ int16_t CMvsn21::ReadData(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t ui
     return uiLength;
 }
 
-//-----------------------------------------------------------------------------------------------------------------
-int16_t CMvsn21::SpiReply(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiFrameLength)
-{
-    uint16_t uiLength = uiFrameLength;
-    // Какой поступил запрос?
-    switch (puiRequest[0])
-    {
-    case COMMAND_REPORT_TYPE:
-        uiLength = ReportType(puiRequest, puiResponse, uiLength);
-        break;
+////-----------------------------------------------------------------------------------------------------------------
+//int16_t CMvsn21::SpiReply(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiFrameLength)
+//{
+//    uint16_t uiLength = uiFrameLength;
+//    // Какой поступил запрос?
+//    switch (puiRequest[0])
+//    {
+//    case COMMAND_REPORT_TYPE:
+//        uiLength = ReportType(puiRequest, puiResponse, uiLength);
+//        break;
+//
+//    case COMMAND_READ_DATA:
+//        uiLength = ReadData(puiRequest, puiResponse, uiLength);
+//        break;
+//
+//    case COMMAND_READ_DATA_BASE:
+////        uiLength = ReadHoldingRegisters(puiRequest, puiResponse, uiLength);
+//        break;
+//
+//    case COMMAND_WRITE_DATA_BASE:
+////        uiLength = ReadInputRegisters(puiRequest, puiResponse, uiLength);
+//        break;
+//
+//    default:
+//        break;
+//    }
+//    return uiLength;
+//}
 
-    case COMMAND_READ_DATA:
-        uiLength = ReadData(puiRequest, puiResponse, uiLength);
-        break;
-
-    case COMMAND_READ_DATA_BASE:
-//        uiLength = ReadHoldingRegisters(puiRequest, puiResponse, uiLength);
-        break;
-
-    case COMMAND_WRITE_DATA_BASE:
-//        uiLength = ReadInputRegisters(puiRequest, puiResponse, uiLength);
-        break;
-
-    default:
-        break;
-    }
-    return uiLength;
-}
-
-//-----------------------------------------------------------------------------------------------------------------
-void CMvsn21::SpiFsm(void)
-{
-    int16_t iReceivedCounter;
-
-    switch (m_uiFlowControl)
-    {
-    case FSM_IDDLE:
-        break;
-
-    case FSM_START:
-        Reset();
-        m_uiFlowControl = FSM_WAITING_MESSAGE;
-        break;
-
-    case FSM_WAITING_MESSAGE:
-        if (Select())
-        {
-            iReceivedCounter = Exchange();
-
-            if (iReceivedCounter > 0)
-            {
-                m_uiMessageLength += iReceivedCounter;
-
-                if (SpiReply(CSpi::m_puiRxBuffer, CSpi::m_puiTxBuffer, m_uiMessageLength))
-                {
-                    m_uiFlowControl = FSM_DATA_EXCHANGE_END_WAITING;
-                }
-                else
-                {
-                    m_uiFlowControl = FSM_IDDLE;
-                }
-            }
-            else if (iReceivedCounter == -1)
-            {
-                m_uiFlowControl = FSM_IDDLE;
-            }
-        }
-
-        break;
-
-    case FSM_DATA_EXCHANGE_END_WAITING:
-
-        break;
-
-    default:
-        break;
-    }
-
-}
+////-----------------------------------------------------------------------------------------------------------------
+//void CMvsn21::SpiFsm(void)
+//{
+//    int16_t iReceivedCounter;
+//
+//    switch (m_uiFlowControl)
+//    {
+//    case FSM_IDDLE:
+//        break;
+//
+//    case FSM_START:
+//        Reset();
+//        m_uiFlowControl = FSM_WAITING_MESSAGE;
+//        break;
+//
+//    case FSM_WAITING_MESSAGE:
+//        if (Select())
+//        {
+//            iReceivedCounter = Exchange();
+//
+//            if (iReceivedCounter > 0)
+//            {
+//                m_uiMessageLength += iReceivedCounter;
+//
+//                if (SpiReply(CSpi::m_puiRxBuffer, CSpi::m_puiTxBuffer, m_uiMessageLength))
+//                {
+//                    m_uiFlowControl = FSM_DATA_EXCHANGE_END_WAITING;
+//                }
+//                else
+//                {
+//                    m_uiFlowControl = FSM_IDDLE;
+//                }
+//            }
+//            else if (iReceivedCounter == -1)
+//            {
+//                m_uiFlowControl = FSM_IDDLE;
+//            }
+//        }
+//
+//        break;
+//
+//    case FSM_DATA_EXCHANGE_END_WAITING:
+//
+//        break;
+//
+//    default:
+//        break;
+//    }
+//
+//}
 
 ////-----------------------------------------------------------------------------------------------------
 //uint8_t CMvsn21::ContinuousMeasure(void)
@@ -397,7 +397,7 @@ void CMvsn21::MeasureFsm(void)
             }
             else
             {
-//                CAdc::Disable();
+                CAdc::Disable();
                 ChannelsToDiscreteInput();
                 m_uiMeasureFlowControl = FSM_IDDLE;
             }
