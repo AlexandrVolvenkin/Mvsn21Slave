@@ -84,30 +84,30 @@ void CModbusRTU::Init(CUart* pxDevice,
     m_uiInputRegistersNumber = uiInputRegistersNumber;
     m_uiHoldingRegistersNumber = uiHoldingRegistersNumber;
 
-    m_pxDevice -> Init(m_uiBaudRate,
-                       m_cParity,
-                       m_uiDataBit,
-                       m_uiStopBit,
-                       puiRxBuffer,
-                       puiTxBuffer);
+    CUart::Init(m_uiBaudRate,
+                m_cParity,
+                m_uiDataBit,
+                m_uiStopBit,
+                puiRxBuffer,
+                puiTxBuffer);
 }
 
 //-----------------------------------------------------------------------------------------------------
 void CModbusRTU::Reset(void)
 {
-    m_pxDevice -> Reset();
+    CUart::Reset();
 }
 
 //-----------------------------------------------------------------------------------------------------
 int8_t CModbusRTU::ReceiveEnable(void)
 {
-    m_pxDevice -> Enable();
+    CUart::Enable();
 }
 
 //-----------------------------------------------------------------------------------------------------
 int8_t CModbusRTU::ReceiveDisable(void)
 {
-    m_pxDevice -> Disable();
+    CUart::Disable();
 }
 
 //-----------------------------------------------------------------------------------------------------
@@ -151,36 +151,41 @@ int16_t CModbusRTU::ResponseBasis(uint8_t uiSlave, uint8_t uiFunctionCode, uint8
 //-----------------------------------------------------------------------------------------------------
 int16_t CModbusRTU::Send(uint8_t *puiMessage, uint16_t uiLength)
 {
-    return m_pxDevice -> Write(puiMessage, uiLength);
+    return CUart::Write(puiMessage, uiLength);
 }
 
 //-----------------------------------------------------------------------------------------------------
 uint8_t CModbusRTU::MessageIsSended(void)
 {
-    return m_pxDevice -> FrameIsSended();
+    return CUart::FrameIsSended();
 }
 
-//-----------------------------------------------------------------------------------------------------
-int16_t CModbusRTU::Receive(void)
-{
-    return m_pxDevice -> Read();
-}
+////-----------------------------------------------------------------------------------------------------
+//int16_t CModbusRTU::Receive(void)
+//{
+//    return CUart::Read();
+//}
 
 //-----------------------------------------------------------------------------------------------------
 uint8_t CModbusRTU::Select(void)
 {
-    return m_pxDevice -> ByteIsReceived();
+    return CUart::ByteIsReceived();
 }
 
 //-----------------------------------------------------------------------------------------------------
 int16_t CModbusRTU::Receive(uint8_t *puiDestination, uint16_t uiLength)
 {
-    return m_pxDevice -> Read(puiDestination, uiLength);
+    return CUart::Read(puiDestination, uiLength);
 }
 
 //-----------------------------------------------------------------------------------------------------
 uint8_t CModbusRTU::FrameIsReceived(void)
 {
+    int16_t uiData;
+    uiData = CPlatform::GetSystemTick();
+    uiData = m_uiLastSystemTime;
+    uiData = m_uiGuardTimeout;
+
     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
             m_uiGuardTimeout)
     {
@@ -237,7 +242,7 @@ uint8_t CModbusRTU::TransmitDelayTimeIsOver(void)
 //-----------------------------------------------------------------------------------------------------
 uint16_t CModbusRTU::GetFrameLength(void)
 {
-    return m_pxDevice -> GetFrameLength();
+    return CUart::GetFrameLength();
 }
 
 //-----------------------------------------------------------------------------------------------------
@@ -249,16 +254,16 @@ void CModbusRTU::GetSystemTime(void)
 ////-----------------------------------------------------------------------------------------------------
 //int8_t CModbusRTU::FrameCheck(void)
 //{
-//    if (m_pxDevice -> m_nuiRxBuffByteCounter < _MIN_MESSAGE_LENGTH)
+//    if (CUart::m_nuiRxBuffByteCounter < _MIN_MESSAGE_LENGTH)
 //    {
 //        return 0;
 //    }
 //
-//    uint16_t uiCrc = ((static_cast<uint16_t>(m_puiRxBuffer[m_pxDevice -> m_nuiRxBuffByteCounter - 1]) << 8) |
-//                      (static_cast<uint16_t>(m_puiRxBuffer[m_pxDevice -> m_nuiRxBuffByteCounter - 2])));
+//    uint16_t uiCrc = ((static_cast<uint16_t>(m_puiRxBuffer[CUart::m_nuiRxBuffByteCounter - 1]) << 8) |
+//                      (static_cast<uint16_t>(m_puiRxBuffer[CUart::m_nuiRxBuffByteCounter - 2])));
 //
 //    if (usCrc16(m_puiRxBuffer,
-//                (m_pxDevice -> m_nuiRxBuffByteCounter - _MODBUS_RTU_CHECKSUM_LENGTH)) == uiCrc)
+//                (CUart::m_nuiRxBuffByteCounter - _MODBUS_RTU_CHECKSUM_LENGTH)) == uiCrc)
 //    {
 //        return 1;
 //    }

@@ -335,7 +335,7 @@
                 <option>
                     <name>CCAllowList</name>
                     <version>3</version>
-                    <state>101010</state>
+                    <state>000000</state>
                 </option>
                 <option>
                     <name>CCCrossCallPassesList</name>
@@ -496,11 +496,11 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>2</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>2</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>IccLang</name>

@@ -9,6 +9,7 @@
 #include "Mvsn21.h"
 #include "Platform.h"
 #include "Crc.h"
+#include "ModbusRTU.h"
 
 uint8_t CMvsn21::m_uiType;
 //CDriver* CMvsn21::m_pxDriver;
@@ -16,7 +17,7 @@ uint8_t CMvsn21::m_uiFlowControl;
 uint16_t CMvsn21::m_uiMessageLength;
 uint8_t CMvsn21::m_uiChannel;
 uint8_t CMvsn21::m_uiMeasureFlowControl;
-TChipChannelData CMvsn21::axChipsChannelsData[CHIP_NUMBER];
+//TChipChannelData CMvsn21::axChipsChannelsData[CHIP_NUMBER];
 //CMeasurementChannel CMvsn21::axMasterMeasurementChannels[];
 //CMeasurementChannel CMvsn21::axSlave1MeasurementChannels[];
 //CMeasurementChannel CMvsn21::axSlave2MeasurementChannels[];
@@ -53,7 +54,7 @@ TChipChannelData CMvsn21::axChipsChannelsData[CHIP_NUMBER];
 //    {2, 4},
 //    {2, 5},
 //};
-uint8_t CMvsn21::auiDiscreteInputBitData[];
+//uint8_t CMvsn21::auiDiscreteInputBitData[];
 
 uint8_t CMvsn21::m_aucRtuCoilsArray[];
 uint8_t CMvsn21::m_aucRtuDiscreteInputsArray[];
@@ -186,7 +187,7 @@ uint8_t CMvsn21::m_aui8TransmitMessageBuff[];
 ////    }
 //}
 
-////-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 //void CMvsn21::ChannelsToDiscreteInput(void)
 //{
 //    uint8_t uiLength = 0;
@@ -368,21 +369,6 @@ uint8_t CMvsn21::m_aui8TransmitMessageBuff[];
 //
 //}
 
-////-----------------------------------------------------------------------------------------------------
-//uint8_t CMvsn21::ContinuousMeasure(void)
-//{
-//    if (m_uiChannel < MEASURE_CHANNEL_NUMBER)
-//    {
-//        CAdc::ChannelSelect(m_uiChannel++);
-//        CAdc::Start();
-//        return 0;
-//    }
-//    else
-//    {
-//        return 1;
-//    }
-//}
-
 //-----------------------------------------------------------------------------------------------------
 void CMvsn21::MeasureFsm(void)
 {
@@ -402,9 +388,11 @@ void CMvsn21::MeasureFsm(void)
     case FSM_CONTINUOUS_MEASURE:
         if (CAdc::MeasureIsComlete())
         {
-            uint16_t uiData = CAdc::GetMeasureValue();
-            axChipsChannelsData[MASTER_CHIP_ADDRESS].axMeasurementChannels[m_uiChannel].m_uiState =
+            uint8_t uiState =
                 CMeasurementChannel::StatusCheck(CAdc::GetMeasureValue());
+            m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (uiState & 0x01);
+            m_aucRtuDiscreteInputsArray[(m_uiChannel * 2) + 1] = ((uiState >> 1) & 0x01);
+
             m_uiChannel++;
             if (m_uiChannel < MEASURE_CHANNEL_NUMBER)
             {
@@ -415,7 +403,6 @@ void CMvsn21::MeasureFsm(void)
             else
             {
                 CAdc::Disable();
-//                ChannelsToDiscreteInput();
                 m_uiMeasureFlowControl = FSM_IDDLE;
             }
         }

@@ -287,35 +287,35 @@ public:
 //    virtual void FsmSlave(void) = 0;
 //    virtual void FsmMaster(void) = 0;
     static int16_t Receive(void);
-    static int16_t ReadCoils(uint8_t * , uint8_t * , uint16_t );
-//    int16_t ReadDiscreteInputs(uint8_t * , uint8_t * , uint16_t );
-//    int16_t ReadHoldingRegisters(uint8_t * , uint8_t * , uint16_t );
-//    int16_t ReadInputRegisters(uint8_t * , uint8_t * , uint16_t );
-//    int16_t WriteSingleCoil(uint8_t * , uint8_t * , uint16_t );
-//    int16_t WriteSingleRegister(uint8_t * , uint8_t * , uint16_t );
-//    int16_t WriteMultipleCoils(uint8_t * , uint8_t * , uint16_t );
-//    int16_t WriteMultipleRegisters(uint8_t * , uint8_t * , uint16_t );
-//    int16_t ReadExceptionStatus(uint8_t * , uint8_t * , uint16_t );
-//    int16_t ReportSlaveID(uint8_t * , uint8_t * , uint16_t );
-//    int16_t WriteAndReadRegisters(uint8_t * , uint8_t * , uint16_t );
-//    int16_t Programming(uint8_t * , uint8_t * , uint16_t );
-//    int16_t PollProgramming(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t ReadCoils(uint8_t * , uint8_t * , uint16_t );
+    static int16_t ReadDiscreteInputs(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t ReadHoldingRegisters(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t ReadInputRegisters(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t WriteSingleCoil(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t WriteSingleRegister(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t WriteMultipleCoils(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t WriteMultipleRegisters(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t ReadExceptionStatus(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t ReportSlaveID(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t WriteAndReadRegisters(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t Programming(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t PollProgramming(uint8_t * , uint8_t * , uint16_t );
 
     static int16_t Reply(uint8_t * , uint8_t * , uint16_t );
-//    void SetByteFromBits(uint8_t * , int16_t , const uint8_t );
-//    void SetBytesFromBits(uint8_t * , int16_t , uint16_t ,
+//    static void SetByteFromBits(uint8_t * , int16_t , const uint8_t );
+//    static void SetBytesFromBits(uint8_t * , int16_t , uint16_t ,
 //                          const uint8_t * );
-//    uint8_t GetByteFromBits(const uint8_t * , int16_t ,
+//    static uint8_t GetByteFromBits(const uint8_t * , int16_t ,
 //                            uint16_t );
-//    float GetFloat(const uint16_t * );
-//    void SetFloat(float , uint16_t * );
+//    static float GetFloat(const uint16_t * );
+//    static void SetFloat(float , uint16_t * );
 
 ////-----------------------------------------------------------------------------------------------------
 //// ModbusMaster
-//    int8_t ReadCoilsRequest(uint16_t uiAddress,
+//    static int8_t ReadCoilsRequest(uint16_t uiAddress,
 //                            uint16_t uiBitNumber);
-//    int16_t ReadCoilsReply(uint8_t *puiDestination);
-//    uint8_t CheckConfirmation(uint8_t *puiDestination, uint16_t uiLength);
+//    static int16_t ReadCoilsReply(uint8_t *puiDestination);
+//    static uint8_t CheckConfirmation(uint8_t *puiDestination, uint16_t uiLength);
 
     static uint8_t FlowControlGet(void)
     {

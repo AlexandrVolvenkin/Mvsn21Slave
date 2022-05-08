@@ -63,7 +63,6 @@
 		<Unit filename="src/MeasurementChannel.cpp" />
 		<Unit filename="src/Mvsn21.cpp" />
 		<Unit filename="src/Platform.cpp" />
-		<Unit filename="src/SpiInt.asm" />
 		<Unit filename="src/Task.cpp" />
 		<Unit filename="src/Timer.cpp" />
 		<Unit filename="src/main.cpp" />

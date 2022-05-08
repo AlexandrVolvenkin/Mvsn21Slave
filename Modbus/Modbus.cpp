@@ -11,22 +11,22 @@
 #include "Platform.h"
 
 
-    uint8_t CModbus::m_uiSlave;
-    uint8_t CModbus::m_uiFunctionCode;
-    uint8_t CModbus::m_uiFlowControl;
+uint8_t CModbus::m_uiSlave;
+uint8_t CModbus::m_uiFunctionCode;
+uint8_t CModbus::m_uiFlowControl;
 //    CSocket* pxSocket;
-    uint16_t CModbus::m_uiLastSystemTime;
-    uint16_t CModbus::m_uiMessageLength;
-    uint8_t *CModbus::m_puiRxBuffer;
-    uint8_t *CModbus::m_puiTxBuffer;
-    uint8_t *CModbus::m_puiCoils;
-    uint8_t *CModbus::m_puiDiscreteInputs;
-    uint16_t *CModbus::m_pui16HoldingRegisters;
-    uint16_t *CModbus::m_pui16InputRegisters;
-    uint16_t CModbus::m_uiCoilsNumber;
-    uint16_t CModbus::m_uiDiscreteInputsNumber;
-    uint16_t CModbus::m_uiHoldingRegistersNumber;
-    uint16_t CModbus::m_uiInputRegistersNumber;
+uint16_t CModbus::m_uiLastSystemTime;
+uint16_t CModbus::m_uiMessageLength;
+uint8_t *CModbus::m_puiRxBuffer;
+uint8_t *CModbus::m_puiTxBuffer;
+uint8_t *CModbus::m_puiCoils;
+uint8_t *CModbus::m_puiDiscreteInputs;
+uint16_t *CModbus::m_pui16HoldingRegisters;
+uint16_t *CModbus::m_pui16InputRegisters;
+uint16_t CModbus::m_uiCoilsNumber;
+uint16_t CModbus::m_uiDiscreteInputsNumber;
+uint16_t CModbus::m_uiHoldingRegistersNumber;
+uint16_t CModbus::m_uiInputRegistersNumber;
 
 ////-----------------------------------------------------------------------------------------------------
 //CModbus::CModbus()
@@ -147,8 +147,55 @@ int16_t CModbus::ByteToBitPack(uint16_t uiAddress,
     return uiLength;
 }
 
+////-----------------------------------------------------------------------------------------------------
+//int16_t CModbus::ReadCoils(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiLength)
+//{
+//    uint16_t uiOffset = HEADER_LENGTH;
+//    int8_t uiSlave = puiRequest[uiOffset - 1];
+//    int8_t uiFunctionCode = puiRequest[uiOffset];
+//    uint16_t uiAddress = ((static_cast<uint16_t>(puiRequest[uiOffset + 1]) << 8) |
+//                          (static_cast<uint16_t>(puiRequest[uiOffset + 2])));
+//
+//    uint16_t uiNumberB = ((static_cast<uint16_t>(puiRequest[uiOffset + 3]) << 8) |
+//                          (static_cast<uint16_t>(puiRequest[uiOffset + 4])));
+//
+//    if (uiNumberB < 1 || MODBUS_MAX_READ_BITS < uiNumberB)
+//    {
+//        uiLength = ResponseException(uiSlave,
+//                                     uiFunctionCode,
+//                                     MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE,
+//                                     puiResponse);
+//    }
+//    else if ((uiAddress + uiNumberB) > m_uiCoilsNumber)
+//    {
+//        uiLength = ResponseException(uiSlave,
+//                                     uiFunctionCode,
+//                                     MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS,
+//                                     puiResponse);
+//    }
+//    else
+//    {
+//        uiLength = CModbusRTU::ResponseBasis(uiSlave, uiFunctionCode, puiResponse);
+//
+//        if (uiNumberB % 8)
+//        {
+//            puiResponse[uiLength++] = ((uiNumberB / 8) + 1);
+//        }
+//        else
+//        {
+//            puiResponse[uiLength++] = (uiNumberB / 8);
+//        }
+//        uiLength = ByteToBitPack(uiAddress,
+//                                 uiNumberB,
+//                                 m_puiCoils,
+//                                 puiResponse,
+//                                 uiLength);
+//    }
+//    return uiLength;
+//}
+
 //-----------------------------------------------------------------------------------------------------
-int16_t CModbus::ReadCoils(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiLength)
+int16_t CModbus::ReadDiscreteInputs(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiLength)
 {
     uint16_t uiOffset = HEADER_LENGTH;
     int8_t uiSlave = puiRequest[uiOffset - 1];
@@ -166,7 +213,7 @@ int16_t CModbus::ReadCoils(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t u
                                      MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE,
                                      puiResponse);
     }
-    else if ((uiAddress + uiNumberB) > m_uiCoilsNumber)
+    else if ((uiAddress + uiNumberB) > m_uiDiscreteInputsNumber)
     {
         uiLength = ResponseException(uiSlave,
                                      uiFunctionCode,
@@ -187,60 +234,13 @@ int16_t CModbus::ReadCoils(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t u
         }
         uiLength = ByteToBitPack(uiAddress,
                                  uiNumberB,
-                                 m_puiCoils,
+                                 m_puiDiscreteInputs,
                                  puiResponse,
                                  uiLength);
     }
     return uiLength;
 }
 
-////-----------------------------------------------------------------------------------------------------
-//int16_t CModbus::ReadDiscreteInputs(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiLength)
-//{
-//    uint16_t uiOffset = HEADER_LENGTH;
-//    int8_t uiSlave = puiRequest[uiOffset - 1];
-//    int8_t uiFunctionCode = puiRequest[uiOffset];
-//    uint16_t uiAddress = ((static_cast<uint16_t>(puiRequest[uiOffset + 1]) << 8) |
-//                          (static_cast<uint16_t>(puiRequest[uiOffset + 2])));
-//
-//    uint16_t uiNumberB = ((static_cast<uint16_t>(puiRequest[uiOffset + 3]) << 8) |
-//                          (static_cast<uint16_t>(puiRequest[uiOffset + 4])));
-//
-//    if (uiNumberB < 1 || MODBUS_MAX_READ_BITS < uiNumberB)
-//    {
-//        uiLength = ResponseException(uiSlave,
-//                                     uiFunctionCode,
-//                                     MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE,
-//                                     puiResponse);
-//    }
-//    else if ((uiAddress + uiNumberB) > m_uiDiscreteInputsNumber)
-//    {
-//        uiLength = ResponseException(uiSlave,
-//                                     uiFunctionCode,
-//                                     MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS,
-//                                     puiResponse);
-//    }
-//    else
-//    {
-//        uiLength = ResponseBasis(uiSlave, uiFunctionCode, puiResponse);
-//
-//        if (uiNumberB % 8)
-//        {
-//            puiResponse[uiLength++] = ((uiNumberB / 8) + 1);
-//        }
-//        else
-//        {
-//            puiResponse[uiLength++] = (uiNumberB / 8);
-//        }
-//        uiLength = ByteToBitPack(uiAddress,
-//                                 uiNumberB,
-//                                 m_puiDiscreteInputs,
-//                                 puiResponse,
-//                                 uiLength);
-//    }
-//    return uiLength;
-//}
-//
 ////-----------------------------------------------------------------------------------------------------
 //int16_t CModbus::ReadHoldingRegisters(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiLength)
 //{
@@ -674,14 +674,14 @@ int16_t CModbus::Reply(uint8_t *puiRequest, uint8_t *puiResponse, uint16_t uiFra
 
     switch (uiFunctionCode)
     {
-    case _FC_READ_COILS:
-        uiLength = ReadCoils(puiRequest, puiResponse, uiLength);
-        break;
-
-//    case _FC_READ_DISCRETE_INPUTS:
-//        uiLength = ReadDiscreteInputs(puiRequest, puiResponse, uiLength);
+//    case _FC_READ_COILS:
+//        uiLength = ReadCoils(puiRequest, puiResponse, uiLength);
 //        break;
 //
+    case _FC_READ_DISCRETE_INPUTS:
+        uiLength = ReadDiscreteInputs(puiRequest, puiResponse, uiLength);
+        break;
+
 //    case _FC_READ_HOLDING_REGISTERS:
 //        uiLength = ReadHoldingRegisters(puiRequest, puiResponse, uiLength);
 //        break;

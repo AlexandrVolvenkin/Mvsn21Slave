@@ -1,21 +1,22 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          07/May/2022  09:26:23
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          08/May/2022  00:51:03
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Crc.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EW78F0.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EW97E.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Crc.cpp --cpu=m48
 //        -ms -o D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\Obj -lB
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List
-//        --initializers_in_flash --root_variables --no_inline --no_cross_call
-//        --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e -I
+//        --initializers_in_flash --root_variables --no_cse --no_inline
+//        --no_code_motion --no_cross_call --no_clustering --no_tbaa --debug
+//        -DENABLE_BIT_DEFINITIONS -e -I
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include\ -I
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ --eeprom_size
 //        256 --dlib --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded
-//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -Om --eec++)
+//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -On --eec++)
 //    Locale       =  Russian_RUS.1251
 //    List file    =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List\Crc.s90
@@ -33,7 +34,11 @@
 //      not produce an equivalent object file to the one produced
 //      by the C++ compiler.
 
+        EXTERN ?EPILOGUE_B2_L09
+        EXTERN ?PROLOGUE2_L09
+
         PUBLIC ??usCrc16
+        PUBLIC ??usCrcSummOneByteCalculation
         PUBWEAK __?EEARL
         PUBWEAK __?EECR
         PUBWEAK __?EEDR
@@ -42,123 +47,259 @@
 //    1 #include <stdint.h>
 //    2 #include "Crc.h"
 //    3 
-//    4 //unsigned short CRC16(const unsigned char *puiSource, unsigned short nusLength)
-//    5 //{
-//    6 //    static const unsigned short usCRCTable[] =
-//    7 //    {
-//    8 //        0X0000, 0XC0C1, 0XC181, 0X0140, 0XC301, 0X03C0, 0X0280, 0XC241,
-//    9 //        0XC601, 0X06C0, 0X0780, 0XC741, 0X0500, 0XC5C1, 0XC481, 0X0440,
-//   10 //        0XCC01, 0X0CC0, 0X0D80, 0XCD41, 0X0F00, 0XCFC1, 0XCE81, 0X0E40,
-//   11 //        0X0A00, 0XCAC1, 0XCB81, 0X0B40, 0XC901, 0X09C0, 0X0880, 0XC841,
-//   12 //        0XD801, 0X18C0, 0X1980, 0XD941, 0X1B00, 0XDBC1, 0XDA81, 0X1A40,
-//   13 //        0X1E00, 0XDEC1, 0XDF81, 0X1F40, 0XDD01, 0X1DC0, 0X1C80, 0XDC41,
-//   14 //        0X1400, 0XD4C1, 0XD581, 0X1540, 0XD701, 0X17C0, 0X1680, 0XD641,
-//   15 //        0XD201, 0X12C0, 0X1380, 0XD341, 0X1100, 0XD1C1, 0XD081, 0X1040,
-//   16 //        0XF001, 0X30C0, 0X3180, 0XF141, 0X3300, 0XF3C1, 0XF281, 0X3240,
-//   17 //        0X3600, 0XF6C1, 0XF781, 0X3740, 0XF501, 0X35C0, 0X3480, 0XF441,
-//   18 //        0X3C00, 0XFCC1, 0XFD81, 0X3D40, 0XFF01, 0X3FC0, 0X3E80, 0XFE41,
-//   19 //        0XFA01, 0X3AC0, 0X3B80, 0XFB41, 0X3900, 0XF9C1, 0XF881, 0X3840,
-//   20 //        0X2800, 0XE8C1, 0XE981, 0X2940, 0XEB01, 0X2BC0, 0X2A80, 0XEA41,
-//   21 //        0XEE01, 0X2EC0, 0X2F80, 0XEF41, 0X2D00, 0XEDC1, 0XEC81, 0X2C40,
-//   22 //        0XE401, 0X24C0, 0X2580, 0XE541, 0X2700, 0XE7C1, 0XE681, 0X2640,
-//   23 //        0X2200, 0XE2C1, 0XE381, 0X2340, 0XE101, 0X21C0, 0X2080, 0XE041,
-//   24 //        0XA001, 0X60C0, 0X6180, 0XA141, 0X6300, 0XA3C1, 0XA281, 0X6240,
-//   25 //        0X6600, 0XA6C1, 0XA781, 0X6740, 0XA501, 0X65C0, 0X6480, 0XA441,
-//   26 //        0X6C00, 0XACC1, 0XAD81, 0X6D40, 0XAF01, 0X6FC0, 0X6E80, 0XAE41,
-//   27 //        0XAA01, 0X6AC0, 0X6B80, 0XAB41, 0X6900, 0XA9C1, 0XA881, 0X6840,
-//   28 //        0X7800, 0XB8C1, 0XB981, 0X7940, 0XBB01, 0X7BC0, 0X7A80, 0XBA41,
-//   29 //        0XBE01, 0X7EC0, 0X7F80, 0XBF41, 0X7D00, 0XBDC1, 0XBC81, 0X7C40,
-//   30 //        0XB401, 0X74C0, 0X7580, 0XB541, 0X7700, 0XB7C1, 0XB681, 0X7640,
-//   31 //        0X7200, 0XB2C1, 0XB381, 0X7340, 0XB101, 0X71C0, 0X7080, 0XB041,
-//   32 //        0X5000, 0X90C1, 0X9181, 0X5140, 0X9301, 0X53C0, 0X5280, 0X9241,
-//   33 //        0X9601, 0X56C0, 0X5780, 0X9741, 0X5500, 0X95C1, 0X9481, 0X5440,
-//   34 //        0X9C01, 0X5CC0, 0X5D80, 0X9D41, 0X5F00, 0X9FC1, 0X9E81, 0X5E40,
-//   35 //        0X5A00, 0X9AC1, 0X9B81, 0X5B40, 0X9901, 0X59C0, 0X5880, 0X9841,
-//   36 //        0X8801, 0X48C0, 0X4980, 0X8941, 0X4B00, 0X8BC1, 0X8A81, 0X4A40,
-//   37 //        0X4E00, 0X8EC1, 0X8F81, 0X4F40, 0X8D01, 0X4DC0, 0X4C80, 0X8C41,
-//   38 //        0X4400, 0X84C1, 0X8581, 0X4540, 0X8701, 0X47C0, 0X4680, 0X8641,
-//   39 //        0X8201, 0X42C0, 0X4380, 0X8341, 0X4100, 0X81C1, 0X8081, 0X4040
-//   40 //    };
-//   41 //
-//   42 //    unsigned char ucTemp;
-//   43 //    unsigned short usCrc = 0xFFFF;
-//   44 //
-//   45 //    while (nusLength--)
-//   46 //    {
-//   47 //        ucTemp = *puiSource++ ^ usCrc;
-//   48 //        usCrc >>= 8;
-//   49 //        usCrc  ^= usCRCTable[ucTemp];
-//   50 //    }
-//   51 //    return usCrc;
-//   52 //}
-//   53 
-//   54 
-//   55 //--------------------------------------------------------------------
+//    4 ////-----------------------------------------------------------------------------------------------------
+//    5 //__flash const unsigned short usCRCTable[] =
+//    6 //{
+//    7 //    0X0000, 0XC0C1, 0XC181, 0X0140, 0XC301, 0X03C0, 0X0280, 0XC241,
+//    8 //    0XC601, 0X06C0, 0X0780, 0XC741, 0X0500, 0XC5C1, 0XC481, 0X0440,
+//    9 //    0XCC01, 0X0CC0, 0X0D80, 0XCD41, 0X0F00, 0XCFC1, 0XCE81, 0X0E40,
+//   10 //    0X0A00, 0XCAC1, 0XCB81, 0X0B40, 0XC901, 0X09C0, 0X0880, 0XC841,
+//   11 //    0XD801, 0X18C0, 0X1980, 0XD941, 0X1B00, 0XDBC1, 0XDA81, 0X1A40,
+//   12 //    0X1E00, 0XDEC1, 0XDF81, 0X1F40, 0XDD01, 0X1DC0, 0X1C80, 0XDC41,
+//   13 //    0X1400, 0XD4C1, 0XD581, 0X1540, 0XD701, 0X17C0, 0X1680, 0XD641,
+//   14 //    0XD201, 0X12C0, 0X1380, 0XD341, 0X1100, 0XD1C1, 0XD081, 0X1040,
+//   15 //    0XF001, 0X30C0, 0X3180, 0XF141, 0X3300, 0XF3C1, 0XF281, 0X3240,
+//   16 //    0X3600, 0XF6C1, 0XF781, 0X3740, 0XF501, 0X35C0, 0X3480, 0XF441,
+//   17 //    0X3C00, 0XFCC1, 0XFD81, 0X3D40, 0XFF01, 0X3FC0, 0X3E80, 0XFE41,
+//   18 //    0XFA01, 0X3AC0, 0X3B80, 0XFB41, 0X3900, 0XF9C1, 0XF881, 0X3840,
+//   19 //    0X2800, 0XE8C1, 0XE981, 0X2940, 0XEB01, 0X2BC0, 0X2A80, 0XEA41,
+//   20 //    0XEE01, 0X2EC0, 0X2F80, 0XEF41, 0X2D00, 0XEDC1, 0XEC81, 0X2C40,
+//   21 //    0XE401, 0X24C0, 0X2580, 0XE541, 0X2700, 0XE7C1, 0XE681, 0X2640,
+//   22 //    0X2200, 0XE2C1, 0XE381, 0X2340, 0XE101, 0X21C0, 0X2080, 0XE041,
+//   23 //    0XA001, 0X60C0, 0X6180, 0XA141, 0X6300, 0XA3C1, 0XA281, 0X6240,
+//   24 //    0X6600, 0XA6C1, 0XA781, 0X6740, 0XA501, 0X65C0, 0X6480, 0XA441,
+//   25 //    0X6C00, 0XACC1, 0XAD81, 0X6D40, 0XAF01, 0X6FC0, 0X6E80, 0XAE41,
+//   26 //    0XAA01, 0X6AC0, 0X6B80, 0XAB41, 0X6900, 0XA9C1, 0XA881, 0X6840,
+//   27 //    0X7800, 0XB8C1, 0XB981, 0X7940, 0XBB01, 0X7BC0, 0X7A80, 0XBA41,
+//   28 //    0XBE01, 0X7EC0, 0X7F80, 0XBF41, 0X7D00, 0XBDC1, 0XBC81, 0X7C40,
+//   29 //    0XB401, 0X74C0, 0X7580, 0XB541, 0X7700, 0XB7C1, 0XB681, 0X7640,
+//   30 //    0X7200, 0XB2C1, 0XB381, 0X7340, 0XB101, 0X71C0, 0X7080, 0XB041,
+//   31 //    0X5000, 0X90C1, 0X9181, 0X5140, 0X9301, 0X53C0, 0X5280, 0X9241,
+//   32 //    0X9601, 0X56C0, 0X5780, 0X9741, 0X5500, 0X95C1, 0X9481, 0X5440,
+//   33 //    0X9C01, 0X5CC0, 0X5D80, 0X9D41, 0X5F00, 0X9FC1, 0X9E81, 0X5E40,
+//   34 //    0X5A00, 0X9AC1, 0X9B81, 0X5B40, 0X9901, 0X59C0, 0X5880, 0X9841,
+//   35 //    0X8801, 0X48C0, 0X4980, 0X8941, 0X4B00, 0X8BC1, 0X8A81, 0X4A40,
+//   36 //    0X4E00, 0X8EC1, 0X8F81, 0X4F40, 0X8D01, 0X4DC0, 0X4C80, 0X8C41,
+//   37 //    0X4400, 0X84C1, 0X8581, 0X4540, 0X8701, 0X47C0, 0X4680, 0X8641,
+//   38 //    0X8201, 0X42C0, 0X4380, 0X8341, 0X4100, 0X81C1, 0X8081, 0X4040
+//   39 //};
+//   40 //
+//   41 ////-----------------------------------------------------------------------------------------------------
+//   42 //uint16_t usCrc16(const unsigned char *puiSourse, uint16_t uiLength)
+//   43 //{
+//   44 //    unsigned char ucTemp;
+//   45 //    uint16_t usCrc = 0xFFFF;
+//   46 //
+//   47 ////    while (uiLength--)
+//   48 ////    {
+//   49 ////        ucTemp = *puiSourse++ ^ usCrc;
+//   50 ////        usCrc >>= 8;
+//   51 ////        usCrc  ^= usCRCTable[ucTemp];
+//   52 ////    }
+//   53 //
+//   54 //    for (uint8_t i = 0; i < uiLength; i++)
+//   55 //    {
+//   56 //        ucTemp = *puiSourse++ ^ usCrc;
+//   57 //        usCrc >>= 8;
+//   58 //        usCrc  ^= usCRCTable[ucTemp];
+//   59 //    }
+//   60 //
+//   61 //    return usCrc;
+//   62 //}
+//   63 
+//   64 
+//   65 //--------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//   56 unsigned short usCrc16(unsigned char *puiSource, unsigned short nusLength)
+//   66 unsigned short usCrc16(unsigned char *puiSourse, unsigned short uiLength)
 ??usCrc16:
-//   57 {
-//   58     unsigned short usCrc = 0xFFFF;
-        LDI     R22, 255
-        LDI     R23, 255
-        RJMP    ??usCrc16_1
-//   59     unsigned char ucCounter;
-//   60 
-//   61     while (nusLength != 0)
-//   62     {
-//   63         usCrc = usCrc ^ (unsigned short)(*puiSource++);
-//   64         ucCounter = 8;
-//   65         while(ucCounter != 0)
-//   66         {
-//   67             if (usCrc & 0x0001)
-//   68             {
-//   69                 usCrc = usCrc >> 1 ^ 0xA001;
-//   70             }
-//   71             else usCrc = usCrc >> 1;
-//   72             ucCounter--;
-//   73         }
-//   74         nusLength--;
-??usCrc16_2:
-        SUBI    R18, 1
-        SBCI    R19, 0
-??usCrc16_1:
-        MOV     R20, R18
-        OR      R20, R19
-        BREQ    ??usCrc16_3
+//   67 {
+        RCALL   ?PROLOGUE2_L09
         MOVW    R31:R30, R17:R16
-        LD      R20, Z+
-        MOVW    R17:R16, R31:R30
-        EOR     R22, R20
-        LDI     R20, 8
-        RJMP    ??usCrc16_4
-??usCrc16_5:
-        DEC     R20
-??usCrc16_4:
-        TST     R20
+        MOVW    R25:R24, R19:R18
+//   68     unsigned short usCrc = 0xFFFF;
+        LDI     R20, 255
+        LDI     R21, 255
+//   69     unsigned char ucCounter;
+//   70 
+//   71     while (uiLength != 0)
+??usCrc16_1:
+        MOV     R16, R24
+        OR      R16, R25
         BREQ    ??usCrc16_2
-        MOVW    R1:R0, R23:R22
-        LSR     R1
-        ROR     R0
-        BST     R22, 0
-        MOVW    R23:R22, R1:R0
-        BRTC    ??usCrc16_5
-        LDI     R21, 1
-        EOR     R22, R21
-        LDI     R21, 160
-        EOR     R23, R21
-        RJMP    ??usCrc16_5
-//   75     }
-//   76     usCrc = usCrc>>8 ^ usCrc<<8;
-//   77     return usCrc;
-??usCrc16_3:
-        MOVW    R17:R16, R23:R22
-        MOV     R16, R17
+//   72     {
+//   73         usCrc = usCrc ^ (unsigned short)(*puiSourse++);
+        LD      R16, Z
         LDI     R17, 0
+        EOR     R20, R16
+        EOR     R21, R17
+        ADIW    R31:R30, 1
+//   74         ucCounter = 8;
+        LDI     R18, 8
+//   75         while(ucCounter != 0)
+??usCrc16_3:
+        TST     R18
+        BREQ    ??usCrc16_4
+//   76         {
+//   77             if (usCrc & 0x0001)
+        BST     R20, 0
+        BRTC    ??usCrc16_5
+//   78             {
+//   79                 usCrc = usCrc >> 1 ^ 0xA001;
+        LSR     R21
+        ROR     R20
+        LDI     R16, 1
+        EOR     R20, R16
+        LDI     R16, 160
+        EOR     R21, R16
+        RJMP    ??usCrc16_6
+//   80             }
+//   81             else usCrc = usCrc >> 1;
+??usCrc16_5:
+        LSR     R21
+        ROR     R20
+//   82             ucCounter--;
+??usCrc16_6:
+        DEC     R18
+        RJMP    ??usCrc16_3
+//   83         }
+//   84         uiLength--;
+??usCrc16_4:
+        SBIW    R25:R24, 1
+        RJMP    ??usCrc16_1
+//   85     }
+//   86     usCrc = usCrc>>8 ^ usCrc<<8;
+??usCrc16_2:
+        MOVW    R23:R22, R21:R20
+        MOV     R22, R23
+        LDI     R23, 0
+        MOVW    R17:R16, R21:R20
+        MOV     R17, R16
+        LDI     R16, 0
+        MOVW    R21:R20, R23:R22
+        EOR     R20, R16
+        EOR     R21, R17
+//   87 
+//   88     unsigned short usData;
+//   89     usData = (usCrc >> 8);
+        MOVW    R23:R22, R21:R20
+        MOV     R22, R23
+        LDI     R23, 0
+        MOVW    R17:R16, R23:R22
+//   90     usData |= (usCrc << 8);
+        MOVW    R23:R22, R21:R20
         MOV     R23, R22
-        EOR     R17, R23
+        LDI     R22, 0
+        OR      R16, R22
+        OR      R17, R23
+//   91     return usData;
+        LDI     R30, 2
+        RJMP    ?EPILOGUE_B2_L09
+//   92 }
+//   93 
+//   94 ////-----------------------------------------------------------------------------------------------------
+//   95 //int iCrc16Check(unsigned char *puiSourse, unsigned short uiLength)
+//   96 //{
+//   97 //    unsigned short usCrc;
+//   98 //
+//   99 //    usCrc = (((unsigned short)(puiSourse[uiLength])) << 8) |
+//  100 //            (unsigned short)(puiSourse[uiLength + 1]);
+//  101 //
+//  102 //    if (usCrc16(puiSourse, uiLength) == usCrc)
+//  103 //    {
+//  104 //        return 0;
+//  105 //    }
+//  106 //    else
+//  107 //    {
+//  108 //        return -1;
+//  109 //    }
+//  110 //}
+//  111 
+//  112 ////-----------------------------------------------------------------------------------------------------
+//  113 //// вычисляет двухбайтовую контрольную сумму.
+//  114 //unsigned short usCrcSummTwoByteCalculation(
+//  115 //    unsigned char *puiSourse,
+//  116 //    unsigned int nuiNbyte)
+//  117 //{
+//  118 //    unsigned short usData;
+//  119 //
+//  120 //    usData = 0;
+//  121 //    do
+//  122 //    {
+//  123 //        usData += (unsigned short)*puiSourse++;
+//  124 //        nuiNbyte--;
+//  125 //    }
+//  126 //    while (nuiNbyte);
+//  127 //
+//  128 //    return usData;
+//  129 //}
+//  130 //
+//  131 ////-----------------------------------------------------------------------------------------------------
+//  132 //// сравнивает двухбайтовую контрольную сумму.
+//  133 //int iCrcSummTwoByteCompare(unsigned char *puiSourse,
+//  134 //                           unsigned int nuiNbyte)
+//  135 //{
+//  136 //    unsigned short usData;
+//  137 //
+//  138 //    usData = 0;
+//  139 //    do
+//  140 //    {
+//  141 //        usData += (unsigned short)*puiSourse++;
+//  142 //        nuiNbyte--;
+//  143 //    }
+//  144 //    while (nuiNbyte);
+//  145 //
+//  146 //    if ((unsigned char)usData  == *puiSourse++)
+//  147 //    {
+//  148 //
+//  149 //        if ((unsigned char)(usData >> 8)  == *puiSourse)
+//  150 //        {
+//  151 //            return 1;
+//  152 //        }
+//  153 //    }
+//  154 //    return 0;
+//  155 //}
+//  156 
+//  157 //-----------------------------------------------------------------------------------------------------
+//  158 // вычисляет однобайтовую контрольную сумму.
+
+        RSEG CODE:CODE:NOROOT(1)
+//  159 uint8_t usCrcSummOneByteCalculation(
+??usCrcSummOneByteCalculation:
+//  160     uint8_t *puiSourse,
+//  161     uint16_t nuiNbyte)
+//  162 {
+        MOVW    R23:R22, R17:R16
+//  163     uint8_t uiData = 0;
+        LDI     R16, 0
+//  164 
+//  165     for (int8_t i = 0; i < nuiNbyte; i++)
+        LDI     R20, 0
+??usCrcSummOneByteCalculation_1:
+        MOV     R21, R20
+        LSL     R21
+        SBC     R21, R21
+        CP      R20, R18
+        CPC     R21, R19
+        BRCC    ??usCrcSummOneByteCalculation_2
+//  166     {
+//  167         uiData += puiSourse[i];
+        MOV     R21, R20
+        LSL     R21
+        SBC     R21, R21
+        MOVW    R31:R30, R23:R22
+        ADD     R30, R20
+        ADC     R31, R21
+        LD      R17, Z
+        ADD     R16, R17
+//  168     }
+        INC     R20
+        RJMP    ??usCrcSummOneByteCalculation_1
+//  169 
+//  170     return uiData;
+??usCrcSummOneByteCalculation_2:
         RET
-//   78 }
+//  171 }
 
         ASEGN ABSOLUTE:DATA:NOROOT,01fH
 __?EECR:
@@ -170,115 +311,36 @@ __?EEDR:
 __?EEARL:
 
         END
-//   79 
-//   80 ////-----------------------------------------------------------------------------------------------------
-//   81 //int iCrc16Check(unsigned char *puiSource, unsigned short nusLength)
-//   82 //{
-//   83 //    unsigned short usCrc;
-//   84 //
-//   85 //    usCrc = (((unsigned short)(puiSource[nusLength])) << 8) |
-//   86 //            (unsigned short)(puiSource[nusLength + 1]);
-//   87 //
-//   88 //    if (usCrc16(puiSource, nusLength) == usCrc)
-//   89 //    {
-//   90 //        return 0;
-//   91 //    }
-//   92 //    else
-//   93 //    {
-//   94 //        return -1;
-//   95 //    }
-//   96 //}
-//   97 
-//   98 ////-----------------------------------------------------------------------------------------------------
-//   99 //// вычисляет двухбайтовую контрольную сумму.
-//  100 //unsigned short usCrcSummTwoByteCalculation(
-//  101 //    unsigned char *puiSource,
-//  102 //    unsigned int nuiNbyte)
-//  103 //{
-//  104 //    unsigned short usData;
-//  105 //
-//  106 //    usData = 0;
-//  107 //    do
-//  108 //    {
-//  109 //        usData += (unsigned short)*puiSource++;
-//  110 //        nuiNbyte--;
-//  111 //    }
-//  112 //    while (nuiNbyte);
-//  113 //
-//  114 //    return usData;
-//  115 //}
-//  116 //
-//  117 ////-----------------------------------------------------------------------------------------------------
-//  118 //// сравнивает двухбайтовую контрольную сумму.
-//  119 //int iCrcSummTwoByteCompare(unsigned char *puiSource,
-//  120 //                           unsigned int nuiNbyte)
-//  121 //{
-//  122 //    unsigned short usData;
-//  123 //
-//  124 //    usData = 0;
-//  125 //    do
-//  126 //    {
-//  127 //        usData += (unsigned short)*puiSource++;
-//  128 //        nuiNbyte--;
-//  129 //    }
-//  130 //    while (nuiNbyte);
-//  131 //
-//  132 //    if ((unsigned char)usData  == *puiSource++)
-//  133 //    {
-//  134 //
-//  135 //        if ((unsigned char)(usData >> 8)  == *puiSource)
-//  136 //        {
-//  137 //            return 1;
-//  138 //        }
-//  139 //    }
-//  140 //    return -1;
-//  141 //}
-//  142 //
-//  143 ////-----------------------------------------------------------------------------------------------------
-//  144 //// вычисляет однобайтовую контрольную сумму.
-//  145 //uint8_t usCrcSummOneByteCalculation(
-//  146 //    uint8_t *puiSource,
-//  147 //    uint16_t nuiNbyte)
-//  148 //{
-//  149 //    uint8_t uiData = 0;
-//  150 //
-//  151 //    for (int8_t i = 0; i < nuiNbyte; i++)
-//  152 //    {
-//  153 //        uiData += puiSource[i];
-//  154 //    }
-//  155 //
-//  156 //    return uiData;
-//  157 //}
-//  158 //
-//  159 ////-----------------------------------------------------------------------------------------------------
-//  160 //// сравнивает однобайтовую контрольную сумму.
-//  161 //int iCrcSummOneByteCompare(unsigned char *puiSource,
-//  162 //                           unsigned int nuiNbyte)
-//  163 //{
-//  164 //    unsigned char ucData;
-//  165 //
-//  166 //    ucData = 0;
-//  167 //    do
-//  168 //    {
-//  169 //        ucData += *puiSource++;
-//  170 //        nuiNbyte--;
-//  171 //    }
-//  172 //    while ((nuiNbyte) != 0);
-//  173 //
-//  174 //    if (ucData == *puiSource)
-//  175 //    {
-//  176 //        return 1;
-//  177 //    }
-//  178 //    else
-//  179 //    {
-//  180 //        return -1;
-//  181 //    }
-//  182 //}
-//  183 
+//  172 
+//  173 ////-----------------------------------------------------------------------------------------------------
+//  174 //// сравнивает однобайтовую контрольную сумму.
+//  175 //int iCrcSummOneByteCompare(unsigned char *puiSourse,
+//  176 //                           unsigned int nuiNbyte)
+//  177 //{
+//  178 //    unsigned char ucData;
+//  179 //
+//  180 //    ucData = 0;
+//  181 //    do
+//  182 //    {
+//  183 //        ucData += *puiSourse++;
+//  184 //        nuiNbyte--;
+//  185 //    }
+//  186 //    while ((nuiNbyte) != 0);
+//  187 //
+//  188 //    if (ucData == *puiSourse)
+//  189 //    {
+//  190 //        return 1;
+//  191 //    }
+//  192 //    else
+//  193 //    {
+//  194 //        return 0;
+//  195 //    }
+//  196 //}
+//  197 
 // 
-// 68 bytes in segment CODE
+// 142 bytes in segment CODE
 // 
-// 68 bytes of CODE memory
+// 142 bytes of CODE memory
 //
 //Errors: none
 //Warnings: none

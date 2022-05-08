@@ -272,26 +272,26 @@ public:
                                           uint8_t *,
                                           uint16_t );
 //    virtual int8_t MessengerIsReady(void);
-    static int16_t Tail(uint8_t * , uint16_t ) = 0;
+    static int16_t Tail(uint8_t * , uint16_t );
 //    virtual int16_t RequestBasis(uint8_t uiSlave,
 //                                 uint8_t uiFunctionCode,
 //                                 uint16_t uiAddress,
 //                                 uint16_t uiBitNumber,
 //                                 uint8_t *puiRequest) = 0;
-    static int16_t ResponseBasis(uint8_t , uint8_t , uint8_t * ) = 0;
+    static int16_t ResponseBasis(uint8_t , uint8_t , uint8_t * );
     static uint8_t ResponseIsReceived(void);
     static int16_t ResponseException(uint8_t , uint8_t , uint8_t , uint8_t * );
     static int16_t SendMessage(uint8_t * , uint16_t );
-    static int16_t Send(uint8_t * , uint16_t ) = 0;
+    static int16_t Send(uint8_t * , uint16_t );
     static void SlaveSet(uint8_t );
 //    virtual void FsmSlave(void) = 0;
 //    virtual void FsmMaster(void) = 0;
-    static int16_t Receive(void) = 0;
-    static int16_t ReadCoils(uint8_t * , uint8_t * , uint16_t );
-//    int16_t ReadDiscreteInputs(uint8_t * , uint8_t * , uint16_t );
-//    int16_t ReadHoldingRegisters(uint8_t * , uint8_t * , uint16_t );
-//    int16_t ReadInputRegisters(uint8_t * , uint8_t * , uint16_t );
-//    int16_t WriteSingleCoil(uint8_t * , uint8_t * , uint16_t );
+    static int16_t Receive(void);
+//    static int16_t ReadCoils(uint8_t * , uint8_t * , uint16_t );
+    static int16_t ReadDiscreteInputs(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t ReadHoldingRegisters(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t ReadInputRegisters(uint8_t * , uint8_t * , uint16_t );
+//    static int16_t WriteSingleCoil(uint8_t * , uint8_t * , uint16_t );
 //    int16_t WriteSingleRegister(uint8_t * , uint8_t * , uint16_t );
 //    int16_t WriteMultipleCoils(uint8_t * , uint8_t * , uint16_t );
 //    int16_t WriteMultipleRegisters(uint8_t * , uint8_t * , uint16_t );
@@ -331,22 +331,22 @@ public:
 
 protected:
 private:
-    uint8_t m_uiSlave;
-    uint8_t m_uiFunctionCode;
-    uint8_t m_uiFlowControl;
+    static uint8_t m_uiSlave;
+    static uint8_t m_uiFunctionCode;
+    static uint8_t m_uiFlowControl;
 //    CSocket* pxSocket;
-    uint16_t m_uiLastSystemTime;
-    uint16_t m_uiMessageLength;
-    uint8_t *m_puiRxBuffer;
-    uint8_t *m_puiTxBuffer;
-    uint8_t *m_puiCoils;
-    uint8_t *m_puiDiscreteInputs;
-    uint16_t *m_pui16HoldingRegisters;
-    uint16_t *m_pui16InputRegisters;
-    uint16_t m_uiCoilsNumber;
-    uint16_t m_uiDiscreteInputsNumber;
-    uint16_t m_uiHoldingRegistersNumber;
-    uint16_t m_uiInputRegistersNumber;
+    static uint16_t m_uiLastSystemTime;
+    static uint16_t m_uiMessageLength;
+    static uint8_t *m_puiRxBuffer;
+    static uint8_t *m_puiTxBuffer;
+    static uint8_t *m_puiCoils;
+    static uint8_t *m_puiDiscreteInputs;
+    static uint16_t *m_pui16HoldingRegisters;
+    static uint16_t *m_pui16InputRegisters;
+    static uint16_t m_uiCoilsNumber;
+    static uint16_t m_uiDiscreteInputsNumber;
+    static uint16_t m_uiHoldingRegistersNumber;
+    static uint16_t m_uiInputRegistersNumber;
 
     friend class CModbusRTU;
 //    friend class CModbusMasterRTU;

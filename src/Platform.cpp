@@ -154,10 +154,10 @@ bool CUart::m_bfRxBuffOverflow;
 
 //-----------------------------------------------------------------------------------------------------
 void CUart::UartBind(volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
-                volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
-                volatile uint8_t *ucsrc, volatile uint8_t *udr,
-                volatile uint8_t *rs485ddr, volatile uint8_t rs485ddpin,
-                volatile uint8_t *rs485port, volatile uint8_t rs485pin)
+                     volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
+                     volatile uint8_t *ucsrc, volatile uint8_t *udr,
+                     volatile uint8_t *rs485ddr, volatile uint8_t rs485ddpin,
+                     volatile uint8_t *rs485port, volatile uint8_t rs485pin)
 {
     m_UBRRH = ubrrh;
     m_UBRRL = ubrrl;
@@ -165,16 +165,16 @@ void CUart::UartBind(volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
     m_UCSRB = ucsrb;
     m_UCSRC = ucsrc;
     m_UDR = udr;
-    m_rs485ddr = rs485ddr;
-    m_rs485ddpin = rs485ddpin;
-    m_rs485port = rs485port;
-    m_rs485pin = rs485pin;
-
-    if (m_rs485ddr)
-    {
-        *m_rs485ddr |= Bit(m_rs485ddpin);
-        *m_rs485port &= ~(Bit(m_rs485pin));
-    }
+//    m_rs485ddr = rs485ddr;
+//    m_rs485ddpin = rs485ddpin;
+//    m_rs485port = rs485port;
+//    m_rs485pin = rs485pin;
+//
+//    if (m_rs485ddr)
+//    {
+//        *m_rs485ddr |= Bit(m_rs485ddpin);
+//        *m_rs485port &= ~(Bit(m_rs485pin));
+//    }
 }
 
 ////-----------------------------------------------------------------------------------------------------
@@ -422,6 +422,7 @@ void CUart::TxcInterruptHandler(void)
 //    {
 //        Rs485RtsOff();
 //    }
+    CMvsn21::MeasureFlowControlSet(CMvsn21::FSM_START);
     *m_UCSRA |= (1 << RXC0);
     *m_UCSRB |= (1 << RXEN0) | (1 << RXCIE0);
     m_bfFrameIsSended = 1;
@@ -441,7 +442,8 @@ void CUart::RecvInterruptHandler(void)
     }
     else
     {
-        m_puiRxBuffer[m_nuiRxBuffByteCounter++] = *m_UDR;
+//        m_puiRxBuffer[m_nuiRxBuffByteCounter++] = *m_UDR;
+        m_auiIntermediateBuff[m_nuiRxBuffByteCounter++] = *m_UDR;
         m_bfByteIsReceived = 1;
     }
 }
@@ -488,9 +490,6 @@ __interrupt void SIG_UART0_RECV(void)
 //
 //}
 
-// SFR_W_N(0x21, EEAR, Dummy15, Dummy14, Dummy13, Dummy12, Dummy11, Dummy10, Dummy9, Dummy8, EEAR7, EEAR6, EEAR5, EEAR4, EEAR3, EEAR2, EEAR1, EEAR0)
-// SFR_B_N(0x20, EEDR, EEDR7, EEDR6, EEDR5, EEDR4, EEDR3, EEDR2, EEDR1, EEDR0)
-// SFR_B_N(0x1F, EECR, Dummy7, Dummy6, EEPM1, EEPM0, EERIE, EEMPE, EEPE, EERE)
 //-----------------------------------------------------------------------------------------------------
 uint8_t CEeprom::ReadByte(uint16_t ui16EepromSourse)
 {

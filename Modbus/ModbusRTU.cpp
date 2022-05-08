@@ -85,11 +85,11 @@ void CModbusRTU::Init(CUart* pxDevice,
     m_uiHoldingRegistersNumber = uiHoldingRegistersNumber;
 
     CUart::Init(m_uiBaudRate,
-                       m_cParity,
-                       m_uiDataBit,
-                       m_uiStopBit,
-                       puiRxBuffer,
-                       puiTxBuffer);
+                m_cParity,
+                m_uiDataBit,
+                m_uiStopBit,
+                puiRxBuffer,
+                puiTxBuffer);
 }
 
 //-----------------------------------------------------------------------------------------------------
@@ -181,6 +181,11 @@ int16_t CModbusRTU::Receive(uint8_t *puiDestination, uint16_t uiLength)
 //-----------------------------------------------------------------------------------------------------
 uint8_t CModbusRTU::FrameIsReceived(void)
 {
+    int16_t uiData;
+    uiData = CPlatform::GetSystemTick();
+    uiData = m_uiLastSystemTime;
+    uiData = m_uiGuardTimeout;
+
     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
             m_uiGuardTimeout)
     {

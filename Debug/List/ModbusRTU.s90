@@ -1,23 +1,24 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          07/May/2022  09:26:24
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          08/May/2022  01:27:23
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ModbusRTU.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EW7C8C.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EW4C5F.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ModbusRTU.cpp
 //        --cpu=m48 -ms -o
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\Obj -lB
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List
-//        --initializers_in_flash --root_variables --no_inline --no_cross_call
-//        --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e -I
+//        --initializers_in_flash --root_variables --no_cse --no_inline
+//        --no_code_motion --no_cross_call --no_clustering --no_tbaa --debug
+//        -DENABLE_BIT_DEFINITIONS -e -I
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include\ -I
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ --eeprom_size
 //        256 --dlib --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded
-//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -Om --eec++)
+//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -On --eec++)
 //    Locale       =  Russian_RUS.1251
 //    List file    =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List\ModbusRTU.s90
@@ -35,12 +36,26 @@
 //      not produce an equivalent object file to the one produced
 //      by the C++ compiler.
 
+        EXTERN ?EPILOGUE_B16_L09
+        EXTERN ?EPILOGUE_B2_L09
         EXTERN ?EPILOGUE_B4_L09
-        EXTERN ?EPILOGUE_B6_L09
+        EXTERN ?EPILOGUE_B8_L09
+        EXTERN ?PROLOGUE16_L09
+        EXTERN ?PROLOGUE2_L09
         EXTERN ?PROLOGUE4_L09
-        EXTERN ?PROLOGUE6_L09
+        EXTERN ?PROLOGUE8_L09
+        EXTERN ?Register_R10_is_cg_reg
+        EXTERN ?Register_R11_is_cg_reg
+        EXTERN ?Register_R12_is_cg_reg
+        EXTERN ?Register_R13_is_cg_reg
+        EXTERN ?Register_R14_is_cg_reg
+        EXTERN ?Register_R15_is_cg_reg
         EXTERN ?Register_R4_is_cg_reg
         EXTERN ?Register_R5_is_cg_reg
+        EXTERN ?Register_R6_is_cg_reg
+        EXTERN ?Register_R7_is_cg_reg
+        EXTERN ?Register_R8_is_cg_reg
+        EXTERN ?Register_R9_is_cg_reg
         EXTERN ?need_segment_init
 
         PUBWEAK `?<Segment init: NEAR_Z>`
@@ -649,21 +664,33 @@ _A_PINB:
         RSEG NEAR_Z:DATA:ROOT(0)
         REQUIRE `?<Segment init: NEAR_Z>`
 //   12 CUart* CModbusRTU::m_pxDevice;
+??m_pxDevice:
+        DS8 2
 //   13 /* Bauds: 9600, 19200, 57600, 115200, etc */
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
 //   14 uint32_t CModbusRTU::m_uiBaudRate;
 ??m_uiBaudRate:
         DS8 4
-??m_pxDevice:
-        DS8 2
 //   15 /* Data bit */
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
 //   16 uint8_t CModbusRTU::m_uiDataBit;
 ??m_uiDataBit:
         DS8 1
 //   17 /* Stop bit */
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
 //   18 uint8_t CModbusRTU::m_uiStopBit;
 ??m_uiStopBit:
         DS8 1
 //   19 /* Parity: 'N', 'O', 'E' */
+
+        RSEG NEAR_Z:DATA:ROOT(0)
+        REQUIRE `?<Segment init: NEAR_Z>`
 //   20 char CModbusRTU::m_cParity;
 ??m_cParity:
         DS8 1
@@ -720,116 +747,144 @@ _A_PINB:
 //   68                       uint16_t uiInputRegistersNumber,
 //   69                       uint16_t uiHoldingRegistersNumber)
 //   70 {
-        RCALL   ?PROLOGUE4_L09
+        RCALL   ?PROLOGUE16_L09
+        REQUIRE ?Register_R4_is_cg_reg
+        REQUIRE ?Register_R5_is_cg_reg
+        REQUIRE ?Register_R6_is_cg_reg
+        REQUIRE ?Register_R7_is_cg_reg
+        REQUIRE ?Register_R8_is_cg_reg
+        REQUIRE ?Register_R9_is_cg_reg
+        REQUIRE ?Register_R10_is_cg_reg
+        REQUIRE ?Register_R11_is_cg_reg
+        REQUIRE ?Register_R12_is_cg_reg
+        REQUIRE ?Register_R13_is_cg_reg
+        REQUIRE ?Register_R14_is_cg_reg
+        REQUIRE ?Register_R15_is_cg_reg
+        SBIW    R29:R28, 4
+        STD     Y+2, R16
+        STD     Y+3, R17
+        STD     Y+1, R18
+        ST      Y, R19
+        MOVW    R25:R24, R21:R20
+        MOVW    R27:R26, R23:R22
+        LDD     R6, Y+21
+        LDD     R7, Y+22
+        LDD     R4, Y+23
+        LDD     R5, Y+24
+        LDD     R14, Y+29
+        LDD     R15, Y+30
+        LDD     R12, Y+31
+        LDD     R13, Y+32
+        LDD     R10, Y+33
+        LDD     R11, Y+34
+        LDD     R8, Y+35
+        LDD     R9, Y+36
 //   71     m_pxDevice = pxDevice;
+        LDD     R16, Y+2
+        LDD     R17, Y+3
+        LDI     R30, LOW(??m_pxDevice)
+        LDI     R31, (??m_pxDevice) >> 8
+        ST      Z, R16
+        STD     Z+1, R17
+//   72     m_uiBaudRate = uiBaudRate;
         LDI     R30, LOW(??m_uiBaudRate)
         LDI     R31, (??m_uiBaudRate) >> 8
-        STD     Z+4, R16
-        STD     Z+5, R17
-//   72     m_uiBaudRate = uiBaudRate;
-        ST      Z, R20
-        STD     Z+1, R21
-        STD     Z+2, R22
-        STD     Z+3, R23
+        ST      Z, R24
+        STD     Z+1, R25
+        STD     Z+2, R26
+        STD     Z+3, R27
 //   73     m_cParity = cParity;
-        STD     Z+8, R18
+        LDD     R16, Y+1
+        STS     ??m_cParity, R16
 //   74     m_uiDataBit = uiDataBit;
-        STD     Z+6, R19
+        LD      R16, Y
+        STS     ??m_uiDataBit, R16
 //   75     m_uiStopBit = uiStopBit;
-        LDD     R16, Y+4
-        STD     Z+7, R16
-        LDD     R16, Y+5
-        LDD     R17, Y+6
+        LDD     R16, Y+20
+        STS     ??m_uiStopBit, R16
 //   76     m_puiRxBuffer = puiRxBuffer;
-        LDI     R26, LOW(??m_puiRxBuffer)
-        LDI     R27, (??m_puiRxBuffer) >> 8
-        ST      X+, R16
-        ST      X, R17
-        LDD     R18, Y+7
-        LDD     R19, Y+8
+        LDI     R30, LOW(??m_puiRxBuffer)
+        LDI     R31, (??m_puiRxBuffer) >> 8
+        ST      Z, R6
+        STD     Z+1, R7
 //   77     m_puiTxBuffer = puiTxBuffer;
-        LDI     R26, LOW(??m_puiTxBuffer)
-        LDI     R27, (??m_puiTxBuffer) >> 8
-        ST      X+, R18
-        ST      X, R19
+        LDI     R30, LOW(??m_puiTxBuffer)
+        LDI     R31, (??m_puiTxBuffer) >> 8
+        ST      Z, R4
+        STD     Z+1, R5
 //   78     m_puiCoils = puiCoils;
-        LDD     R20, Y+9
-        LDD     R21, Y+10
-        LDI     R26, LOW(??m_puiCoils)
-        LDI     R27, (??m_puiCoils) >> 8
-        ST      X+, R20
-        ST      X, R21
+        LDD     R16, Y+25
+        LDD     R17, Y+26
+        LDI     R30, LOW(??m_puiCoils)
+        LDI     R31, (??m_puiCoils) >> 8
+        ST      Z, R16
+        STD     Z+1, R17
 //   79     m_puiDiscreteInputs = puiDiscreteInputs;
-        LDD     R20, Y+11
-        LDD     R21, Y+12
-        LDI     R26, LOW(??m_puiDiscreteInputs)
-        LDI     R27, (??m_puiDiscreteInputs) >> 8
-        ST      X+, R20
-        ST      X, R21
+        LDD     R16, Y+27
+        LDD     R17, Y+28
+        LDI     R30, LOW(??m_puiDiscreteInputs)
+        LDI     R31, (??m_puiDiscreteInputs) >> 8
+        ST      Z, R16
+        STD     Z+1, R17
 //   80     m_pui16HoldingRegisters = pui16HoldingRegisters;
-        LDD     R20, Y+13
-        LDD     R21, Y+14
-        LDI     R26, LOW(??m_pui16HoldingRegisters)
-        LDI     R27, (??m_pui16HoldingRegisters) >> 8
-        ST      X+, R20
-        ST      X, R21
+        LDI     R30, LOW(??m_pui16HoldingRegisters)
+        LDI     R31, (??m_pui16HoldingRegisters) >> 8
+        ST      Z, R14
+        STD     Z+1, R15
 //   81     m_pui16InputRegisters = pui16InputRegisters;
-        LDD     R20, Y+15
-        LDD     R21, Y+16
-        LDI     R26, LOW(??m_pui16InputRegisters)
-        LDI     R27, (??m_pui16InputRegisters) >> 8
-        ST      X+, R20
-        ST      X, R21
+        LDI     R30, LOW(??m_pui16InputRegisters)
+        LDI     R31, (??m_pui16InputRegisters) >> 8
+        ST      Z, R12
+        STD     Z+1, R13
 //   82     m_uiCoilsNumber = uiCoilsNumber;
-        LDD     R20, Y+17
-        LDD     R21, Y+18
-        LDI     R26, LOW(??m_uiCoilsNumber)
-        LDI     R27, (??m_uiCoilsNumber) >> 8
-        ST      X+, R20
-        ST      X, R21
+        LDI     R30, LOW(??m_uiCoilsNumber)
+        LDI     R31, (??m_uiCoilsNumber) >> 8
+        ST      Z, R10
+        STD     Z+1, R11
 //   83     m_uiDiscreteInputsNumber = uiDiscreteInputsNumber;
-        LDD     R20, Y+19
-        LDD     R21, Y+20
-        LDI     R26, LOW(??m_uiDiscreteInputsNumber)
-        LDI     R27, (??m_uiDiscreteInputsNumber) >> 8
-        ST      X+, R20
-        ST      X, R21
+        LDI     R30, LOW(??m_uiDiscreteInputsNumber)
+        LDI     R31, (??m_uiDiscreteInputsNumber) >> 8
+        ST      Z, R8
+        STD     Z+1, R9
 //   84     m_uiInputRegistersNumber = uiInputRegistersNumber;
-        LDD     R20, Y+21
-        LDD     R21, Y+22
-        LDI     R26, LOW(??m_uiInputRegistersNumber)
-        LDI     R27, (??m_uiInputRegistersNumber) >> 8
-        ST      X+, R20
-        ST      X, R21
+        LDD     R16, Y+37
+        LDD     R17, Y+38
+        LDI     R30, LOW(??m_uiInputRegistersNumber)
+        LDI     R31, (??m_uiInputRegistersNumber) >> 8
+        ST      Z, R16
+        STD     Z+1, R17
 //   85     m_uiHoldingRegistersNumber = uiHoldingRegistersNumber;
-        LDD     R20, Y+23
-        LDD     R21, Y+24
-        LDI     R26, LOW(??m_uiHoldingRegistersNumber)
-        LDI     R27, (??m_uiHoldingRegistersNumber) >> 8
-        ST      X+, R20
-        ST      X, R21
+        LDD     R16, Y+39
+        LDD     R17, Y+40
+        LDI     R30, LOW(??m_uiHoldingRegistersNumber)
+        LDI     R31, (??m_uiHoldingRegistersNumber) >> 8
+        ST      Z, R16
+        STD     Z+1, R17
 //   86 
 //   87     CUart::Init(m_uiBaudRate,
-//   88                        m_cParity,
-//   89                        m_uiDataBit,
-//   90                        m_uiStopBit,
-//   91                        puiRxBuffer,
-//   92                        puiTxBuffer);
-        ST      -Y, R19
-        ST      -Y, R18
-        ST      -Y, R17
-        ST      -Y, R16
-        LDD     R22, Z+7
-        LDD     R21, Z+6
-        LDD     R20, Z+8
+//   88                 m_cParity,
+//   89                 m_uiDataBit,
+//   90                 m_uiStopBit,
+//   91                 puiRxBuffer,
+//   92                 puiTxBuffer);
+        ST      -Y, R5
+        ST      -Y, R4
+        ST      -Y, R7
+        ST      -Y, R6
+        LDS     R22, ??m_uiStopBit
+        LDS     R21, ??m_uiDataBit
+        LDS     R20, ??m_cParity
+        LDI     R30, LOW(??m_uiBaudRate)
+        LDI     R31, (??m_uiBaudRate) >> 8
         LD      R16, Z
         LDD     R17, Z+1
         LDD     R18, Z+2
         LDD     R19, Z+3
         RCALL   ??Init_1
 //   93 }
-        LDI     R30, 25
-        RJMP    ?EPILOGUE_B4_L09
+        ADIW    R29:R28, 4
+        LDI     R30, 37
+        RJMP    ?EPILOGUE_B16_L09
 //   94 
 //   95 //-----------------------------------------------------------------------------------------------------
 
@@ -874,20 +929,28 @@ _A_PINB:
         MOVW    R27:R26, R17:R16
         MOVW    R25:R24, R19:R18
 //  116     uint16_t uiCrc = usCrc16(puiMessage, uiLength);
+        MOVW    R19:R18, R25:R24
+        MOVW    R17:R16, R27:R26
         RCALL   ??usCrc16
+        MOVW    R19:R18, R17:R16
 //  117     puiMessage[uiLength++] = uiCrc & 0x00FF;
+        MOV     R16, R18
         MOVW    R31:R30, R27:R26
         ADD     R30, R24
         ADC     R31, R25
         ST      Z, R16
-//  118     puiMessage[uiLength++] = uiCrc >> 8;
         ADIW    R25:R24, 1
-        ADD     R26, R24
-        ADC     R27, R25
-        ST      X, R17
+//  118     puiMessage[uiLength++] = uiCrc >> 8;
+        MOVW    R17:R16, R19:R18
+        MOV     R16, R17
+        LDI     R17, 0
+        MOVW    R31:R30, R27:R26
+        ADD     R30, R24
+        ADC     R31, R25
+        ST      Z, R16
+        ADIW    R25:R24, 1
 //  119 
 //  120     return uiLength;
-        ADIW    R25:R24, 1
         MOVW    R17:R16, R25:R24
         LDI     R30, 4
         RJMP    ?EPILOGUE_B4_L09
@@ -916,13 +979,16 @@ _A_PINB:
 //  141 int16_t CModbusRTU::ResponseBasis(uint8_t uiSlave, uint8_t uiFunctionCode, uint8_t *puiResponse)
 ??ResponseBasis:
 //  142 {
+        MOV     R20, R16
+        MOV     R21, R17
 //  143     /* In this case, the slave is certainly valid because a check is already
 //  144      * done in _modbus_rtu_listen */
 //  145     puiResponse[0] = uiSlave;
         MOVW    R31:R30, R19:R18
-        ST      Z, R16
+        ST      Z, R20
 //  146     puiResponse[1] = uiFunctionCode;
-        STD     Z+1, R17
+        MOVW    R31:R30, R19:R18
+        STD     Z+1, R21
 //  147 
 //  148     return _MODBUS_RTU_PRESET_RSP_LENGTH;
         LDI     R16, 2
@@ -936,9 +1002,15 @@ _A_PINB:
 //  152 int16_t CModbusRTU::Send(uint8_t *puiMessage, uint16_t uiLength)
 ??Send:
 //  153 {
+        RCALL   ?PROLOGUE4_L09
+        MOVW    R27:R26, R17:R16
+        MOVW    R25:R24, R19:R18
 //  154     return CUart::Write(puiMessage, uiLength);
+        MOVW    R19:R18, R25:R24
+        MOVW    R17:R16, R27:R26
         RCALL   ??Write
-        RET
+        LDI     R30, 4
+        RJMP    ?EPILOGUE_B4_L09
 //  155 }
 //  156 
 //  157 //-----------------------------------------------------------------------------------------------------
@@ -975,9 +1047,15 @@ _A_PINB:
 //  176 int16_t CModbusRTU::Receive(uint8_t *puiDestination, uint16_t uiLength)
 ??Receive:
 //  177 {
+        RCALL   ?PROLOGUE4_L09
+        MOVW    R27:R26, R17:R16
+        MOVW    R25:R24, R19:R18
 //  178     return CUart::Read(puiDestination, uiLength);
+        MOVW    R19:R18, R25:R24
+        MOVW    R17:R16, R27:R26
         RCALL   ??Read
-        RET
+        LDI     R30, 4
+        RJMP    ?EPILOGUE_B4_L09
 //  179 }
 //  180 
 //  181 //-----------------------------------------------------------------------------------------------------
@@ -986,8 +1064,23 @@ _A_PINB:
 //  182 uint8_t CModbusRTU::FrameIsReceived(void)
 ??FrameIsReceived:
 //  183 {
-//  184     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
-//  185             m_uiGuardTimeout)
+        RCALL   ?PROLOGUE2_L09
+//  184     int16_t uiData;
+//  185     uiData = CPlatform::GetSystemTick();
+        RCALL   ??GetSystemTick
+        MOVW    R25:R24, R17:R16
+//  186     uiData = m_uiLastSystemTime;
+        LDI     R30, LOW(??m_uiLastSystemTime)
+        LDI     R31, (??m_uiLastSystemTime) >> 8
+        LD      R16, Z
+        LDD     R17, Z+1
+        MOVW    R25:R24, R17:R16
+//  187     uiData = m_uiGuardTimeout;
+        LDI     R24, 4
+        LDI     R25, 0
+//  188 
+//  189     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
+//  190             m_uiGuardTimeout)
         RCALL   ??GetSystemTick
         LDI     R30, LOW(??m_uiLastSystemTime)
         LDI     R31, (??m_uiLastSystemTime) >> 8
@@ -998,28 +1091,30 @@ _A_PINB:
         CPI     R16, 4
         SBCI    R17, 0
         BRCS    ??FrameIsReceived_1
-//  186     {
-//  187         return 1;
+//  191     {
+//  192         return 1;
         LDI     R16, 1
-        RET
-//  188     }
-//  189     else
-//  190     {
-//  191         return 0;
+        RJMP    ??FrameIsReceived_2
+//  193     }
+//  194     else
+//  195     {
+//  196         return 0;
 ??FrameIsReceived_1:
         LDI     R16, 0
-        RET
-//  192     }
-//  193 };
-//  194 
-//  195 //-----------------------------------------------------------------------------------------------------
+??FrameIsReceived_2:
+        LDI     R30, 2
+        RJMP    ?EPILOGUE_B2_L09
+//  197     }
+//  198 };
+//  199 
+//  200 //-----------------------------------------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//  196 uint8_t CModbusRTU::ReceiveTimeIsOver(void)
+//  201 uint8_t CModbusRTU::ReceiveTimeIsOver(void)
 ??ReceiveTimeIsOver:
-//  197 {
-//  198     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
-//  199             m_uiReceiveTimeout)
+//  202 {
+//  203     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
+//  204             m_uiReceiveTimeout)
         RCALL   ??GetSystemTick
         LDI     R30, LOW(??m_uiLastSystemTime)
         LDI     R31, (??m_uiLastSystemTime) >> 8
@@ -1031,28 +1126,28 @@ _A_PINB:
         LDI     R18, 0
         CPC     R17, R18
         BRCS    ??ReceiveTimeIsOver_1
-//  200     {
-//  201         return 1;
+//  205     {
+//  206         return 1;
         LDI     R16, 1
         RET
-//  202     }
-//  203     else
-//  204     {
-//  205         return 0;
+//  207     }
+//  208     else
+//  209     {
+//  210         return 0;
 ??ReceiveTimeIsOver_1:
         LDI     R16, 0
         RET
-//  206     }
-//  207 };
-//  208 
-//  209 //-----------------------------------------------------------------------------------------------------
+//  211     }
+//  212 };
+//  213 
+//  214 //-----------------------------------------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//  210 uint8_t CModbusRTU::ConfirmationReceiveTimeIsOver(void)
+//  215 uint8_t CModbusRTU::ConfirmationReceiveTimeIsOver(void)
 ??ConfirmationReceiveTimeIsOver:
-//  211 {
-//  212     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
-//  213             m_uiConfirmationTimeout)
+//  216 {
+//  217     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
+//  218             m_uiConfirmationTimeout)
         RCALL   ??GetSystemTick
         LDI     R30, LOW(??m_uiLastSystemTime)
         LDI     R31, (??m_uiLastSystemTime) >> 8
@@ -1064,28 +1159,28 @@ _A_PINB:
         LDI     R18, 0
         CPC     R17, R18
         BRCS    ??ConfirmationReceiveTimeIsOver_1
-//  214     {
-//  215         return 1;
+//  219     {
+//  220         return 1;
         LDI     R16, 1
         RET
-//  216     }
-//  217     else
-//  218     {
-//  219         return 0;
+//  221     }
+//  222     else
+//  223     {
+//  224         return 0;
 ??ConfirmationReceiveTimeIsOver_1:
         LDI     R16, 0
         RET
-//  220     }
-//  221 };
-//  222 
-//  223 //-----------------------------------------------------------------------------------------------------
+//  225     }
+//  226 };
+//  227 
+//  228 //-----------------------------------------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//  224 uint8_t CModbusRTU::TransmitDelayTimeIsOver(void)
+//  229 uint8_t CModbusRTU::TransmitDelayTimeIsOver(void)
 ??TransmitDelayTimeIsOver:
-//  225 {
-//  226     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
-//  227             m_uiTransmitDelayTimeout)
+//  230 {
+//  231     if ((CPlatform::GetSystemTick() - m_uiLastSystemTime)  >=
+//  232             m_uiTransmitDelayTimeout)
         RCALL   ??GetSystemTick
         LDI     R30, LOW(??m_uiLastSystemTime)
         LDI     R31, (??m_uiLastSystemTime) >> 8
@@ -1096,145 +1191,160 @@ _A_PINB:
         CPI     R16, 5
         SBCI    R17, 0
         BRCS    ??TransmitDelayTimeIsOver_1
-//  228     {
-//  229         return 1;
+//  233     {
+//  234         return 1;
         LDI     R16, 1
         RET
-//  230     }
-//  231     else
-//  232     {
-//  233         return 0;
+//  235     }
+//  236     else
+//  237     {
+//  238         return 0;
 ??TransmitDelayTimeIsOver_1:
         LDI     R16, 0
         RET
-//  234     }
-//  235 };
-//  236 
-//  237 //-----------------------------------------------------------------------------------------------------
+//  239     }
+//  240 };
+//  241 
+//  242 //-----------------------------------------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//  238 uint16_t CModbusRTU::GetFrameLength(void)
+//  243 uint16_t CModbusRTU::GetFrameLength(void)
 ??GetFrameLength_1:
-//  239 {
-//  240     return CUart::GetFrameLength();
+//  244 {
+//  245     return CUart::GetFrameLength();
         RCALL   ??GetFrameLength
         RET
-//  241 }
-//  242 
-//  243 //-----------------------------------------------------------------------------------------------------
+//  246 }
+//  247 
+//  248 //-----------------------------------------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//  244 void CModbusRTU::GetSystemTime(void)
+//  249 void CModbusRTU::GetSystemTime(void)
 ??GetSystemTime:
-//  245 {
-//  246     m_uiLastSystemTime = CPlatform::GetSystemTick();
+//  250 {
+//  251     m_uiLastSystemTime = CPlatform::GetSystemTick();
         RCALL   ??GetSystemTick
         LDI     R30, LOW(??m_uiLastSystemTime)
         LDI     R31, (??m_uiLastSystemTime) >> 8
         ST      Z, R16
         STD     Z+1, R17
-//  247 }
+//  252 }
         RET
-//  248 
-//  249 ////-----------------------------------------------------------------------------------------------------
-//  250 //int8_t CModbusRTU::FrameCheck(void)
-//  251 //{
-//  252 //    if (CUart::m_nuiRxBuffByteCounter < _MIN_MESSAGE_LENGTH)
-//  253 //    {
-//  254 //        return 0;
-//  255 //    }
-//  256 //
-//  257 //    uint16_t uiCrc = ((static_cast<uint16_t>(m_puiRxBuffer[CUart::m_nuiRxBuffByteCounter - 1]) << 8) |
-//  258 //                      (static_cast<uint16_t>(m_puiRxBuffer[CUart::m_nuiRxBuffByteCounter - 2])));
-//  259 //
-//  260 //    if (usCrc16(m_puiRxBuffer,
-//  261 //                (CUart::m_nuiRxBuffByteCounter - _MODBUS_RTU_CHECKSUM_LENGTH)) == uiCrc)
-//  262 //    {
-//  263 //        return 1;
-//  264 //    }
-//  265 //    else
-//  266 //    {
-//  267 //        return 0;
-//  268 //    }
-//  269 //}
-//  270 
-//  271 //-----------------------------------------------------------------------------------------------------
+//  253 
+//  254 ////-----------------------------------------------------------------------------------------------------
+//  255 //int8_t CModbusRTU::FrameCheck(void)
+//  256 //{
+//  257 //    if (CUart::m_nuiRxBuffByteCounter < _MIN_MESSAGE_LENGTH)
+//  258 //    {
+//  259 //        return 0;
+//  260 //    }
+//  261 //
+//  262 //    uint16_t uiCrc = ((static_cast<uint16_t>(m_puiRxBuffer[CUart::m_nuiRxBuffByteCounter - 1]) << 8) |
+//  263 //                      (static_cast<uint16_t>(m_puiRxBuffer[CUart::m_nuiRxBuffByteCounter - 2])));
+//  264 //
+//  265 //    if (usCrc16(m_puiRxBuffer,
+//  266 //                (CUart::m_nuiRxBuffByteCounter - _MODBUS_RTU_CHECKSUM_LENGTH)) == uiCrc)
+//  267 //    {
+//  268 //        return 1;
+//  269 //    }
+//  270 //    else
+//  271 //    {
+//  272 //        return 0;
+//  273 //    }
+//  274 //}
+//  275 
+//  276 //-----------------------------------------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//  272 int8_t CModbusRTU::FrameCheck(uint8_t *puiSourse, uint16_t uiLength)
+//  277 int8_t CModbusRTU::FrameCheck(uint8_t *puiSourse, uint16_t uiLength)
 ??FrameCheck:
-//  273 {
-        RCALL   ?PROLOGUE6_L09
+//  278 {
+        RCALL   ?PROLOGUE8_L09
         REQUIRE ?Register_R4_is_cg_reg
         REQUIRE ?Register_R5_is_cg_reg
-        MOVW    R25:R24, R17:R16
-//  274     if (uiLength < _MIN_MESSAGE_LENGTH)
-        CPI     R18, 4
+        REQUIRE ?Register_R6_is_cg_reg
+        REQUIRE ?Register_R7_is_cg_reg
+        MOVW    R27:R26, R17:R16
+        MOVW    R25:R24, R19:R18
+//  279     if (uiLength < _MIN_MESSAGE_LENGTH)
+        CPI     R24, 4
         LDI     R16, 0
-        CPC     R19, R16
-        BRCS    ??FrameCheck_1
-//  275     {
-//  276         return 0;
-//  277     }
-//  278 
-//  279     uint16_t uiCrc = ((static_cast<uint16_t>(puiSourse[uiLength - 1]) << 8) |
-//  280                       (static_cast<uint16_t>(puiSourse[uiLength - 2])));
-        MOVW    R31:R30, R25:R24
-        ADD     R30, R18
-        ADC     R31, R19
+        CPC     R25, R16
+        BRCC    ??FrameCheck_1
+//  280     {
+//  281         return 0;
+        LDI     R16, 0
+        RJMP    ??FrameCheck_2
+//  282     }
+//  283 
+//  284     uint16_t uiCrc = ((static_cast<uint16_t>(puiSourse[uiLength - 1]) << 8) |
+//  285                       (static_cast<uint16_t>(puiSourse[uiLength - 2])));
+??FrameCheck_1:
+        MOVW    R31:R30, R27:R26
+        ADD     R30, R24
+        ADC     R31, R25
+        SBIW    R31:R30, 1
+        LD      R5, Z
+        CLR     R4
+        MOVW    R31:R30, R27:R26
+        ADD     R30, R24
+        ADC     R31, R25
         SBIW    R31:R30, 2
-        LDD     R27, Z+1
-        LDI     R26, 0
         LD      R16, Z
-        OR      R26, R16
-//  281     uint16_t uiCrcTemp = usCrc16(puiSourse,
-//  282                                  (uiLength - _MODBUS_RTU_CHECKSUM_LENGTH));
+        LDI     R17, 0
+        OR      R4, R16
+        OR      R5, R17
+//  286     uint16_t uiCrcTemp = usCrc16(puiSourse,
+//  287                                  (uiLength - _MODBUS_RTU_CHECKSUM_LENGTH));
+        MOVW    R19:R18, R25:R24
         SUBI    R18, 2
         SBCI    R19, 0
-        MOVW    R5:R4, R19:R18
-        MOVW    R17:R16, R25:R24
+        MOVW    R17:R16, R27:R26
         RCALL   ??usCrc16
-//  283     if (usCrc16(puiSourse,
-//  284                 (uiLength - _MODBUS_RTU_CHECKSUM_LENGTH)) == uiCrc)
-        MOVW    R19:R18, R5:R4
-        MOVW    R17:R16, R25:R24
+        MOVW    R7:R6, R17:R16
+//  288     if (usCrc16(puiSourse,
+//  289                 (uiLength - _MODBUS_RTU_CHECKSUM_LENGTH)) == uiCrc)
+        MOVW    R19:R18, R25:R24
+        SUBI    R18, 2
+        SBCI    R19, 0
+        MOVW    R17:R16, R27:R26
         RCALL   ??usCrc16
-        CP      R16, R26
-        CPC     R17, R27
-        BRNE    ??FrameCheck_1
-//  285     {
-//  286         return 1;
+        CP      R16, R4
+        CPC     R17, R5
+        BRNE    ??FrameCheck_3
+//  290     {
+//  291         return 1;
         LDI     R16, 1
         RJMP    ??FrameCheck_2
-//  287     }
-//  288     else
-//  289     {
-//  290         return 0;
-??FrameCheck_1:
+//  292     }
+//  293     else
+//  294     {
+//  295         return 0;
+??FrameCheck_3:
         LDI     R16, 0
 ??FrameCheck_2:
-        LDI     R30, 6
-        RJMP    ?EPILOGUE_B6_L09
-//  291     }
-//  292 }
-//  293 
-//  294 //-----------------------------------------------------------------------------------------------------
+        LDI     R30, 8
+        RJMP    ?EPILOGUE_B8_L09
+//  296     }
+//  297 }
+//  298 
+//  299 //-----------------------------------------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//  295 void CModbusRTU::Execution(void)
+//  300 void CModbusRTU::Execution(void)
 ??Execution:
-//  296 {
-//  297     int16_t iReceivedCounter;
-//  298 
-//  299     switch (m_uiFlowControl)
+//  301 {
+        RCALL   ?PROLOGUE2_L09
+//  302     int16_t iReceivedCounter;
+//  303 
+//  304     switch (m_uiFlowControl)
         LDS     R16, ??m_uiFlowControl
-        SUBI    R16, 2
+        SUBI    R16, 0
         BREQ    ??Execution_1
-        DEC     R16
+        SUBI    R16, 2
         BREQ    ??Execution_2
         DEC     R16
-        BRNE    $+2+2
-        RJMP    ??Execution_3
+        BREQ    ??Execution_3
         DEC     R16
         BRNE    $+2+2
         RJMP    ??Execution_4
@@ -1247,109 +1357,43 @@ _A_PINB:
         DEC     R16
         BRNE    $+2+2
         RJMP    ??Execution_7
-        RET
-//  300     {
-//  301     case IDDLE:
-//  302         break;
-//  303 
-//  304     case START_REQUEST:
-//  305         GetSystemTime();
+        DEC     R16
+        BRNE    $+2+2
+        RJMP    ??Execution_8
+        RJMP    ??Execution_9
+//  305     {
+//  306     case IDDLE:
+//  307         break;
 ??Execution_1:
+        RJMP    ??Execution_9
+//  308 
+//  309     case START_REQUEST:
+//  310         GetSystemTime();
+??Execution_2:
         RCALL   ??GetSystemTime
-//  306         Reset();
+//  311         Reset();
         RCALL   ??Reset
-//  307         m_uiMessageLength = 0;
+//  312         m_uiMessageLength = 0;
         LDI     R30, LOW(??m_uiMessageLength)
         LDI     R31, (??m_uiMessageLength) >> 8
         LDI     R16, 0
         ST      Z, R16
+        LDI     R16, 0
         STD     Z+1, R16
-//  308         m_uiFlowControl = WAITING_MESSAGE_REQUEST;
+//  313         m_uiFlowControl = WAITING_MESSAGE_REQUEST;
         LDI     R16, 3
-        RJMP    ??Execution_8
-//  309         break;
-//  310 
-//  311     case WAITING_MESSAGE_REQUEST:
-//  312         if (Select())
-??Execution_2:
-        RCALL   ??Select
-        TST     R16
-        BREQ    ??Execution_9
-//  313         {
-//  314             iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
-        LDI     R18, 32
-        LDI     R19, 0
-        LDI     R30, LOW(??m_uiMessageLength)
-        LDI     R31, (??m_uiMessageLength) >> 8
-        LD      R16, Z
-        LDD     R17, Z+1
-        SUB     R18, R16
-        SBC     R19, R17
-        LD      R20, Z
-        LDD     R21, Z+1
-        LDI     R30, LOW(??m_puiRxBuffer)
-        LDI     R31, (??m_puiRxBuffer) >> 8
-        LD      R16, Z
-        LDD     R17, Z+1
-        ADD     R16, R20
-        ADC     R17, R21
-        RCALL   ??Receive
-//  315 
-//  316             if (iReceivedCounter > 0)
-        CPI     R16, 1
-        LDI     R18, 0
-        CPC     R17, R18
-        BRLT    ??Execution_10
-//  317             {
-//  318                 m_uiMessageLength += iReceivedCounter;
-        LDI     R30, LOW(??m_uiMessageLength)
-        LDI     R31, (??m_uiMessageLength) >> 8
-        LD      R18, Z
-        LDD     R19, Z+1
-        ADD     R18, R16
-        ADC     R19, R17
-        ST      Z, R18
-        STD     Z+1, R19
-//  319                 GetSystemTime();
-        RCALL   ??GetSystemTime
-//  320                 m_uiFlowControl = RECEIVE_MESSAGE_REQUEST;
-        LDI     R16, 4
-        RJMP    ??Execution_11
-//  321             }
-//  322             else if (iReceivedCounter == -1)
-??Execution_10:
-        CPI     R16, 255
-        SBCI    R17, 255
-        BRNE    ??Execution_9
-//  323             {
-//  324                 m_uiFlowControl = START_REQUEST;
-        LDI     R16, 2
-??Execution_11:
         STS     ??m_uiFlowControl, R16
-//  325             }
-//  326         }
-//  327 
-//  328         if (ReceiveTimeIsOver())
-??Execution_9:
-        RCALL   ??ReceiveTimeIsOver
-        TST     R16
-        BREQ    $+2+2
-        RJMP    ??Execution_12
-        RET
-//  329         {
-//  330             m_uiFlowControl = START_REQUEST;
-//  331         }
-//  332 
-//  333         break;
-//  334 
-//  335     case RECEIVE_MESSAGE_REQUEST:
-//  336         if (Select())
+//  314         break;
+        RJMP    ??Execution_9
+//  315 
+//  316     case WAITING_MESSAGE_REQUEST:
+//  317         if (Select())
 ??Execution_3:
         RCALL   ??Select
         TST     R16
-        BREQ    ??Execution_13
-//  337         {
-//  338             iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+        BREQ    ??Execution_10
+//  318         {
+//  319             iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
         LDI     R18, 32
         LDI     R19, 0
         LDI     R30, LOW(??m_uiMessageLength)
@@ -1358,6 +1402,8 @@ _A_PINB:
         LDD     R17, Z+1
         SUB     R18, R16
         SBC     R19, R17
+        LDI     R30, LOW(??m_uiMessageLength)
+        LDI     R31, (??m_uiMessageLength) >> 8
         LD      R20, Z
         LDD     R21, Z+1
         LDI     R30, LOW(??m_puiRxBuffer)
@@ -1367,45 +1413,126 @@ _A_PINB:
         ADD     R16, R20
         ADC     R17, R21
         RCALL   ??Receive
-//  339 
-//  340             if (iReceivedCounter > 0)
-        CPI     R16, 1
-        LDI     R18, 0
-        CPC     R17, R18
-        BRLT    ??Execution_14
-//  341             {
-//  342                 m_uiMessageLength += iReceivedCounter;
+        MOVW    R25:R24, R17:R16
+//  320 
+//  321             if (iReceivedCounter > 0)
+        CPI     R24, 1
+        LDI     R16, 0
+        CPC     R25, R16
+        BRLT    ??Execution_11
+//  322             {
+//  323                 m_uiMessageLength += iReceivedCounter;
         LDI     R30, LOW(??m_uiMessageLength)
         LDI     R31, (??m_uiMessageLength) >> 8
-        LD      R18, Z
-        LDD     R19, Z+1
-        ADD     R18, R16
-        ADC     R19, R17
-        ST      Z, R18
-        STD     Z+1, R19
-//  343                 GetSystemTime();
+        LD      R16, Z
+        LDD     R17, Z+1
+        ADD     R16, R24
+        ADC     R17, R25
+        ST      Z, R16
+        STD     Z+1, R17
+//  324                 GetSystemTime();
         RCALL   ??GetSystemTime
-        RJMP    ??Execution_13
-//  344             }
-//  345             else if (iReceivedCounter == -1)
-??Execution_14:
-        CPI     R16, 255
-        SBCI    R17, 255
-        BRNE    ??Execution_13
-//  346             {
-//  347                 m_uiFlowControl = START_REQUEST;
+//  325                 m_uiFlowControl = RECEIVE_MESSAGE_REQUEST;
+        LDI     R16, 4
+        STS     ??m_uiFlowControl, R16
+        RJMP    ??Execution_10
+//  326             }
+//  327             else if (iReceivedCounter == -1)
+??Execution_11:
+        CPI     R24, 255
+        LDI     R16, 255
+        CPC     R25, R16
+        BRNE    ??Execution_10
+//  328             {
+//  329                 m_uiFlowControl = START_REQUEST;
         LDI     R16, 2
         STS     ??m_uiFlowControl, R16
-//  348             }
-//  349         }
-//  350 
-//  351         if (FrameIsReceived())
+//  330             }
+//  331         }
+//  332 
+//  333         if (ReceiveTimeIsOver())
+??Execution_10:
+        RCALL   ??ReceiveTimeIsOver
+        TST     R16
+        BREQ    ??Execution_12
+//  334         {
+//  335             m_uiFlowControl = START_REQUEST;
+        LDI     R16, 2
+        STS     ??m_uiFlowControl, R16
+//  336         }
+//  337 
+//  338         break;
+??Execution_12:
+        RJMP    ??Execution_9
+//  339 
+//  340     case RECEIVE_MESSAGE_REQUEST:
+//  341         if (Select())
+??Execution_4:
+        RCALL   ??Select
+        TST     R16
+        BREQ    ??Execution_13
+//  342         {
+//  343             iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+        LDI     R18, 32
+        LDI     R19, 0
+        LDI     R30, LOW(??m_uiMessageLength)
+        LDI     R31, (??m_uiMessageLength) >> 8
+        LD      R16, Z
+        LDD     R17, Z+1
+        SUB     R18, R16
+        SBC     R19, R17
+        LDI     R30, LOW(??m_uiMessageLength)
+        LDI     R31, (??m_uiMessageLength) >> 8
+        LD      R20, Z
+        LDD     R21, Z+1
+        LDI     R30, LOW(??m_puiRxBuffer)
+        LDI     R31, (??m_puiRxBuffer) >> 8
+        LD      R16, Z
+        LDD     R17, Z+1
+        ADD     R16, R20
+        ADC     R17, R21
+        RCALL   ??Receive
+        MOVW    R25:R24, R17:R16
+//  344 
+//  345             if (iReceivedCounter > 0)
+        CPI     R24, 1
+        LDI     R16, 0
+        CPC     R25, R16
+        BRLT    ??Execution_14
+//  346             {
+//  347                 m_uiMessageLength += iReceivedCounter;
+        LDI     R30, LOW(??m_uiMessageLength)
+        LDI     R31, (??m_uiMessageLength) >> 8
+        LD      R16, Z
+        LDD     R17, Z+1
+        ADD     R16, R24
+        ADC     R17, R25
+        ST      Z, R16
+        STD     Z+1, R17
+//  348                 GetSystemTime();
+        RCALL   ??GetSystemTime
+        RJMP    ??Execution_13
+//  349             }
+//  350             else if (iReceivedCounter == -1)
+??Execution_14:
+        CPI     R24, 255
+        LDI     R16, 255
+        CPC     R25, R16
+        BRNE    ??Execution_13
+//  351             {
+//  352                 m_uiFlowControl = START_REQUEST;
+        LDI     R16, 2
+        STS     ??m_uiFlowControl, R16
+//  353             }
+//  354         }
+//  355 
+//  356         if (FrameIsReceived())
 ??Execution_13:
         RCALL   ??FrameIsReceived
         TST     R16
         BREQ    ??Execution_15
-//  352         {
-//  353             if (FrameCheck(m_puiRxBuffer, m_uiMessageLength))
+//  357         {
+//  358             if (FrameCheck(m_puiRxBuffer, m_uiMessageLength))
         LDI     R30, LOW(??m_uiMessageLength)
         LDI     R31, (??m_uiMessageLength) >> 8
         LD      R18, Z
@@ -1416,25 +1543,29 @@ _A_PINB:
         LDD     R17, Z+1
         RCALL   ??FrameCheck
         TST     R16
-        BREQ    ??Execution_12
-//  354             {
-//  355                 m_uiFlowControl = REPLY_REQUEST;
+        BREQ    ??Execution_16
+//  359             {
+//  360                 m_uiFlowControl = REPLY_REQUEST;
         LDI     R16, 5
-??Execution_8:
         STS     ??m_uiFlowControl, R16
-        RET
-//  356             }
-//  357             else
-//  358             {
-//  359                 m_uiFlowControl = START_REQUEST;
-//  360             }
-//  361         }
-//  362 
-//  363         break;
-//  364 
-//  365     case REPLY_REQUEST:
-//  366         if (Reply(m_puiRxBuffer, m_puiTxBuffer, m_uiMessageLength))
-??Execution_4:
+        RJMP    ??Execution_9
+//  361             }
+//  362             else
+//  363             {
+//  364                 m_uiFlowControl = START_REQUEST;
+??Execution_16:
+        LDI     R16, 2
+        STS     ??m_uiFlowControl, R16
+//  365             }
+//  366         }
+//  367 
+//  368         break;
+??Execution_15:
+        RJMP    ??Execution_9
+//  369 
+//  370     case REPLY_REQUEST:
+//  371         if (Reply(m_puiRxBuffer, m_puiTxBuffer, m_uiMessageLength))
+??Execution_5:
         LDI     R30, LOW(??m_uiMessageLength)
         LDI     R31, (??m_uiMessageLength) >> 8
         LD      R20, Z
@@ -1449,39 +1580,45 @@ _A_PINB:
         LDD     R17, Z+1
         RCALL   ??Reply
         OR      R16, R17
-        BREQ    ??Execution_12
-//  367         {
-//  368 //            CPlatform::TxLedOn();
-//  369             m_uiFlowControl = FRAME_TRANSMIT_CONFIRMATION;
-        LDI     R16, 6
-        RJMP    ??Execution_8
-//  370         }
-//  371         else
+        BREQ    ??Execution_17
 //  372         {
-//  373 //            CPlatform::TxLedOff();
-//  374             m_uiFlowControl = START_REQUEST;
+//  373 //            CPlatform::TxLedOn();
+//  374             m_uiFlowControl = FRAME_TRANSMIT_CONFIRMATION;
+        LDI     R16, 6
+        STS     ??m_uiFlowControl, R16
+        RJMP    ??Execution_9
 //  375         }
-//  376         break;
-//  377 
-//  378     case FRAME_TRANSMIT_CONFIRMATION:
-//  379         Reset();
-??Execution_5:
-        RCALL   ??Reset
-//  380         GetSystemTime();
-        RCALL   ??GetSystemTime
-//  381         m_uiFlowControl = WAITING_FRAME_TRANSMIT_CONFIRMATION;
-        LDI     R16, 7
-        RJMP    ??Execution_8
-//  382         break;
-//  383 
-//  384     case WAITING_FRAME_TRANSMIT_CONFIRMATION:
-//  385         if (TransmitDelayTimeIsOver())
+//  376         else
+//  377         {
+//  378 //            CPlatform::TxLedOff();
+//  379             m_uiFlowControl = START_REQUEST;
+??Execution_17:
+        LDI     R16, 2
+        STS     ??m_uiFlowControl, R16
+//  380         }
+//  381         break;
+        RJMP    ??Execution_9
+//  382 
+//  383     case FRAME_TRANSMIT_CONFIRMATION:
+//  384         Reset();
 ??Execution_6:
+        RCALL   ??Reset
+//  385         GetSystemTime();
+        RCALL   ??GetSystemTime
+//  386         m_uiFlowControl = WAITING_FRAME_TRANSMIT_CONFIRMATION;
+        LDI     R16, 7
+        STS     ??m_uiFlowControl, R16
+//  387         break;
+        RJMP    ??Execution_9
+//  388 
+//  389     case WAITING_FRAME_TRANSMIT_CONFIRMATION:
+//  390         if (TransmitDelayTimeIsOver())
+??Execution_7:
         RCALL   ??TransmitDelayTimeIsOver
         TST     R16
-        BREQ    ??Execution_15
-//  386         {
-//  387             SendMessage(m_puiTxBuffer, m_uiMessageLength);
+        BREQ    ??Execution_9
+//  391         {
+//  392             SendMessage(m_puiTxBuffer, m_uiMessageLength);
         LDI     R30, LOW(??m_uiMessageLength)
         LDI     R31, (??m_uiMessageLength) >> 8
         LD      R18, Z
@@ -1491,133 +1628,134 @@ _A_PINB:
         LD      R16, Z
         LDD     R17, Z+1
         RCALL   ??SendMessage
-//  388             m_uiFlowControl = END_WAITING_FRAME_TRANSMIT_CONFIRMATION;
+//  393             m_uiFlowControl = END_WAITING_FRAME_TRANSMIT_CONFIRMATION;
         LDI     R16, 8
-        RJMP    ??Execution_8
-//  389         }
-//  390         break;
-//  391 
-//  392     case END_WAITING_FRAME_TRANSMIT_CONFIRMATION:
-//  393         if (MessageIsSended())
-??Execution_7:
+        STS     ??m_uiFlowControl, R16
+//  394         }
+//  395         break;
+        RJMP    ??Execution_9
+//  396 
+//  397     case END_WAITING_FRAME_TRANSMIT_CONFIRMATION:
+//  398         if (MessageIsSended())
+??Execution_8:
         RCALL   ??MessageIsSended
         TST     R16
-        BREQ    ??Execution_15
-//  394         {
-//  395 //            CPlatform::TxLedOff();
-//  396             m_uiFlowControl = START_REQUEST;
-??Execution_12:
+        BREQ    ??Execution_9
+//  399         {
+//  400 //            CPlatform::TxLedOff();
+//  401             m_uiFlowControl = START_REQUEST;
         LDI     R16, 2
         STS     ??m_uiFlowControl, R16
-//  397         }
-//  398 
-//  399         break;
-//  400 
-//  401 ////-----------------------------------------------------------------------------------------------------
-//  402 //// ModbusMaster
-//  403 //    case START_CONFIRMATION:
-//  404 //        GetSystemTime();
-//  405 //        Reset();
-//  406 //        m_uiMessageLength = 0;
-//  407 //        m_uiFlowControl = WAITING_MESSAGE_CONFIRMATION;
-//  408 //        break;
-//  409 //
-//  410 //    case WAITING_MESSAGE_CONFIRMATION:
-//  411 //        if (Select())
-//  412 //        {
-//  413 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  402         }
+//  403 
+//  404         break;
+//  405 
+//  406 ////-----------------------------------------------------------------------------------------------------
+//  407 //// ModbusMaster
+//  408 //    case START_CONFIRMATION:
+//  409 //        GetSystemTime();
+//  410 //        Reset();
+//  411 //        m_uiMessageLength = 0;
+//  412 //        m_uiFlowControl = WAITING_MESSAGE_CONFIRMATION;
+//  413 //        break;
 //  414 //
-//  415 //            if (iReceivedCounter > 0)
-//  416 //            {
-//  417 //                m_uiMessageLength += iReceivedCounter;
-//  418 //                GetSystemTime();
-//  419 //                m_uiFlowControl = RECEIVE_MESSAGE_CONFIRMATION;
-//  420 //            }
-//  421 //            else if (iReceivedCounter == -1)
-//  422 //            {
-//  423 //                m_uiFlowControl = START_CONFIRMATION;
-//  424 //            }
-//  425 //        }
-//  426 //
-//  427 //        if (ConfirmationReceiveTimeIsOver())
-//  428 //        {
-//  429 //            m_uiFlowControl = START_CONFIRMATION;
+//  415 //    case WAITING_MESSAGE_CONFIRMATION:
+//  416 //        if (Select())
+//  417 //        {
+//  418 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  419 //
+//  420 //            if (iReceivedCounter > 0)
+//  421 //            {
+//  422 //                m_uiMessageLength += iReceivedCounter;
+//  423 //                GetSystemTime();
+//  424 //                m_uiFlowControl = RECEIVE_MESSAGE_CONFIRMATION;
+//  425 //            }
+//  426 //            else if (iReceivedCounter == -1)
+//  427 //            {
+//  428 //                m_uiFlowControl = START_CONFIRMATION;
+//  429 //            }
 //  430 //        }
 //  431 //
-//  432 //        break;
-//  433 //
-//  434 //    case RECEIVE_MESSAGE_CONFIRMATION:
-//  435 //        if (Select())
-//  436 //        {
-//  437 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  432 //        if (ConfirmationReceiveTimeIsOver())
+//  433 //        {
+//  434 //            m_uiFlowControl = START_CONFIRMATION;
+//  435 //        }
+//  436 //
+//  437 //        break;
 //  438 //
-//  439 //            if (iReceivedCounter > 0)
-//  440 //            {
-//  441 //                m_uiMessageLength += iReceivedCounter;
-//  442 //                GetSystemTime();
-//  443 //            }
-//  444 //            else if (iReceivedCounter == -1)
+//  439 //    case RECEIVE_MESSAGE_CONFIRMATION:
+//  440 //        if (Select())
+//  441 //        {
+//  442 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  443 //
+//  444 //            if (iReceivedCounter > 0)
 //  445 //            {
-//  446 //                m_uiFlowControl = START_CONFIRMATION;
-//  447 //            }
-//  448 //        }
-//  449 //
-//  450 //        if (FrameIsReceived())
-//  451 //        {
-//  452 //            if (FrameCheck(m_puiRxBuffer, m_uiMessageLength))
-//  453 //            {
-//  454 //                m_uiFlowControl = REPLY_CONFIRMATION;
-//  455 //            }
-//  456 //            else
-//  457 //            {
-//  458 //                m_uiFlowControl = START_CONFIRMATION;
-//  459 //            }
-//  460 //        }
-//  461 //
-//  462 //        break;
-//  463 //
-//  464 //    case REPLY_CONFIRMATION:
-//  465 //        if (Reply(m_puiRxBuffer, m_puiTxBuffer, m_uiMessageLength))
-//  466 //        {
-//  467 //            CPlatform::TxLedOn();
-//  468 //            m_uiFlowControl = FRAME_TRANSMIT_REQUEST;
-//  469 //        }
-//  470 //        else
+//  446 //                m_uiMessageLength += iReceivedCounter;
+//  447 //                GetSystemTime();
+//  448 //            }
+//  449 //            else if (iReceivedCounter == -1)
+//  450 //            {
+//  451 //                m_uiFlowControl = START_CONFIRMATION;
+//  452 //            }
+//  453 //        }
+//  454 //
+//  455 //        if (FrameIsReceived())
+//  456 //        {
+//  457 //            if (FrameCheck(m_puiRxBuffer, m_uiMessageLength))
+//  458 //            {
+//  459 //                m_uiFlowControl = REPLY_CONFIRMATION;
+//  460 //            }
+//  461 //            else
+//  462 //            {
+//  463 //                m_uiFlowControl = START_CONFIRMATION;
+//  464 //            }
+//  465 //        }
+//  466 //
+//  467 //        break;
+//  468 //
+//  469 //    case REPLY_CONFIRMATION:
+//  470 //        if (Reply(m_puiRxBuffer, m_puiTxBuffer, m_uiMessageLength))
 //  471 //        {
-//  472 //            CPlatform::TxLedOff();
-//  473 //            m_uiFlowControl = START_CONFIRMATION;
+//  472 //            CPlatform::TxLedOn();
+//  473 //            m_uiFlowControl = FRAME_TRANSMIT_REQUEST;
 //  474 //        }
-//  475 //        break;
-//  476 //
-//  477 //    case FRAME_TRANSMIT_REQUEST:
-//  478 //        Reset();
-//  479 //        GetSystemTime();
-//  480 //        m_uiFlowControl = WAITING_FRAME_TRANSMIT_REQUEST;
-//  481 //        break;
-//  482 //
-//  483 //    case WAITING_FRAME_TRANSMIT_REQUEST:
-//  484 //        if (TransmitDelayTimeIsOver())
-//  485 //        {
-//  486 //            SendMessage(m_puiTxBuffer, m_uiMessageLength);
-//  487 //            m_uiFlowControl = END_WAITING_FRAME_TRANSMIT_REQUEST;
-//  488 //        }
-//  489 //        break;
-//  490 //
-//  491 //    case END_WAITING_FRAME_TRANSMIT_REQUEST:
-//  492 //        if (MessageIsSended())
-//  493 //        {
-//  494 //            CPlatform::TxLedOff();
-//  495 //            m_uiFlowControl = START_CONFIRMATION;
-//  496 //        }
-//  497 //
-//  498 //        break;
-//  499 
-//  500     default:
-//  501         break;
-//  502     }
-//  503 }
-??Execution_15:
-        RET
+//  475 //        else
+//  476 //        {
+//  477 //            CPlatform::TxLedOff();
+//  478 //            m_uiFlowControl = START_CONFIRMATION;
+//  479 //        }
+//  480 //        break;
+//  481 //
+//  482 //    case FRAME_TRANSMIT_REQUEST:
+//  483 //        Reset();
+//  484 //        GetSystemTime();
+//  485 //        m_uiFlowControl = WAITING_FRAME_TRANSMIT_REQUEST;
+//  486 //        break;
+//  487 //
+//  488 //    case WAITING_FRAME_TRANSMIT_REQUEST:
+//  489 //        if (TransmitDelayTimeIsOver())
+//  490 //        {
+//  491 //            SendMessage(m_puiTxBuffer, m_uiMessageLength);
+//  492 //            m_uiFlowControl = END_WAITING_FRAME_TRANSMIT_REQUEST;
+//  493 //        }
+//  494 //        break;
+//  495 //
+//  496 //    case END_WAITING_FRAME_TRANSMIT_REQUEST:
+//  497 //        if (MessageIsSended())
+//  498 //        {
+//  499 //            CPlatform::TxLedOff();
+//  500 //            m_uiFlowControl = START_CONFIRMATION;
+//  501 //        }
+//  502 //
+//  503 //        break;
+//  504 
+//  505     default:
+//  506         break;
+//  507     }
+//  508 }
+??Execution_9:
+        LDI     R30, 2
+        RJMP    ?EPILOGUE_B2_L09
 
         ASEGN ABSOLUTE:DATA:NOROOT,01fH
 __?EECR:
@@ -1639,176 +1777,176 @@ __?EEARL:
         DC8 0, 0
 
         END
-//  504 //-----------------------------------------------------------------------------------------------------
-//  505 
-//  506 
-//  507 
-//  508 
-//  509 
+//  509 //-----------------------------------------------------------------------------------------------------
 //  510 
-//  511 ////-----------------------------------------------------------------------------------------------------
-//  512 //CModbusMasterRTU::CModbusMasterRTU()
-//  513 //{
-//  514 //
-//  515 //}
-//  516 //
-//  517 ////-----------------------------------------------------------------------------------------------------
-//  518 //CModbusMasterRTU::~CModbusMasterRTU()
-//  519 //{
-//  520 //
-//  521 //}
-//  522 //
-//  523 ////-----------------------------------------------------------------------------------------------------
-//  524 //void CModbusMasterRTU::Execution(void)
-//  525 //{
-//  526 //    int16_t iReceivedCounter;
+//  511 
+//  512 
+//  513 
+//  514 
+//  515 
+//  516 ////-----------------------------------------------------------------------------------------------------
+//  517 //CModbusMasterRTU::CModbusMasterRTU()
+//  518 //{
+//  519 //
+//  520 //}
+//  521 //
+//  522 ////-----------------------------------------------------------------------------------------------------
+//  523 //CModbusMasterRTU::~CModbusMasterRTU()
+//  524 //{
+//  525 //
+//  526 //}
 //  527 //
-//  528 //    switch (m_uiFlowControl)
-//  529 //    {
-//  530 //    case IDDLE:
-//  531 //        break;
+//  528 ////-----------------------------------------------------------------------------------------------------
+//  529 //void CModbusMasterRTU::Execution(void)
+//  530 //{
+//  531 //    int16_t iReceivedCounter;
 //  532 //
-//  533 //    case START:
-//  534 //        Reset();
-//  535 //        GetSystemTime();
-//  536 //        m_uiMessageLength = 0;
-//  537 //        m_uiFlowControl = FRAME_TRANSMIT;
-//  538 //        break;
-//  539 //
-//  540 //    case WAITING_MESSAGE_INDICATION:
-//  541 //        if (Select())
-//  542 //        {
-//  543 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  533 //    switch (m_uiFlowControl)
+//  534 //    {
+//  535 //    case IDDLE:
+//  536 //        break;
+//  537 //
+//  538 //    case START:
+//  539 //        Reset();
+//  540 //        GetSystemTime();
+//  541 //        m_uiMessageLength = 0;
+//  542 //        m_uiFlowControl = FRAME_TRANSMIT;
+//  543 //        break;
 //  544 //
-//  545 //            if (iReceivedCounter > 0)
-//  546 //            {
-//  547 //                m_uiMessageLength += iReceivedCounter;
-//  548 //                GetSystemTime();
-//  549 //                m_uiFlowControl = RECEIVE_MESSAGE;
-//  550 //            }
-//  551 //            else if (iReceivedCounter == -1)
-//  552 //            {
-//  553 //                m_uiFlowControl = START;
-//  554 //            }
-//  555 //        }
-//  556 //
-//  557 //        if (ReceiveTimeIsOver())
-//  558 //        {
-//  559 //            m_uiFlowControl = START;
+//  545 //    case WAITING_MESSAGE_INDICATION:
+//  546 //        if (Select())
+//  547 //        {
+//  548 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  549 //
+//  550 //            if (iReceivedCounter > 0)
+//  551 //            {
+//  552 //                m_uiMessageLength += iReceivedCounter;
+//  553 //                GetSystemTime();
+//  554 //                m_uiFlowControl = RECEIVE_MESSAGE;
+//  555 //            }
+//  556 //            else if (iReceivedCounter == -1)
+//  557 //            {
+//  558 //                m_uiFlowControl = START;
+//  559 //            }
 //  560 //        }
 //  561 //
-//  562 //        break;
-//  563 //
-//  564 //    case START_MESSAGE_CONFIRMATION:
-//  565 //        Reset();
-//  566 //        GetSystemTime();
-//  567 //        m_uiMessageLength = 0;
-//  568 //        m_uiFlowControl = WAITING_MESSAGE_CONFIRMATION;
-//  569 //        break;
-//  570 //
-//  571 //    case WAITING_MESSAGE_CONFIRMATION:
-//  572 //        if (Select())
-//  573 //        {
-//  574 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  562 //        if (ReceiveTimeIsOver())
+//  563 //        {
+//  564 //            m_uiFlowControl = START;
+//  565 //        }
+//  566 //
+//  567 //        break;
+//  568 //
+//  569 //    case START_MESSAGE_CONFIRMATION:
+//  570 //        Reset();
+//  571 //        GetSystemTime();
+//  572 //        m_uiMessageLength = 0;
+//  573 //        m_uiFlowControl = WAITING_MESSAGE_CONFIRMATION;
+//  574 //        break;
 //  575 //
-//  576 //            if (iReceivedCounter > 0)
-//  577 //            {
-//  578 //                m_uiMessageLength += iReceivedCounter;
-//  579 //                GetSystemTime();
-//  580 //                m_uiFlowControl = RECEIVE_MESSAGE;
-//  581 //            }
-//  582 //            else if (iReceivedCounter == -1)
-//  583 //            {
-//  584 //                m_uiFlowControl = START;
-//  585 //            }
-//  586 //        }
-//  587 //
-//  588 //        if (ConfirmationReceiveTimeIsOver())
-//  589 //        {
-//  590 //            m_uiFlowControl = START;
+//  576 //    case WAITING_MESSAGE_CONFIRMATION:
+//  577 //        if (Select())
+//  578 //        {
+//  579 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  580 //
+//  581 //            if (iReceivedCounter > 0)
+//  582 //            {
+//  583 //                m_uiMessageLength += iReceivedCounter;
+//  584 //                GetSystemTime();
+//  585 //                m_uiFlowControl = RECEIVE_MESSAGE;
+//  586 //            }
+//  587 //            else if (iReceivedCounter == -1)
+//  588 //            {
+//  589 //                m_uiFlowControl = START;
+//  590 //            }
 //  591 //        }
 //  592 //
-//  593 //        break;
-//  594 //
-//  595 //    case RECEIVE_MESSAGE:
-//  596 //        if (Select())
-//  597 //        {
-//  598 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  593 //        if (ConfirmationReceiveTimeIsOver())
+//  594 //        {
+//  595 //            m_uiFlowControl = START;
+//  596 //        }
+//  597 //
+//  598 //        break;
 //  599 //
-//  600 //            if (iReceivedCounter > 0)
-//  601 //            {
-//  602 //                m_uiMessageLength += iReceivedCounter;
-//  603 //                GetSystemTime();
-//  604 //            }
-//  605 //            else if (iReceivedCounter == -1)
+//  600 //    case RECEIVE_MESSAGE:
+//  601 //        if (Select())
+//  602 //        {
+//  603 //            iReceivedCounter = Receive(m_puiRxBuffer + m_uiMessageLength, MODBUS_RTU_MAX_ADU_LENGTH - m_uiMessageLength);
+//  604 //
+//  605 //            if (iReceivedCounter > 0)
 //  606 //            {
-//  607 //                m_uiFlowControl = START;
-//  608 //            }
-//  609 //        }
-//  610 //
-//  611 //        if (FrameIsReceived())
-//  612 //        {
-//  613 //            if (FrameCheck(m_puiRxBuffer, m_uiMessageLength))
-//  614 //            {
-//  615 //                m_uiFlowControl = REPLY;
-//  616 //            }
-//  617 //            else
-//  618 //            {
-//  619 //                m_uiFlowControl = START;
-//  620 //            }
-//  621 //        }
-//  622 //
-//  623 //        break;
-//  624 //
-//  625 //    case REPLY:
-//  626 //        if (Reply(m_puiRxBuffer, m_puiTxBuffer, m_uiMessageLength))
-//  627 //        {
-//  628 //            CPlatform::TxLedOn();
-//  629 //            m_uiFlowControl = FRAME_TRANSMIT;
-//  630 //        }
-//  631 //        else
+//  607 //                m_uiMessageLength += iReceivedCounter;
+//  608 //                GetSystemTime();
+//  609 //            }
+//  610 //            else if (iReceivedCounter == -1)
+//  611 //            {
+//  612 //                m_uiFlowControl = START;
+//  613 //            }
+//  614 //        }
+//  615 //
+//  616 //        if (FrameIsReceived())
+//  617 //        {
+//  618 //            if (FrameCheck(m_puiRxBuffer, m_uiMessageLength))
+//  619 //            {
+//  620 //                m_uiFlowControl = REPLY;
+//  621 //            }
+//  622 //            else
+//  623 //            {
+//  624 //                m_uiFlowControl = START;
+//  625 //            }
+//  626 //        }
+//  627 //
+//  628 //        break;
+//  629 //
+//  630 //    case REPLY:
+//  631 //        if (Reply(m_puiRxBuffer, m_puiTxBuffer, m_uiMessageLength))
 //  632 //        {
-//  633 //            CPlatform::TxLedOff();
-//  634 //            m_uiFlowControl = START;
+//  633 //            CPlatform::TxLedOn();
+//  634 //            m_uiFlowControl = FRAME_TRANSMIT;
 //  635 //        }
-//  636 //        break;
-//  637 //
-//  638 //    case FRAME_TRANSMIT:
-//  639 //        Reset();
-//  640 //        GetSystemTime();
-//  641 //        m_uiFlowControl = WAITING_FRAME_TRANSMIT;
-//  642 //        break;
-//  643 //
-//  644 //    case WAITING_FRAME_TRANSMIT:
-//  645 //        if (TransmitDelayTimeIsOver())
-//  646 //        {
-//  647 //            SendMessage(m_puiTxBuffer, m_uiMessageLength);
-//  648 //            m_uiFlowControl = FRAME_TRANSMIT_END_WAITING;
-//  649 //        }
-//  650 //        break;
-//  651 //
-//  652 //    case FRAME_TRANSMIT_END_WAITING:
-//  653 //        if (MessageIsSended())
-//  654 //        {
-//  655 //            CPlatform::TxLedOff();
-//  656 //            m_uiFlowControl = IDDLE;
-//  657 //        }
-//  658 //
-//  659 //        break;
-//  660 //
-//  661 //    default:
-//  662 //        break;
-//  663 //    }
-//  664 //}
+//  636 //        else
+//  637 //        {
+//  638 //            CPlatform::TxLedOff();
+//  639 //            m_uiFlowControl = START;
+//  640 //        }
+//  641 //        break;
+//  642 //
+//  643 //    case FRAME_TRANSMIT:
+//  644 //        Reset();
+//  645 //        GetSystemTime();
+//  646 //        m_uiFlowControl = WAITING_FRAME_TRANSMIT;
+//  647 //        break;
+//  648 //
+//  649 //    case WAITING_FRAME_TRANSMIT:
+//  650 //        if (TransmitDelayTimeIsOver())
+//  651 //        {
+//  652 //            SendMessage(m_puiTxBuffer, m_uiMessageLength);
+//  653 //            m_uiFlowControl = FRAME_TRANSMIT_END_WAITING;
+//  654 //        }
+//  655 //        break;
+//  656 //
+//  657 //    case FRAME_TRANSMIT_END_WAITING:
+//  658 //        if (MessageIsSended())
+//  659 //        {
+//  660 //            CPlatform::TxLedOff();
+//  661 //            m_uiFlowControl = IDDLE;
+//  662 //        }
+//  663 //
+//  664 //        break;
+//  665 //
+//  666 //    default:
+//  667 //        break;
+//  668 //    }
+//  669 //}
 // 
-//  87 bytes in segment ABSOLUTE
-// 824 bytes in segment CODE
-//   6 bytes in segment INITTAB
-//   2 bytes in segment NEAR_F
-//   9 bytes in segment NEAR_Z
+//    87 bytes in segment ABSOLUTE
+// 1 028 bytes in segment CODE
+//     6 bytes in segment INITTAB
+//     2 bytes in segment NEAR_F
+//     9 bytes in segment NEAR_Z
 // 
-// 794 bytes of CODE memory (+ 38 bytes shared)
+// 998 bytes of CODE memory (+ 38 bytes shared)
 //   9 bytes of DATA memory (+ 87 bytes shared)
 //
 //Errors: none
-//Warnings: 8
+//Warnings: 9
