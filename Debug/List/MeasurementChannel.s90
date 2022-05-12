@@ -1,24 +1,23 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          07/May/2022  19:13:31
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          12/May/2022  18:15:07
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\MeasurementChannel.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EWFFB2.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EWF467.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\MeasurementChannel.cpp
 //        --cpu=m48 -ms -o
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\Obj -lB
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List
-//        --initializers_in_flash --root_variables --no_cse --no_inline
-//        --no_code_motion --no_cross_call --no_clustering --no_tbaa --debug
-//        -DENABLE_BIT_DEFINITIONS -e -I
+//        --initializers_in_flash --root_variables --no_inline --no_cross_call
+//        --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e -I
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include\ -I
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ --eeprom_size
 //        256 --dlib --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded
-//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -On --eec++)
+//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -Om --eec++)
 //    Locale       =  Russian_RUS.1251
 //    List file    =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List\MeasurementChannel.s90
@@ -526,94 +525,60 @@ _A_DDRB:
 _A_PINB:
         DS8 1
 //   10 
-//   11 ////-----------------------------------------------------------------------------------------------------
-//   12 //CMeasurementChannel::CMeasurementChannel()
-//   13 //{
-//   14 //    //ctor
-//   15 //}
-//   16 //
-//   17 ////-----------------------------------------------------------------------------------------------------
-//   18 //CMeasurementChannel::~CMeasurementChannel()
-//   19 //{
-//   20 //    //dtor
-//   21 //}
-//   22 
-//   23 //-----------------------------------------------------------------------------------------------------
-//   24 // Обработка блока данных от АЦП.
+//   11 //-----------------------------------------------------------------------------------------------------
+//   12 // Обработка блока данных от АЦП.
 
         RSEG CODE:CODE:NOROOT(1)
-//   25 uint8_t CMeasurementChannel::StatusCheck(uint16_t uiValue)
+//   13 uint8_t CMeasurementChannel::StatusCheck(uint16_t uiValue)
 ??StatusCheck:
-//   26 {
-        MOVW    R19:R18, R17:R16
-//   27     uint8_t uiState = CMeasurementChannel::SHORT_CIRCUIT;
-        LDI     R16, 3
-//   28 
-//   29     if(uiValue < CMeasurementChannel::WB_LEVEL)
-        CPI     R18, 23
-        LDI     R17, 0
-        CPC     R19, R17
+//   14 {
+//   15     uint8_t uiState = CMeasurementChannel::SHORT_CIRCUIT;
+        LDI     R18, 3
+//   16 
+//   17     if(uiValue < CMeasurementChannel::WB_LEVEL)
+        CPI     R16, 23
+        LDI     R19, 0
+        CPC     R17, R19
         BRCC    ??StatusCheck_1
-//   30     {
-//   31         uiState = CMeasurementChannel::WIRE_BREAK;	// Определение кода состояния входа
-        LDI     R16, 2
-        RET
-//   32     }
-//   33     else if(uiValue < CMeasurementChannel::ON_LEVEL)
+//   18     {
+//   19         uiState = CMeasurementChannel::WIRE_BREAK;	// Определение кода состояния входа
+        LDI     R18, 2
+        RJMP    ??StatusCheck_2
+//   20     }
+//   21     else if(uiValue < CMeasurementChannel::ON_LEVEL)
 ??StatusCheck_1:
-        CPI     R18, 143
-        LDI     R17, 0
-        CPC     R19, R17
-        BRCC    ??StatusCheck_2
-//   34     {
-//   35         uiState = CMeasurementChannel::ON;
-        LDI     R16, 1
-        RET
-//   36     }
-//   37     else if(uiValue < CMeasurementChannel::OFF_LEVEL)
-??StatusCheck_2:
-        CPI     R18, 161
-        LDI     R17, 0
-        CPC     R19, R17
-        BRCS    ??StatusCheck_3
-//   38     {
-//   39         return;		// Попадание в мертвую зону
-//   40     }
-//   41     else if(uiValue < CMeasurementChannel::SC_LEVEL)
-        CPI     R18, 42
-        LDI     R17, 2
-        CPC     R19, R17
+        CPI     R16, 143
+        CPC     R17, R19
         BRCC    ??StatusCheck_3
-//   42     {
-//   43         uiState = CMeasurementChannel::OFF;
-        LDI     R16, 0
-//   44     }
-//   45 
-//   46 //    m_uiState = uiState;
-//   47 
-//   48 //    TDChannel *DCPtr = &CMeasurementChannel::DChannel[Index];
-//   49 //
-//   50 //    if(DCPtr->Current == uiState)
-//   51 //    {
-//   52 //        if(DCPtr->Counter != CMeasurementChannel::STOP_COUNT)
-//   53 //        {
-//   54 //            if((++DCPtr->Counter) >= CMeasurementChannel::DEBOUNCE_LEVELS)
-//   55 //            {
-//   56 //                DCPtr->uiState   = uiState;
-//   57 //                DCPtr->Counter = CMeasurementChannel::STOP_COUNT;
-//   58 //            }
-//   59 //        }
-//   60 //    }
-//   61 //    else
-//   62 //    {
-//   63 //        DCPtr->Current = uiState;
-//   64 //        DCPtr->Counter = 0;
-//   65 //    }
-//   66 //
-//   67     return uiState;
+//   22     {
+//   23         uiState = CMeasurementChannel::ON;
+        LDI     R18, 1
+        RJMP    ??StatusCheck_2
+//   24     }
+//   25     else if(uiValue < CMeasurementChannel::OFF_LEVEL)
 ??StatusCheck_3:
+        CPI     R16, 161
+        CPC     R17, R19
+        BRCS    ??StatusCheck_4
+//   26     {
+//   27         return;		// Попадание в мертвую зону
+//   28     }
+//   29     else if(uiValue < CMeasurementChannel::SC_LEVEL)
+        CPI     R16, 42
+        LDI     R19, 2
+        CPC     R17, R19
+        BRCC    ??StatusCheck_2
+//   30     {
+//   31         uiState = CMeasurementChannel::OFF;
+        LDI     R18, 0
+//   32     }
+//   33 
+//   34     return uiState;
+??StatusCheck_2:
+        MOV     R16, R18
+??StatusCheck_4:
         RET
-//   68 };
+//   35 };
 
         ASEGN ABSOLUTE:DATA:NOROOT,01fH
 __?EECR:
@@ -627,9 +592,9 @@ __?EEARL:
         END
 // 
 // 87 bytes in segment ABSOLUTE
-// 48 bytes in segment CODE
+// 44 bytes in segment CODE
 // 
-// 48 bytes of CODE memory
+// 44 bytes of CODE memory
 //  0 bytes of DATA memory (+ 87 bytes shared)
 //
 //Errors: none

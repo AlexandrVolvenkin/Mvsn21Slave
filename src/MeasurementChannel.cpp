@@ -8,18 +8,6 @@
 #include "MeasurementChannel.h"
 #include "Platform.h"
 
-////-----------------------------------------------------------------------------------------------------
-//CMeasurementChannel::CMeasurementChannel()
-//{
-//    //ctor
-//}
-//
-////-----------------------------------------------------------------------------------------------------
-//CMeasurementChannel::~CMeasurementChannel()
-//{
-//    //dtor
-//}
-
 //-----------------------------------------------------------------------------------------------------
 // Обработка блока данных от АЦП.
 uint8_t CMeasurementChannel::StatusCheck(uint16_t uiValue)
@@ -43,26 +31,5 @@ uint8_t CMeasurementChannel::StatusCheck(uint16_t uiValue)
         uiState = CMeasurementChannel::OFF;
     }
 
-//    m_uiState = uiState;
-
-//    TDChannel *DCPtr = &CMeasurementChannel::DChannel[Index];
-//
-//    if(DCPtr->Current == uiState)
-//    {
-//        if(DCPtr->Counter != CMeasurementChannel::STOP_COUNT)
-//        {
-//            if((++DCPtr->Counter) >= CMeasurementChannel::DEBOUNCE_LEVELS)
-//            {
-//                DCPtr->uiState   = uiState;
-//                DCPtr->Counter = CMeasurementChannel::STOP_COUNT;
-//            }
-//        }
-//    }
-//    else
-//    {
-//        DCPtr->Current = uiState;
-//        DCPtr->Counter = 0;
-//    }
-//
     return uiState;
 };

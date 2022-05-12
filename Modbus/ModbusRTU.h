@@ -38,15 +38,6 @@
 class CModbusRTU : virtual public CModbus
 {
 public:
-//    CModbusRTU();
-////    CModbusRTU(CUart* pxDevice,
-////               uint32_t uiBaudRate,
-////               char cParity,
-////               uint8_t uiDataBit,
-////               uint8_t uiStopBit,
-////               uint8_t *puiRxBuffer,
-////               uint8_t *puiTxBuffer);
-//    virtual ~CModbusRTU();
     static void Init(CUart* pxDevice,
                      uint32_t uiBaudRate,
                      char cParity,
@@ -63,18 +54,14 @@ public:
                      uint16_t uiInputRegistersNumber,
                      uint16_t uiHoldingRegistersNumber);
     static void Reset(void);
-    static int8_t ReceiveEnable(void);
-    static int8_t ReceiveDisable(void);
-    static int16_t RequestBasis(uint8_t uiSlave,
-                                uint8_t uiFunctionCode,
-                                uint16_t uiAddress,
-                                uint16_t uiBitNumber,
-                                uint8_t *puiRequest);
+    static void ReceiveEnable(void);
+    static void ReceiveDisable(void);
+    static void TransmitEnable(void);
+    static void TransmitDisable(void);
     static int16_t ResponseBasis(uint8_t , uint8_t , uint8_t * );
     static int16_t Tail(uint8_t * , uint16_t );
     static int16_t Send(uint8_t * , uint16_t );
     static uint8_t MessageIsSended(void);
-    static int16_t Receive(void);
     static uint8_t Select(void);
     static int16_t Receive(uint8_t * , uint16_t );
     static uint8_t FrameIsReceived(void);
@@ -83,18 +70,15 @@ public:
     static uint8_t TransmitDelayTimeIsOver(void);
     static void GetSystemTime(void);
     static uint16_t GetFrameLength(void);
-//    static int8_t FrameCheck(void);
     static int8_t FrameCheck(uint8_t * , uint16_t );
     static void Execution(void);
-//    void FsmSlave(void);
-//    void FsmMaster(void);
 
     static const uint8_t HEADER_LENGTH = 1;
     static const uint8_t CRC_LENGTH = 2;
 
 protected:
 private:
-    static CUart* m_pxDevice;
+//    static CUart* m_pxDevice;
     /* Bauds: 9600, 19200, 57600, 115200, etc */
     static uint32_t m_uiBaudRate;
     /* Data bit */
@@ -104,33 +88,13 @@ private:
     /* Parity: 'N', 'O', 'E' */
     static char m_cParity;
     // таймоут по отсутствию следующего байта 3.5 бода.
-    const static uint8_t m_uiGuardTimeout = _MODBUS_RTU_35_TIMEOUT;
+    const static uint16_t m_uiGuardTimeout = _MODBUS_RTU_35_TIMEOUT;
     // таймоут по отсутствию сообщения.
-    const static uint8_t m_uiReceiveTimeout = 15000;
+    const static uint16_t m_uiReceiveTimeout = 15000;
     // таймоут по отсутствию подтверждения.
-    const static uint8_t m_uiConfirmationTimeout = 500;
-    const static uint8_t m_uiTransmitDelayTimeout = 5;
-
-//    friend class CModbusMasterRTU;
+    const static uint16_t m_uiConfirmationTimeout = 500;
+    const static uint16_t m_uiTransmitDelayTimeout = 5;
 };
-
-//-----------------------------------------------------------------------------------------------------
-
-
-
-
-////-----------------------------------------------------------------------------------------------------
-//class CModbusMasterRTU : virtual public CModbusRTU
-//{
-//public:
-//    CModbusMasterRTU();
-//    virtual ~CModbusMasterRTU();
-//    void Execution(void);
-//
-//protected:
-//private:
-//
-//};
 
 //-----------------------------------------------------------------------------------------------------
 #endif // CMODBUSRTU_H

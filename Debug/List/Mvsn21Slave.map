@@ -2,7 +2,7 @@
 #                                                                              #
 #      IAR Universal Linker V6.5.2.97                                          #
 #                                                                              #
-#           Link time     =  08/May/2022  01:33:49                             #
+#           Link time     =  12/May/2022  18:15:08                             #
 #           Target CPU    =  A90                                               #
 #           List file     =  D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debu #
 #                            g\List\Mvsn21Slave.map                            #
@@ -13,7 +13,7 @@
 #                            g\Exe\Mvsn21Slave.d90                             #
 #                            Format: ubrof8                                    #
 #                            UBROF version 8.0.2                               #
-#           Command line  =  -f C:\Users\ghost\AppData\Local\Temp\EW2F78.tmp   #
+#           Command line  =  -f C:\Users\ghost\AppData\Local\Temp\EWF9A9.tmp   #
 #                            (D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Deb #
 #                            ug\Obj\Crc.r90                                    #
 #                            D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debu #
@@ -28,8 +28,6 @@
 #                            g\Obj\Mvsn21.r90                                  #
 #                            D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debu #
 #                            g\Obj\Platform.r90                                #
-#                            D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debu #
-#                            g\Obj\Timer.r90                                   #
 #                            -l                                                #
 #                            D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debu #
 #                            g\List\Mvsn21Slave.map                            #
@@ -110,7 +108,7 @@
                 *                                      *
                 ****************************************
 
-       Program entry at : CODE      00000D56  Relocatable, from module : ?C_STARTUP
+       Program entry at : CODE      000009F6  Relocatable, from module : ?C_STARTUP
 
 
 
@@ -123,10 +121,6 @@
 
   R10                        = REG
   R11                        = REG
-  R12                        = REG
-  R13                        = REG
-  R14                        = REG
-  R15                        = REG
   R4                         = REG
   R5                         = REG
   R6                         = REG
@@ -205,12 +199,12 @@ Absolute parts
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000044 - 000000A9 (0x66 bytes), align: 1
+  Relative segment, address: CODE 00000056 - 00000099 (0x44 bytes), align: 1
   Segment part 6.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            usCrc16(unsigned char *, unsigned short)
-                                   00000044        CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
+                                   00000056        CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
                                                    CModbusRTU::Tail(uint8_t *, uint16_t) (ModbusRTU)
     -------------------------------------------------------------------------
 ABSOLUTE
@@ -1055,45 +1049,45 @@ ABSOLUTE
            PINB                    00000023 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000000AA - 000000AD (0x4 bytes), align: 1
+  Relative segment, address: CODE 0000009A - 0000009D (0x4 bytes), align: 1
   Segment part 86.            Intra module refs:   main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CPlatform::WatchdogReset()
-                                   000000AA 
+                                   0000009A 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000000AE - 000000B1 (0x4 bytes), align: 1
+  Relative segment, address: CODE 0000009E - 000000A1 (0x4 bytes), align: 1
   Segment part 87.            Intra module refs:   CUart::Read(uint8_t *, uint16_t) (Platform)
                                                    main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CPlatform::InterruptEnable()
-                                   000000AE 
+                                   0000009E 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000000B2 - 000000B7 (0x6 bytes), align: 1
-  Segment part 88.            Intra module refs:   CUart::TxcInterruptHandler() (Platform)
+  Relative segment, address: CODE 000000A2 - 000000A7 (0x6 bytes), align: 1
+  Segment part 88.            Intra module refs:   CModbusRTU::Execution() (ModbusRTU)
                                                    main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CMvsn21::MeasureFlowControlSet(uint8_t)
-                                   000000B2 
+                                   000000A2 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000000B8 - 000000BD (0x6 bytes), align: 1
+  Relative segment, address: CODE 000000A8 - 000000AD (0x6 bytes), align: 1
   Segment part 89.            Intra module refs:   main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbus::FlowControlSet(uint8_t)
-                                   000000B8 
+                                   000000A8 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000000BE - 00000187 (0xca bytes), align: 1
-  Segment part 91.
+  Relative segment, address: CODE 000000AE - 00000145 (0x98 bytes), align: 1
+  Segment part 90.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           main                    000000BE        ?cstartup_call_main (?C_STARTUP)
+           main                    000000AE        ?cstartup_call_main (?C_STARTUP)
                calls direct
     -------------------------------------------------------------------------
 NEAR_F
@@ -1111,12 +1105,12 @@ NEAR_F
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000188 - 000001B7 (0x30 bytes), align: 1
+  Relative segment, address: CODE 00000146 - 00000171 (0x2c bytes), align: 1
   Segment part 85.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CMeasurementChannel::StatusCheck(uint16_t)
-                                   00000188        CMvsn21::MeasureFsm() (Mvsn21)
+                                   00000146        CMvsn21::MeasureFsm() (Mvsn21)
 
     *************************************************************************
 
@@ -1126,245 +1120,169 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 NEAR_Z
-  Relative segment, address: DATA 00000160 - 00000160 (0x1 bytes), align: 0
+  Relative segment, address: DATA 00000160 - 00000162 (0x3 bytes), align: 0
   Segment part 86. ROOT       Intra module refs:   CModbus::Reply(uint8_t *, uint8_t *, uint16_t)
                                                    CModbus::SlaveSet(uint8_t)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbus::m_uiSlave      00000160 
+           CModbus::m_uiMessageLength
+                                   00000160        CModbusRTU::Execution() (ModbusRTU)
+           CModbus::m_uiOwnAddress
+                                   00000162 
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000161 - 00000161 (0x1 bytes), align: 0
+  Relative segment, address: DATA 00000163 - 00000163 (0x1 bytes), align: 0
   Segment part 88. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbus::m_uiFunctionCode
-                                   00000161 
+           CModbus::m_uiSlaveAddress
+                                   00000163 
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000162 - 00000162 (0x1 bytes), align: 0
+  Relative segment, address: DATA 00000164 - 00000164 (0x1 bytes), align: 0
   Segment part 89. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbus::m_uiFlowControl
-                                   00000162        CModbus::FlowControlSet(uint8_t) (main)
-                                                   CModbusRTU::Execution() (ModbusRTU)
+           CModbus::m_uiFunctionCode
+                                   00000164 
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000163 - 00000164 (0x2 bytes), align: 0
+  Relative segment, address: DATA 00000165 - 00000166 (0x2 bytes), align: 0
   Segment part 90. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
+           CModbus::m_uiQuantity   00000165 
+    -------------------------------------------------------------------------
+NEAR_Z
+  Relative segment, address: DATA 00000167 - 00000167 (0x1 bytes), align: 0
+  Segment part 91. ROOT 
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CModbus::m_uiFlowControl
+                                   00000167        CModbus::FlowControlSet(uint8_t) (main)
+                                                   CModbusRTU::Execution() (ModbusRTU)
+    -------------------------------------------------------------------------
+NEAR_Z
+  Relative segment, address: DATA 00000168 - 00000169 (0x2 bytes), align: 0
+  Segment part 92. ROOT 
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
            CModbus::m_uiLastSystemTime
-                                   00000163        CModbusRTU::FrameIsReceived() (ModbusRTU)
+                                   00000168        CModbusRTU::FrameIsReceived() (ModbusRTU)
                                                    CModbusRTU::GetSystemTime() (ModbusRTU)
                                                    CModbusRTU::ReceiveTimeIsOver() (ModbusRTU)
                                                    CModbusRTU::TransmitDelayTimeIsOver() (ModbusRTU)
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000165 - 00000166 (0x2 bytes), align: 0
-  Segment part 91. ROOT       Intra module refs:   CModbus::Reply(uint8_t *, uint8_t *, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CModbus::m_uiMessageLength
-                                   00000165        CModbusRTU::Execution() (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000167 - 00000168 (0x2 bytes), align: 0
-  Segment part 92. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CModbus::m_puiRxBuffer
-                                   00000167        CModbusRTU::Execution() (ModbusRTU)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000169 - 0000016A (0x2 bytes), align: 0
+  Relative segment, address: DATA 0000016A - 0000016B (0x2 bytes), align: 0
   Segment part 93. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbus::m_puiTxBuffer
-                                   00000169        CModbusRTU::Execution() (ModbusRTU)
+           CModbus::m_puiRxBuffer
+                                   0000016A        CModbusRTU::Execution() (ModbusRTU)
                                                    CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 0000016B - 0000016C (0x2 bytes), align: 0
+  Relative segment, address: DATA 0000016C - 0000016D (0x2 bytes), align: 0
   Segment part 94. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbus::m_puiCoils     0000016B        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
+           CModbus::m_puiTxBuffer
+                                   0000016C        CModbusRTU::Execution() (ModbusRTU)
+                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 0000016D - 0000016E (0x2 bytes), align: 0
+  Relative segment, address: DATA 0000016E - 00000171 (0x4 bytes), align: 0
   Segment part 95. ROOT       Intra module refs:   CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbus::m_puiDiscreteInputs
-                                   0000016D        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000016F - 00000170 (0x2 bytes), align: 0
-  Segment part 96. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CModbus::m_pui16HoldingRegisters
-                                   0000016F        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000171 - 00000172 (0x2 bytes), align: 0
-  Segment part 97. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CModbus::m_pui16InputRegisters
-                                   00000171        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000173 - 00000174 (0x2 bytes), align: 0
-  Segment part 98. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CModbus::m_uiCoilsNumber
-                                   00000173        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000175 - 00000176 (0x2 bytes), align: 0
-  Segment part 99. ROOT       Intra module refs:   CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
+                                   0000016E        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
            CModbus::m_uiDiscreteInputsNumber
-                                   00000175        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000177 - 00000178 (0x2 bytes), align: 0
-  Segment part 100. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CModbus::m_uiHoldingRegistersNumber
-                                   00000177        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000179 - 0000017A (0x2 bytes), align: 0
-  Segment part 101. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CModbus::m_uiInputRegistersNumber
-                                   00000179        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
+                                   00000170        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000001B8 - 000001BD (0x6 bytes), align: 1
-  Segment part 102.
+  Relative segment, address: CODE 00000172 - 00000177 (0x6 bytes), align: 1
+  Segment part 96.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbus::SlaveSet(uint8_t)
-                                   000001B8        main (main)
+                                   00000172        main (main)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000001BE - 000001D5 (0x18 bytes), align: 1
-  Segment part 103.
+  Relative segment, address: CODE 00000178 - 00000187 (0x10 bytes), align: 1
+  Segment part 97.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbus::SendMessage(uint8_t *, uint16_t)
-                                   000001BE        CModbusRTU::Execution() (ModbusRTU)
+                                   00000178        CModbusRTU::Execution() (ModbusRTU)
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000001D6 - 000001FB (0x26 bytes), align: 1
-  Segment part 104.           Intra module refs:   CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t)
+  Relative segment, address: CODE 00000188 - 000001A1 (0x1a bytes), align: 1
+  Segment part 98.            Intra module refs:   CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t)
                                                    CModbus::Reply(uint8_t *, uint8_t *, uint16_t)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *)
-                                   000001D6 
+                                   00000188 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000001FC - 00000261 (0x66 bytes), align: 1
-  Segment part 106.           Intra module refs:   CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t)
+  Relative segment, address: CODE 000001A2 - 00000207 (0x66 bytes), align: 1
+  Segment part 100.           Intra module refs:   CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t)
-                                   000001FC 
+                                   000001A2 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000262 - 00000341 (0xe0 bytes), align: 1
-  Segment part 107.           Intra module refs:   CModbus::Reply(uint8_t *, uint8_t *, uint16_t)
+  Relative segment, address: CODE 00000208 - 0000028D (0x86 bytes), align: 1
+  Segment part 101.           Intra module refs:   CModbus::Reply(uint8_t *, uint8_t *, uint16_t)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t)
-                                   00000262 
+                                   00000208 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000342 - 000003B1 (0x70 bytes), align: 1
-  Segment part 108.
+  Relative segment, address: CODE 0000028E - 000002C1 (0x34 bytes), align: 1
+  Segment part 102.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbus::Reply(uint8_t *, uint8_t *, uint16_t)
-                                   00000342        CModbusRTU::Execution() (ModbusRTU)
+                                   0000028E        CModbusRTU::Execution() (ModbusRTU)
                calls direct
     -------------------------------------------------------------------------
 INITTAB
-  Relative segment, address: CODE 0000003E - 00000043 (0x6 bytes), align: 0
+  Relative segment, address: CODE 00000050 - 00000055 (0x6 bytes), align: 0
   Segment part 87.            Intra module refs:   CAdc::m_fbMeasureIsComlete (Platform)
-                                                   CModbus::m_pui16HoldingRegisters
-                                                   CModbus::m_pui16InputRegisters
-                                                   CModbus::m_puiCoils
-                                                   CModbus::m_puiDiscreteInputs
                                                    CModbus::m_puiRxBuffer
                                                    CModbus::m_puiTxBuffer
-                                                   CModbus::m_uiCoilsNumber
-                                                   CModbus::m_uiDiscreteInputsNumber
                                                    CModbus::m_uiFlowControl
                                                    CModbus::m_uiFunctionCode
-                                                   CModbus::m_uiHoldingRegistersNumber
-                                                   CModbus::m_uiInputRegistersNumber
                                                    CModbus::m_uiLastSystemTime
-                                                   CModbus::m_uiMessageLength
-                                                   CModbus::m_uiSlave
-                                                   CModbusRTU::m_cParity (ModbusRTU)
-                                                   CModbusRTU::m_pxDevice (ModbusRTU)
-                                                   CModbusRTU::m_uiBaudRate (ModbusRTU)
-                                                   CModbusRTU::m_uiDataBit (ModbusRTU)
-                                                   CModbusRTU::m_uiStopBit (ModbusRTU)
-                                                   CMvsn21::m_aucRtuCoilsArray (Mvsn21)
-                                                   CMvsn21::m_aucRtuDiscreteInputsArray (Mvsn21)
-                                                   CMvsn21::m_aucRtuHoldingRegistersArray (Mvsn21)
-                                                   CMvsn21::m_aucRtuInputRegistersArray (Mvsn21)
+                                                   CModbus::m_uiQuantity
+                                                   CModbus::m_uiSlaveAddress
                                                    CMvsn21::m_aui8ReceiveMessageBuff (Mvsn21)
                                                    CMvsn21::m_aui8TransmitMessageBuff (Mvsn21)
-                                                   CMvsn21::m_uiChannel (Mvsn21)
                                                    CMvsn21::m_uiFlowControl (Mvsn21)
-                                                   CMvsn21::m_uiMeasureFlowControl (Mvsn21)
-                                                   CMvsn21::m_uiMessageLength (Mvsn21)
-                                                   CMvsn21::m_uiType (Mvsn21)
-                                                   CPlatform::m_pxUart0 (Platform)
-                                                   CPlatform::m_pxUart1 (Platform)
                                                    CPlatform::m_uiSystemTick (Platform)
                                                    CPlatform::uiSlaveSelectIsHigh (Platform)
-                                                   CUart::m_UBRRH (Platform)
-                                                   CUart::m_UBRRL (Platform)
-                                                   CUart::m_UCSRA (Platform)
-                                                   CUart::m_UCSRB (Platform)
-                                                   CUart::m_UCSRC (Platform)
-                                                   CUart::m_UDR (Platform)
-                                                   CUart::m_auiIntermediateBuff (Platform)
-                                                   CUart::m_bfByteIsReceived (Platform)
-                                                   CUart::m_bfFrameIsSended (Platform)
-                                                   CUart::m_bfRxBuffOverflow (Platform)
-                                                   CUart::m_nuiRxBuffByteCounter (Platform)
-                                                   CUart::m_nuiTxBuffByteCounter (Platform)
-                                                   CUart::m_puiRxBuffer (Platform)
-                                                   CUart::m_puiTxBuffer (Platform)
                                                    CUart::m_rs485ddpin (Platform)
                                                    CUart::m_rs485ddr (Platform)
                                                    CUart::m_rs485pin (Platform)
                                                    CUart::m_rs485port (Platform)
-                                                   __near_Aldata (?xxmemxmalloc)
+                                                   Segment part 86
+                                                   Segment part 86 (ModbusRTU)
+                                                   Segment part 87 (Mvsn21)
+                                                   Segment part 91 (Platform)
+                                                   Segment part 95
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            ?<Segment init: NEAR_Z>
-                                   0000003E 
+                                   00000050 
     -------------------------------------------------------------------------
 NEAR_F
   Relative segment, address: CODE 00000036 - 00000037 (0x2 bytes), align: 0
@@ -1381,203 +1299,208 @@ NEAR_F
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 000003B2 - 000003B7 (0x6 bytes), align: 1
-  Segment part 92.            Intra module refs:   CModbusRTU::Select()
+  Relative segment, address: CODE 000002C2 - 000002C7 (0x6 bytes), align: 1
+  Segment part 88.            Intra module refs:   CModbusRTU::Select()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::ByteIsReceived()
-                                   000003B2 
+                                   000002C2 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000003B8 - 000003BD (0x6 bytes), align: 1
-  Segment part 93.            Intra module refs:   CModbusRTU::MessageIsSended()
+  Relative segment, address: CODE 000002C8 - 000002CD (0x6 bytes), align: 1
+  Segment part 89.            Intra module refs:   CModbusRTU::MessageIsSended()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::FrameIsSended()
-                                   000003B8 
+                                   000002C8 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000003BE - 000003C7 (0xa bytes), align: 1
-  Segment part 95.            Intra module refs:   CModbusRTU::FrameIsReceived()
+  Relative segment, address: CODE 000002CE - 000002D7 (0xa bytes), align: 1
+  Segment part 91.            Intra module refs:   CModbusRTU::FrameIsReceived()
                                                    CModbusRTU::GetSystemTime()
                                                    CModbusRTU::ReceiveTimeIsOver()
                                                    CModbusRTU::TransmitDelayTimeIsOver()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CPlatform::GetSystemTick()
-                                   000003BE 
+                                   000002CE 
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 0000017B - 0000017C (0x2 bytes), align: 0
+  Relative segment, address: DATA 00000172 - 00000178 (0x7 bytes), align: 0
   Segment part 86. ROOT       Intra module refs:   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbusRTU::m_pxDevice
-                                   0000017B 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000017D - 00000180 (0x4 bytes), align: 0
-  Segment part 88. ROOT       Intra module refs:   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
+           CModbusRTU::m_cParity   00000178 
            CModbusRTU::m_uiBaudRate
-                                   0000017D 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000181 - 00000181 (0x1 bytes), align: 0
-  Segment part 89. ROOT       Intra module refs:   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
+                                   00000172 
            CModbusRTU::m_uiDataBit
-                                   00000181 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000182 - 00000182 (0x1 bytes), align: 0
-  Segment part 90. ROOT       Intra module refs:   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
+                                   00000176 
            CModbusRTU::m_uiStopBit
-                                   00000182 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000183 - 00000183 (0x1 bytes), align: 0
-  Segment part 91. ROOT       Intra module refs:   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CModbusRTU::m_cParity   00000183 
+                                   00000177 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000003C8 - 000004A1 (0xda bytes), align: 1
-  Segment part 96.
+  Relative segment, address: CODE 000002D8 - 00000339 (0x62 bytes), align: 1
+  Segment part 93.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t)
-                                   000003C8        main (main)
+                                   000002D8        main (main)
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000004A2 - 000004A5 (0x4 bytes), align: 1
-  Segment part 97.            Intra module refs:   CModbusRTU::Execution()
+  Relative segment, address: CODE 0000033A - 0000033D (0x4 bytes), align: 1
+  Segment part 94.            Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbusRTU::Reset()     000004A2 
+           CModbusRTU::Reset()     0000033A 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000004A6 - 000004A9 (0x4 bytes), align: 1
-  Segment part 98.
+  Relative segment, address: CODE 0000033E - 00000341 (0x4 bytes), align: 1
+  Segment part 95.            Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::ReceiveEnable()
-                                   000004A6        main (main)
+                                   0000033E 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000004AA - 000004D9 (0x30 bytes), align: 1
-  Segment part 100.
+  Relative segment, address: CODE 00000342 - 00000345 (0x4 bytes), align: 1
+  Segment part 96.            Intra module refs:   CModbusRTU::Execution()
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CModbusRTU::ReceiveDisable()
+                                   00000342 
+               calls direct
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 00000346 - 00000349 (0x4 bytes), align: 1
+  Segment part 97.            Intra module refs:   CModbusRTU::Execution()
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CModbusRTU::TransmitEnable()
+                                   00000346 
+               calls direct
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 0000034A - 0000034D (0x4 bytes), align: 1
+  Segment part 98.            Intra module refs:   CModbusRTU::Execution()
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CModbusRTU::TransmitDisable()
+                                   0000034A 
+               calls direct
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 0000034E - 0000036D (0x20 bytes), align: 1
+  Segment part 99.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::Tail(uint8_t *, uint16_t)
-                                   000004AA        CModbus::SendMessage(uint8_t *, uint16_t) (Modbus)
+                                   0000034E        CModbus::SendMessage(uint8_t *, uint16_t) (Modbus)
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000004DA - 000004EB (0x12 bytes), align: 1
-  Segment part 101.
+  Relative segment, address: CODE 0000036E - 00000379 (0xc bytes), align: 1
+  Segment part 100.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::ResponseBasis(uint8_t, uint8_t, uint8_t *)
-                                   000004DA        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
+                                   0000036E        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
                                                    CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *) (Modbus)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000004EC - 000004FB (0x10 bytes), align: 1
-  Segment part 102.
+  Relative segment, address: CODE 0000037A - 0000037D (0x4 bytes), align: 1
+  Segment part 101.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::Send(uint8_t *, uint16_t)
-                                   000004EC        CModbus::SendMessage(uint8_t *, uint16_t) (Modbus)
+                                   0000037A        CModbus::SendMessage(uint8_t *, uint16_t) (Modbus)
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000004FC - 000004FF (0x4 bytes), align: 1
-  Segment part 103.           Intra module refs:   CModbusRTU::Execution()
+  Relative segment, address: CODE 0000037E - 00000381 (0x4 bytes), align: 1
+  Segment part 102.           Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::MessageIsSended()
-                                   000004FC 
+                                   0000037E 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000500 - 00000503 (0x4 bytes), align: 1
+  Relative segment, address: CODE 00000382 - 00000385 (0x4 bytes), align: 1
+  Segment part 103.           Intra module refs:   CModbusRTU::Execution()
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CModbusRTU::Select()    00000382 
+               calls direct
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 00000386 - 00000389 (0x4 bytes), align: 1
   Segment part 104.           Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbusRTU::Select()    00000500 
+           CModbusRTU::Receive(uint8_t *, uint16_t)
+                                   00000386 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000504 - 00000513 (0x10 bytes), align: 1
+  Relative segment, address: CODE 0000038A - 000003A5 (0x1c bytes), align: 1
   Segment part 105.           Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbusRTU::Receive(uint8_t *, uint16_t)
-                                   00000504 
+           CModbusRTU::FrameIsReceived()
+                                   0000038A 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000514 - 00000545 (0x32 bytes), align: 1
+  Relative segment, address: CODE 000003A6 - 000003C3 (0x1e bytes), align: 1
   Segment part 106.           Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CModbusRTU::FrameIsReceived()
-                                   00000514 
-               calls direct
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000546 - 00000563 (0x1e bytes), align: 1
-  Segment part 107.           Intra module refs:   CModbusRTU::Execution()
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
            CModbusRTU::ReceiveTimeIsOver()
-                                   00000546 
+                                   000003A6 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000564 - 0000057F (0x1c bytes), align: 1
-  Segment part 109.           Intra module refs:   CModbusRTU::Execution()
+  Relative segment, address: CODE 000003C4 - 000003DF (0x1c bytes), align: 1
+  Segment part 108.           Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::TransmitDelayTimeIsOver()
-                                   00000564 
+                                   000003C4 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000580 - 0000058B (0xc bytes), align: 1
-  Segment part 111.           Intra module refs:   CModbusRTU::Execution()
+  Relative segment, address: CODE 000003E0 - 000003EB (0xc bytes), align: 1
+  Segment part 110.           Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::GetSystemTime()
-                                   00000580 
+                                   000003E0 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 0000058C - 000005DF (0x54 bytes), align: 1
-  Segment part 112.           Intra module refs:   CModbusRTU::Execution()
+  Relative segment, address: CODE 000003EC - 0000041B (0x30 bytes), align: 1
+  Segment part 111.           Intra module refs:   CModbusRTU::Execution()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::FrameCheck(uint8_t *, uint16_t)
-                                   0000058C 
+                                   000003EC 
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000005E0 - 00000785 (0x1a6 bytes), align: 1
-  Segment part 113.
+  Relative segment, address: CODE 0000041C - 0000056F (0x154 bytes), align: 1
+  Segment part 112.           Intra module refs:   Segment part 113
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CModbusRTU::Execution()
-                                   000005E0        main (main)
+                                   0000041C        main (main)
                calls direct
+    -------------------------------------------------------------------------
+SWITCH
+  Relative segment, address: CODE 0000003A - 0000004F (0x16 bytes), align: 1
+  Segment part 113.           Intra module refs:   CModbusRTU::Execution()
     -------------------------------------------------------------------------
 NEAR_F
   Relative segment, address: CODE 00000038 - 00000039 (0x2 bytes), align: 0
@@ -1594,113 +1517,55 @@ NEAR_F
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000786 - 000007A1 (0x1c bytes), align: 1
-  Segment part 98.            Intra module refs:   CMvsn21::MeasureFsm()
+  Relative segment, address: CODE 00000570 - 0000058B (0x1c bytes), align: 1
+  Segment part 90.            Intra module refs:   CMvsn21::MeasureFsm()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CAdc::MeasureIsComlete()
-                                   00000786 
+                                   00000570 
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000184 - 00000184 (0x1 bytes), align: 0
-  Segment part 86. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CMvsn21::m_uiType       00000184 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000185 - 00000185 (0x1 bytes), align: 0
-  Segment part 88. ROOT 
+  Relative segment, address: DATA 00000179 - 00000179 (0x1 bytes), align: 0
+  Segment part 85. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CMvsn21::m_uiFlowControl
-                                   00000185 
+                                   00000179 
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000186 - 00000187 (0x2 bytes), align: 0
-  Segment part 89. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CMvsn21::m_uiMessageLength
-                                   00000186 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000188 - 00000188 (0x1 bytes), align: 0
-  Segment part 90. ROOT       Intra module refs:   CMvsn21::MeasureFsm()
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CMvsn21::m_uiChannel    00000188 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000189 - 00000189 (0x1 bytes), align: 0
-  Segment part 91. ROOT       Intra module refs:   CMvsn21::MeasureFsm()
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CMvsn21::m_uiMeasureFlowControl
-                                   00000189        CMvsn21::MeasureFlowControlSet(uint8_t) (main)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000018A - 00000191 (0x8 bytes), align: 0
-  Segment part 92. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CMvsn21::m_aucRtuCoilsArray
-                                   0000018A        main (main)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000192 - 000001A1 (0x10 bytes), align: 0
-  Segment part 93. ROOT       Intra module refs:   CMvsn21::MeasureFsm()
+  Relative segment, address: DATA 0000017A - 0000018B (0x12 bytes), align: 0
+  Segment part 87. ROOT       Intra module refs:   CMvsn21::MeasureFsm()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CMvsn21::m_aucRtuDiscreteInputsArray
-                                   00000192        main (main)
+                                   0000017A        main (main)
+           CMvsn21::m_uiChannel    0000018A 
+           CMvsn21::m_uiMeasureFlowControl
+                                   0000018B        CMvsn21::MeasureFlowControlSet(uint8_t) (main)
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 000001A2 - 000001B1 (0x10 bytes), align: 0
-  Segment part 94. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CMvsn21::m_aucRtuHoldingRegistersArray
-                                   000001A2        main (main)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 000001B2 - 000001C1 (0x10 bytes), align: 0
-  Segment part 95. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CMvsn21::m_aucRtuInputRegistersArray
-                                   000001B2        main (main)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 000001C2 - 000001E1 (0x20 bytes), align: 0
-  Segment part 96. ROOT 
+  Relative segment, address: DATA 0000018C - 000001AB (0x20 bytes), align: 0
+  Segment part 88. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CMvsn21::m_aui8ReceiveMessageBuff
-                                   000001C2        main (main)
+                                   0000018C        main (main)
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 000001E2 - 00000201 (0x20 bytes), align: 0
-  Segment part 97. ROOT 
+  Relative segment, address: DATA 000001AC - 000001CB (0x20 bytes), align: 0
+  Segment part 89. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CMvsn21::m_aui8TransmitMessageBuff
-                                   000001E2        main (main)
+                                   000001AC        main (main)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000007A2 - 00000835 (0x94 bytes), align: 1
-  Segment part 99.
+  Relative segment, address: CODE 0000058C - 000005FF (0x74 bytes), align: 1
+  Segment part 91.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CMvsn21::MeasureFsm()   000007A2        main (main)
+           CMvsn21::MeasureFsm()   0000058C        main (main)
                calls direct
-    -------------------------------------------------------------------------
-NEAR_F
-  Relative segment, address: CODE 0000003A - 0000003B (0x2 bytes), align: 0
-  Segment part 85. ROOT 
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           CTask::__vtbl           0000003A 
 
     *************************************************************************
 
@@ -1710,388 +1575,307 @@ NEAR_F
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000836 - 00000839 (0x4 bytes), align: 1
-  Segment part 114.           Intra module refs:   CUart::Read(uint8_t *, uint16_t)
+  Relative segment, address: CODE 00000600 - 00000603 (0x4 bytes), align: 1
+  Segment part 99.            Intra module refs:   CUart::Read(uint8_t *, uint16_t)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CPlatform::InterruptDisable()
-                                   00000836 
+                                   00000600 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 0000083A - 0000084B (0x12 bytes), align: 1
-  Segment part 115.           Intra module refs:   SystemTickInterrupt()
+  Relative segment, address: CODE 00000604 - 00000615 (0x12 bytes), align: 1
+  Segment part 100.           Intra module refs:   SystemTickInterrupt()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CPlatform::IncrementSystemTick()
-                                   0000083A 
+                                   00000604 
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000202 - 00000202 (0x1 bytes), align: 0
+  Relative segment, address: DATA 000001CC - 000001CC (0x1 bytes), align: 0
   Segment part 89. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CAdc::m_fbMeasureIsComlete
-                                   00000202 
+                                   000001CC 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 0000084C - 00000865 (0x1a bytes), align: 1
-  Segment part 117.
+  Relative segment, address: CODE 00000616 - 0000062F (0x1a bytes), align: 1
+  Segment part 101.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CAdc::Init()            0000084C        main (main)
+           CAdc::Init()            00000616        main (main)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000866 - 0000087F (0x1a bytes), align: 1
-  Segment part 118.
+  Relative segment, address: CODE 00000630 - 00000647 (0x18 bytes), align: 1
+  Segment part 102.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CAdc::ChannelSelect(uint8_t)
-                                   00000866        CMvsn21::MeasureFsm() (Mvsn21)
+                                   00000630        CMvsn21::MeasureFsm() (Mvsn21)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000880 - 0000088B (0xc bytes), align: 1
-  Segment part 120.
+  Relative segment, address: CODE 00000648 - 00000653 (0xc bytes), align: 1
+  Segment part 103.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CAdc::Start()           00000880        CMvsn21::MeasureFsm() (Mvsn21)
+           CAdc::Start()           00000648        CMvsn21::MeasureFsm() (Mvsn21)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 0000088C - 00000897 (0xc bytes), align: 1
-  Segment part 121.
+  Relative segment, address: CODE 00000654 - 0000065F (0xc bytes), align: 1
+  Segment part 104.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CAdc::Stop()            0000088C        CMvsn21::MeasureFsm() (Mvsn21)
+           CAdc::Stop()            00000654        CMvsn21::MeasureFsm() (Mvsn21)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000898 - 000008AD (0x16 bytes), align: 1
-  Segment part 122.
+  Relative segment, address: CODE 00000660 - 00000675 (0x16 bytes), align: 1
+  Segment part 105.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CAdc::Disable()         00000898        CMvsn21::MeasureFsm() (Mvsn21)
+           CAdc::Disable()         00000660        CMvsn21::MeasureFsm() (Mvsn21)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000008AE - 000008C3 (0x16 bytes), align: 1
-  Segment part 123.
+  Relative segment, address: CODE 00000676 - 0000068B (0x16 bytes), align: 1
+  Segment part 106.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CAdc::Enable()          000008AE        CMvsn21::MeasureFsm() (Mvsn21)
+           CAdc::Enable()          00000676        CMvsn21::MeasureFsm() (Mvsn21)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000008C4 - 000008D7 (0x14 bytes), align: 1
-  Segment part 124.
+  Relative segment, address: CODE 0000068C - 00000699 (0xe bytes), align: 1
+  Segment part 107.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CAdc::GetMeasureValue()
-                                   000008C4        CMvsn21::MeasureFsm() (Mvsn21)
+                                   0000068C        CMvsn21::MeasureFsm() (Mvsn21)
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000203 - 00000204 (0x2 bytes), align: 0
+  Relative segment, address: DATA 000001CD - 000001F3 (0x27 bytes), align: 0
   Segment part 91. ROOT       Intra module refs:   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *)
-                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_UBRRH          00000203 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000205 - 00000206 (0x2 bytes), align: 0
-  Segment part 92. ROOT       Intra module refs:   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *)
-                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_UBRRL          00000205 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000207 - 00000208 (0x2 bytes), align: 0
-  Segment part 93. ROOT       Intra module refs:   CUart::Enable()
-                                                   CUart::TxcInterruptHandler()
-                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t)
-                                                   CUart::UdreInterruptHandler()
-                                                   CUart::Write(uint8_t *, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_UCSRA          00000207 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000209 - 0000020A (0x2 bytes), align: 0
-  Segment part 94. ROOT       Intra module refs:   CUart::Enable()
-                                                   CUart::TxcInterruptHandler()
-                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t)
-                                                   CUart::UdreInterruptHandler()
-                                                   CUart::Write(uint8_t *, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_UCSRB          00000209 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000020B - 0000020C (0x2 bytes), align: 0
-  Segment part 95. ROOT       Intra module refs:   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *)
-                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_UCSRC          0000020B 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000020D - 0000020E (0x2 bytes), align: 0
-  Segment part 96. ROOT       Intra module refs:   CUart::RecvInterruptHandler()
-                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t)
-                                                   CUart::UdreInterruptHandler()
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_UDR            0000020D 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000020F - 00000210 (0x2 bytes), align: 0
-  Segment part 97. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_rs485ddr       0000020F 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000211 - 00000211 (0x1 bytes), align: 0
-  Segment part 98. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_rs485ddpin     00000211 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000212 - 00000213 (0x2 bytes), align: 0
-  Segment part 99. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_rs485port      00000212 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000214 - 00000214 (0x1 bytes), align: 0
-  Segment part 100. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_rs485pin       00000214 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000215 - 00000216 (0x2 bytes), align: 0
-  Segment part 101. ROOT      Intra module refs:   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *)
-                                                   CUart::UdreInterruptHandler()
-                                                   CUart::Write(uint8_t *, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_puiTxBuffer    00000215 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000217 - 00000218 (0x2 bytes), align: 0
-  Segment part 102. ROOT      Intra module refs:   CUart::UdreInterruptHandler()
-                                                   CUart::Write(uint8_t *, uint16_t)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_nuiTxBuffByteCounter
-                                   00000217 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000219 - 0000021A (0x2 bytes), align: 0
-  Segment part 103. ROOT      Intra module refs:   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CUart::m_puiRxBuffer    00000219 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000021B - 0000021C (0x2 bytes), align: 0
-  Segment part 104. ROOT      Intra module refs:   CUart::Read(uint8_t *, uint16_t)
+                                                   CUart::Read(uint8_t *, uint16_t)
+                                                   CUart::ReceiveDisable()
+                                                   CUart::ReceiveEnable()
                                                    CUart::RecvInterruptHandler()
                                                    CUart::Reset()
+                                                   CUart::TransmitDisable()
+                                                   CUart::TransmitEnable()
+                                                   CUart::TxcInterruptHandler()
+                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t)
+                                                   CUart::UdreInterruptHandler()
+                                                   CUart::Write(uint8_t *, uint16_t)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CUart::m_nuiRxBuffByteCounter
-                                   0000021B 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000021D - 0000022C (0x10 bytes), align: 0
-  Segment part 105. ROOT      Intra module refs:   CUart::Read(uint8_t *, uint16_t)
-                                                   CUart::RecvInterruptHandler()
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
+           CUart::m_UBRRH          000001CD 
+           CUart::m_UBRRL          000001CF 
+           CUart::m_UCSRA          000001D1 
+           CUart::m_UCSRB          000001D3 
+           CUart::m_UCSRC          000001D5 
+           CUart::m_UDR            000001D7 
            CUart::m_auiIntermediateBuff
-                                   0000021D 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000022D - 0000022D (0x1 bytes), align: 0
-  Segment part 106. ROOT      Intra module refs:   CUart::Read(uint8_t *, uint16_t)
-                                                   CUart::RecvInterruptHandler()
-                                                   CUart::Reset()
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
+                                   000001E1 
            CUart::m_bfByteIsReceived
-                                   0000022D        CUart::ByteIsReceived() (ModbusRTU)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 0000022E - 0000022E (0x1 bytes), align: 0
-  Segment part 107. ROOT      Intra module refs:   CUart::Reset()
-                                                   CUart::TxcInterruptHandler()
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
+                                   000001F1        CUart::ByteIsReceived() (ModbusRTU)
            CUart::m_bfFrameIsSended
-                                   0000022E        CUart::FrameIsSended() (ModbusRTU)
+                                   000001F2        CUart::FrameIsSended() (ModbusRTU)
+           CUart::m_bfRxBuffOverflow
+                                   000001F3 
+           CUart::m_nuiRxBuffByteCounter
+                                   000001DF 
+           CUart::m_nuiTxBuffByteCounter
+                                   000001DB 
+           CUart::m_puiRxBuffer    000001DD 
+           CUart::m_puiTxBuffer    000001D9 
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 0000022F - 0000022F (0x1 bytes), align: 0
-  Segment part 108. ROOT      Intra module refs:   CUart::Read(uint8_t *, uint16_t)
-                                                   CUart::RecvInterruptHandler()
-                                                   CUart::Reset()
+  Relative segment, address: DATA 000001F4 - 000001F5 (0x2 bytes), align: 0
+  Segment part 92. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CUart::m_bfRxBuffOverflow
-                                   0000022F 
+           CUart::m_rs485ddr       000001F4 
+    -------------------------------------------------------------------------
+NEAR_Z
+  Relative segment, address: DATA 000001F6 - 000001F6 (0x1 bytes), align: 0
+  Segment part 93. ROOT 
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CUart::m_rs485ddpin     000001F6 
+    -------------------------------------------------------------------------
+NEAR_Z
+  Relative segment, address: DATA 000001F7 - 000001F8 (0x2 bytes), align: 0
+  Segment part 94. ROOT 
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CUart::m_rs485port      000001F7 
+    -------------------------------------------------------------------------
+NEAR_Z
+  Relative segment, address: DATA 000001F9 - 000001F9 (0x1 bytes), align: 0
+  Segment part 95. ROOT 
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CUart::m_rs485pin       000001F9 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000008D8 - 00000913 (0x3c bytes), align: 1
-  Segment part 125.
+  Relative segment, address: CODE 0000069A - 000006C3 (0x2a bytes), align: 1
+  Segment part 108.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t)
-                                   000008D8        main (main)
+                                   0000069A        main (main)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000914 - 000009F5 (0xe2 bytes), align: 1
-  Segment part 126.
+  Relative segment, address: CODE 000006C4 - 00000785 (0xc2 bytes), align: 1
+  Segment part 109.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *)
-                                   00000914        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
+                                   000006C4        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 000009F6 - 00000A15 (0x20 bytes), align: 1
-  Segment part 127.
+  Relative segment, address: CODE 00000786 - 00000797 (0x12 bytes), align: 1
+  Segment part 110.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CUart::Reset()          000009F6        CModbusRTU::Reset() (ModbusRTU)
+           CUart::Reset()          00000786        CModbusRTU::Reset() (ModbusRTU)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000A16 - 00000A3B (0x26 bytes), align: 1
-  Segment part 128.
+  Relative segment, address: CODE 00000798 - 000007B5 (0x1e bytes), align: 1
+  Segment part 111.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CUart::Enable()         00000A16        CModbusRTU::ReceiveEnable() (ModbusRTU)
+           CUart::ReceiveEnable()
+                                   00000798        CModbusRTU::ReceiveEnable() (ModbusRTU)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000A3C - 00000A97 (0x5c bytes), align: 1
-  Segment part 130.
+  Relative segment, address: CODE 000007B6 - 000007C9 (0x14 bytes), align: 1
+  Segment part 112.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CUart::ReceiveDisable()
+                                   000007B6        CModbusRTU::ReceiveDisable() (ModbusRTU)
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 000007CA - 000007E7 (0x1e bytes), align: 1
+  Segment part 113.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CUart::TransmitEnable()
+                                   000007CA        CModbusRTU::TransmitEnable() (ModbusRTU)
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 000007E8 - 000007FB (0x14 bytes), align: 1
+  Segment part 114.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CUart::TransmitDisable()
+                                   000007E8        CModbusRTU::TransmitDisable() (ModbusRTU)
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 000007FC - 0000080D (0x12 bytes), align: 1
+  Segment part 115.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::Write(uint8_t *, uint16_t)
-                                   00000A3C        CModbusRTU::Send(uint8_t *, uint16_t) (ModbusRTU)
+                                   000007FC        CModbusRTU::Send(uint8_t *, uint16_t) (ModbusRTU)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000A98 - 00000B31 (0x9a bytes), align: 1
-  Segment part 131.
+  Relative segment, address: CODE 0000080E - 00000875 (0x68 bytes), align: 1
+  Segment part 116.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::Read(uint8_t *, uint16_t)
-                                   00000A98        CModbusRTU::Receive(uint8_t *, uint16_t) (ModbusRTU)
+                                   0000080E        CModbusRTU::Receive(uint8_t *, uint16_t) (ModbusRTU)
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000B32 - 00000BAD (0x7c bytes), align: 1
-  Segment part 132.           Intra module refs:   SIG_UART0_DATA()
+  Relative segment, address: CODE 00000876 - 000008E1 (0x6c bytes), align: 1
+  Segment part 117.           Intra module refs:   SIG_UART0_DATA()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::UdreInterruptHandler()
-                                   00000B32 
+                                   00000876 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000BAE - 00000BED (0x40 bytes), align: 1
-  Segment part 133.           Intra module refs:   SIG_UART0_TXC()
+  Relative segment, address: CODE 000008E2 - 000008E9 (0x8 bytes), align: 1
+  Segment part 118.           Intra module refs:   SIG_UART0_TXC()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::TxcInterruptHandler()
-                                   00000BAE 
-               calls direct
+                                   000008E2 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000BEE - 00000C43 (0x56 bytes), align: 1
-  Segment part 134.           Intra module refs:   SIG_UART0_RECV()
+  Relative segment, address: CODE 000008EA - 00000931 (0x48 bytes), align: 1
+  Segment part 119.           Intra module refs:   SIG_UART0_RECV()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CUart::RecvInterruptHandler()
-                                   00000BEE 
+                                   000008EA 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000C44 - 00000C63 (0x20 bytes), align: 1
-  Segment part 135.           Intra module refs:   SIG_UART0_DATA()::??INTVEC 38
+  Relative segment, address: CODE 00000932 - 00000951 (0x20 bytes), align: 1
+  Segment part 120.           Intra module refs:   SIG_UART0_DATA()::??INTVEC 38
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SIG_UART0_DATA()        00000C44 
+           SIG_UART0_DATA()        00000932 
                interrupt function
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000C64 - 00000CA7 (0x44 bytes), align: 1
-  Segment part 136.           Intra module refs:   SIG_UART0_TXC()::??INTVEC 40
+  Relative segment, address: CODE 00000952 - 00000961 (0x10 bytes), align: 1
+  Segment part 121.           Intra module refs:   SIG_UART0_TXC()::??INTVEC 40
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SIG_UART0_TXC()         00000C64 
+           SIG_UART0_TXC()         00000952 
                interrupt function
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000CA8 - 00000CCF (0x28 bytes), align: 1
-  Segment part 137.           Intra module refs:   SIG_UART0_RECV()::??INTVEC 36
+  Relative segment, address: CODE 00000962 - 00000985 (0x24 bytes), align: 1
+  Segment part 122.           Intra module refs:   SIG_UART0_RECV()::??INTVEC 36
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SIG_UART0_RECV()        00000CA8 
+           SIG_UART0_RECV()        00000962 
                interrupt function
                calls direct
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000230 - 00000231 (0x2 bytes), align: 0
-  Segment part 109. ROOT      Intra module refs:   CPlatform::IncrementSystemTick()
+  Relative segment, address: DATA 000001FA - 000001FB (0x2 bytes), align: 0
+  Segment part 96. ROOT       Intra module refs:   CPlatform::IncrementSystemTick()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CPlatform::m_uiSystemTick
-                                   00000230        CPlatform::GetSystemTick() (ModbusRTU)
+                                   000001FA        CPlatform::GetSystemTick() (ModbusRTU)
     -------------------------------------------------------------------------
 NEAR_Z
-  Relative segment, address: DATA 00000232 - 00000233 (0x2 bytes), align: 0
-  Segment part 110. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CPlatform::m_pxUart0    00000232        main (main)
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000234 - 00000235 (0x2 bytes), align: 0
-  Segment part 111. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CPlatform::m_pxUart1    00000234 
-    -------------------------------------------------------------------------
-NEAR_Z
-  Relative segment, address: DATA 00000236 - 00000236 (0x1 bytes), align: 0
-  Segment part 112. ROOT 
+  Relative segment, address: DATA 000001FC - 000001FC (0x1 bytes), align: 0
+  Segment part 97. ROOT 
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            CPlatform::uiSlaveSelectIsHigh
-                                   00000236 
+                                   000001FC 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000CD0 - 00000CF5 (0x26 bytes), align: 1
-  Segment part 142.           Intra module refs:   CPlatform::Init()
+  Relative segment, address: CODE 00000986 - 000009AB (0x26 bytes), align: 1
+  Segment part 127.           Intra module refs:   CPlatform::Init()
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SystemTickInit()        00000CD0 
+           SystemTickInit()        00000986 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000CF6 - 00000D39 (0x44 bytes), align: 1
-  Segment part 143.           Intra module refs:   SystemTickInterrupt()::??INTVEC 14
+  Relative segment, address: CODE 000009AC - 000009EF (0x44 bytes), align: 1
+  Segment part 128.           Intra module refs:   SystemTickInterrupt()::??INTVEC 14
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SystemTickInterrupt()   00000CF6 
+           SystemTickInterrupt()   000009AC 
                interrupt function
                calls direct
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000D3A - 00000D3D (0x4 bytes), align: 1
-  Segment part 144.
+  Relative segment, address: CODE 000009F0 - 000009F3 (0x4 bytes), align: 1
+  Segment part 129.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CPlatform::Init()       00000D3A        main (main)
+           CPlatform::Init()       000009F0        main (main)
                calls direct
     -------------------------------------------------------------------------
 INTVEC
@@ -2128,43 +1912,21 @@ INTVEC
 
     *************************************************************************
 
-  FILE NAME : D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\Obj\Timer.r90
-  PROGRAM MODULE, NAME : Timer
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000D3E - 00000D53 (0x16 bytes), align: 1
-  Segment part 89.            Intra module refs:   CTimer::__vtbl
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CTimer::~CTimer()       00000D3E 
-               calls direct
-    -------------------------------------------------------------------------
-NEAR_F
-  Relative segment, address: CODE 0000003C - 0000003D (0x2 bytes), align: 0
-  Segment part 85. ROOT 
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           CTimer::__vtbl          0000003C 
-
-    *************************************************************************
-
   FILE NAME : C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.r90
   LIBRARY MODULE, NAME : ?_exit
 
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000D54, align: 1
+  Relative segment, address: CODE 000009F4, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _exit                   00000D54        ?cstartup_call_main (?C_STARTUP)
+           _exit                   000009F4        ?cstartup_call_main (?C_STARTUP)
                                                    exit (?exit)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000D54 - 00000D55 (0x2 bytes), align: 1
+  Relative segment, address: CODE 000009F4 - 000009F5 (0x2 bytes), align: 1
   Segment part 5.             Intra module refs:   _exit
 
     -------------------------------------------------------------------------
@@ -2185,52 +1947,38 @@ INTVEC
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000D56, align: 1
+  Relative segment, address: CODE 000009F6, align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __program_start         00000D56        Absolute parts (?ABS_ENTRY_MOD)
-           ?C_STARTUP              00000D56        ?RESET (?RESET)
-           __RESTART               00000D56 
+           __program_start         000009F6        Absolute parts (?ABS_ENTRY_MOD)
+           ?C_STARTUP              000009F6        ?RESET (?RESET)
+           __RESTART               000009F6 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000D56 - 00000D61 (0xc bytes), align: 1
+  Relative segment, address: CODE 000009F6 - 00000A01 (0xc bytes), align: 1
   Segment part 5.             Intra module refs:   Segment part 2
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000D62 - 00000D63 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000A02 - 00000A03 (0x2 bytes), align: 1
   Segment part 7.             Intra module refs:   Segment part 5
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?call_low_level_init    00000D62 
+           ?call_low_level_init    00000A02 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000D64 - 00000D69 (0x6 bytes), align: 1
+  Relative segment, address: CODE 00000A04 - 00000A09 (0x6 bytes), align: 1
   Segment part 8.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?need_segment_init      00000D64        ?<Segment init: NEAR_Z> (Modbus)
+           ?need_segment_init      00000A04        ?<Segment init: NEAR_Z> (Modbus)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000D6A - 00000D6F (0x6 bytes), align: 1
+  Relative segment, address: CODE 00000A0A - 00000A0F (0x6 bytes), align: 1
   Segment part 11.            Intra module refs:   ?call_low_level_init
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?cstartup_call_main     00000D6A 
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?delop_0
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000D70 - 00000D79 (0xa bytes), align: 1
-  Segment part 3.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           operator delete(void *)
-                                   00000D70        CTimer::~CTimer() (Timer)
-               calls direct
+           ?cstartup_call_main     00000A0A 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?exit
@@ -2238,11 +1986,11 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000D7A - 00000D7B (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000A10 - 00000A11 (0x2 bytes), align: 1
   Segment part 3.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           exit                    00000D7A        ?cstartup_call_main (?C_STARTUP)
+           exit                    00000A10        ?cstartup_call_main (?C_STARTUP)
                calls direct
 
     -------------------------------------------------------------------------
@@ -2251,11 +1999,11 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000D7C - 00000D85 (0xa bytes), align: 1
+  Relative segment, address: CODE 00000A12 - 00000A1B (0xa bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?S_SHL_L02              00000D80        CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t) (Modbus)
+           ?S_SHL_L02              00000A16        CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t) (Modbus)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?US_SHR_L02
@@ -2263,23 +2011,23 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000D86 - 00000D8F (0xa bytes), align: 1
+  Relative segment, address: CODE 00000A1C - 00000A25 (0xa bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?US_SHR_L02             00000D8A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
+           ?US_SHR_L02             00000A20        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
 
     -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?L_EC_MUL_L03
+  LIBRARY MODULE, NAME : ?L_SHL_L03
 
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000D90 - 00000DCF (0x40 bytes), align: 1
+  Relative segment, address: CODE 00000A26 - 00000A33 (0xe bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?L_EC_MUL_L03           00000D90        CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
+           ?L_SHL_L03              00000A2E        CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?UL_DIVMOD_L03
@@ -2287,15 +2035,48 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000DD0 - 00000DD7 (0x8 bytes), align: 1
+  Relative segment, address: CODE 00000A34 - 00000A3B (0x8 bytes), align: 1
   Segment part 1.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?UL_DIVMOD_L03          00000DD0        CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
+           ?UL_DIVMOD_L03          00000A34        CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000DD8 - 00000E0D (0x36 bytes), align: 1
+  Relative segment, address: CODE 00000A3C - 00000A71 (0x36 bytes), align: 1
   Segment part 3.             Intra module refs:   ?UL_DIVMOD_L03
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?xV_SWITCH_L06
+
+  SEGMENTS IN THE MODULE
+  ======================
+CODE
+  Relative segment, address: CODE 00000A72 - 00000A7D (0xc bytes), align: 1
+  Segment part 2.             Intra module refs:   ?CV_SWITCH_L06
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           GET_INFO_C              00000A72 
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 00000A7E - 00000A85 (0x8 bytes), align: 1
+  Segment part 3.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?CV_SWITCH_L06          00000A7E        CModbusRTU::Execution() (ModbusRTU)
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 00000A86 - 00000A8B (0x6 bytes), align: 1
+  Segment part 5.             Intra module refs:   ?CV_SWITCH_L06
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           P_0_S                   00000A86 
+    -------------------------------------------------------------------------
+CODE
+  Relative segment, address: CODE 00000A8C - 00000AF7 (0x6c bytes), align: 1
+  Segment part 7.             Intra module refs:   P_0_S
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           CHECK_LOW_LIMIT         00000A8C 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?PROLOGUE_L09
@@ -2303,133 +2084,76 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000E0E - 00000E0F (0x2 bytes), align: 1
-  Segment part 0.
+  Relative segment, address: CODE 00000AF8 - 00000AF9 (0x2 bytes), align: 1
+  Segment part 8.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?PROLOGUE16_L09         00000E0E        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
+           ?PROLOGUE8_L09          00000AF8        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E10 - 00000E11 (0x2 bytes), align: 1
-  Segment part 1.             Intra module refs:   ?PROLOGUE16_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?PROLOGUE15_L09         00000E10 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E12 - 00000E13 (0x2 bytes), align: 1
-  Segment part 2.             Intra module refs:   ?PROLOGUE15_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?PROLOGUE14_L09         00000E12        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E14 - 00000E15 (0x2 bytes), align: 1
-  Segment part 3.             Intra module refs:   ?PROLOGUE14_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?PROLOGUE13_L09         00000E14 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E16 - 00000E17 (0x2 bytes), align: 1
-  Segment part 4.             Intra module refs:   ?PROLOGUE13_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?PROLOGUE12_L09         00000E16 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E18 - 00000E19 (0x2 bytes), align: 1
-  Segment part 5.             Intra module refs:   ?PROLOGUE12_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?PROLOGUE11_L09         00000E18        CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E1A - 00000E1B (0x2 bytes), align: 1
-  Segment part 6.             Intra module refs:   ?PROLOGUE11_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?PROLOGUE10_L09         00000E1A 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E1C - 00000E1D (0x2 bytes), align: 1
-  Segment part 7.             Intra module refs:   ?PROLOGUE10_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?PROLOGUE9_L09          00000E1C 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E1E - 00000E1F (0x2 bytes), align: 1
-  Segment part 8.             Intra module refs:   ?PROLOGUE9_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?PROLOGUE8_L09          00000E1E        CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E20 - 00000E21 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000AFA - 00000AFB (0x2 bytes), align: 1
   Segment part 9.             Intra module refs:   ?PROLOGUE8_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?PROLOGUE7_L09          00000E20        CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *) (Modbus)
+           ?PROLOGUE7_L09          00000AFA 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E22 - 00000E23 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000AFC - 00000AFD (0x2 bytes), align: 1
   Segment part 10.            Intra module refs:   ?PROLOGUE7_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?PROLOGUE6_L09          00000E22        CUart::Read(uint8_t *, uint16_t) (Platform)
+           ?PROLOGUE6_L09          00000AFC 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E24 - 00000E25 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000AFE - 00000AFF (0x2 bytes), align: 1
   Segment part 11.            Intra module refs:   ?PROLOGUE6_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?PROLOGUE5_L09          00000E24        CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t) (Modbus)
+           ?PROLOGUE5_L09          00000AFE        CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t) (Modbus)
+                                                   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E26 - 00000E27 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B00 - 00000B01 (0x2 bytes), align: 1
   Segment part 12.            Intra module refs:   ?PROLOGUE5_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?PROLOGUE4_L09          00000E26        CModbus::SendMessage(uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::Receive(uint8_t *, uint16_t) (ModbusRTU)
-                                                   CModbusRTU::Send(uint8_t *, uint16_t) (ModbusRTU)
+           ?PROLOGUE4_L09          00000B00        CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *) (Modbus)
+                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
                                                    CModbusRTU::Tail(uint8_t *, uint16_t) (ModbusRTU)
-                                                   CUart::Enable() (Platform)
+                                                   CUart::Read(uint8_t *, uint16_t) (Platform)
+                                                   CUart::ReceiveDisable() (Platform)
+                                                   CUart::ReceiveEnable() (Platform)
                                                    CUart::RecvInterruptHandler() (Platform)
-                                                   CUart::TxcInterruptHandler() (Platform)
+                                                   CUart::TransmitDisable() (Platform)
+                                                   CUart::TransmitEnable() (Platform)
+                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t) (Platform)
                                                    CUart::UdreInterruptHandler() (Platform)
-                                                   CUart::Write(uint8_t *, uint16_t) (Platform)
-                                                   free (?xxmemxfree)
-                                                   main (main)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E28 - 00000E29 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B02 - 00000B03 (0x2 bytes), align: 1
   Segment part 13.            Intra module refs:   ?PROLOGUE4_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?PROLOGUE3_L09          00000E28 
+           ?PROLOGUE3_L09          00000B02 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E2A - 00000E2B (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B04 - 00000B05 (0x2 bytes), align: 1
   Segment part 14.            Intra module refs:   ?PROLOGUE3_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?PROLOGUE2_L09          00000E2A        CModbusRTU::Execution() (ModbusRTU)
-                                                   CModbusRTU::FrameIsReceived() (ModbusRTU)
-                                                   CTimer::~CTimer() (Timer)
+           ?PROLOGUE2_L09          00000B04        CModbus::SendMessage(uint8_t *, uint16_t) (Modbus)
+                                                   CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
                                                    usCrc16(unsigned char *, unsigned short) (Crc)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E2C - 00000E2D (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B06 - 00000B07 (0x2 bytes), align: 1
   Segment part 15.            Intra module refs:   ?PROLOGUE2_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?PROLOGUE1_L09          00000E2C 
+           ?PROLOGUE1_L09          00000B06 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E2E - 00000E2F (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B08 - 00000B09 (0x2 bytes), align: 1
   Segment part 16.            Intra module refs:   ?PROLOGUE1_L09
 
     -------------------------------------------------------------------------
@@ -2438,136 +2162,80 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000E30 - 00000E31 (0x2 bytes), align: 1
-  Segment part 0.
+  Relative segment, address: CODE 00000B0A - 00000B0B (0x2 bytes), align: 1
+  Segment part 8.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B16_L09       00000E30        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
+           ?EPILOGUE_B8_L09        00000B0A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E32 - 00000E33 (0x2 bytes), align: 1
-  Segment part 1.             Intra module refs:   ?EPILOGUE_B16_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?EPILOGUE_B15_L09       00000E32 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E34 - 00000E35 (0x2 bytes), align: 1
-  Segment part 2.             Intra module refs:   ?EPILOGUE_B15_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?EPILOGUE_B14_L09       00000E34        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E36 - 00000E37 (0x2 bytes), align: 1
-  Segment part 3.             Intra module refs:   ?EPILOGUE_B14_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?EPILOGUE_B13_L09       00000E36 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E38 - 00000E39 (0x2 bytes), align: 1
-  Segment part 4.             Intra module refs:   ?EPILOGUE_B13_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?EPILOGUE_B12_L09       00000E38 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E3A - 00000E3B (0x2 bytes), align: 1
-  Segment part 5.             Intra module refs:   ?EPILOGUE_B12_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?EPILOGUE_B11_L09       00000E3A        CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E3C - 00000E3D (0x2 bytes), align: 1
-  Segment part 6.             Intra module refs:   ?EPILOGUE_B11_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?EPILOGUE_B10_L09       00000E3C 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E3E - 00000E3F (0x2 bytes), align: 1
-  Segment part 7.             Intra module refs:   ?EPILOGUE_B10_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?EPILOGUE_B9_L09        00000E3E 
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E40 - 00000E41 (0x2 bytes), align: 1
-  Segment part 8.             Intra module refs:   ?EPILOGUE_B9_L09
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?EPILOGUE_B8_L09        00000E40        CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000E42 - 00000E43 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B0C - 00000B0D (0x2 bytes), align: 1
   Segment part 9.             Intra module refs:   ?EPILOGUE_B8_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B7_L09        00000E42        CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *) (Modbus)
+           ?EPILOGUE_B7_L09        00000B0C 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E44 - 00000E45 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B0E - 00000B0F (0x2 bytes), align: 1
   Segment part 10.            Intra module refs:   ?EPILOGUE_B7_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B6_L09        00000E44        CUart::Read(uint8_t *, uint16_t) (Platform)
+           ?EPILOGUE_B6_L09        00000B0E 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E46 - 00000E47 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B10 - 00000B11 (0x2 bytes), align: 1
   Segment part 11.            Intra module refs:   ?EPILOGUE_B6_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B5_L09        00000E46        CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t) (Modbus)
+           ?EPILOGUE_B5_L09        00000B10        CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t) (Modbus)
+                                                   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E48 - 00000E49 (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B12 - 00000B13 (0x2 bytes), align: 1
   Segment part 12.            Intra module refs:   ?EPILOGUE_B5_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B4_L09        00000E48        CModbus::SendMessage(uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::Receive(uint8_t *, uint16_t) (ModbusRTU)
-                                                   CModbusRTU::Send(uint8_t *, uint16_t) (ModbusRTU)
+           ?EPILOGUE_B4_L09        00000B12        CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *) (Modbus)
+                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
                                                    CModbusRTU::Tail(uint8_t *, uint16_t) (ModbusRTU)
-                                                   CUart::Enable() (Platform)
+                                                   CUart::Read(uint8_t *, uint16_t) (Platform)
+                                                   CUart::ReceiveDisable() (Platform)
+                                                   CUart::ReceiveEnable() (Platform)
                                                    CUart::RecvInterruptHandler() (Platform)
-                                                   CUart::TxcInterruptHandler() (Platform)
+                                                   CUart::TransmitDisable() (Platform)
+                                                   CUart::TransmitEnable() (Platform)
+                                                   CUart::UartBind(uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t volatile *, uint8_t, uint8_t volatile *, uint8_t) (Platform)
                                                    CUart::UdreInterruptHandler() (Platform)
-                                                   CUart::Write(uint8_t *, uint16_t) (Platform)
-                                                   free (?xxmemxfree)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E4A - 00000E4B (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B14 - 00000B15 (0x2 bytes), align: 1
   Segment part 13.            Intra module refs:   ?EPILOGUE_B4_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B3_L09        00000E4A 
+           ?EPILOGUE_B3_L09        00000B14 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E4C - 00000E4D (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B16 - 00000B17 (0x2 bytes), align: 1
   Segment part 14.            Intra module refs:   ?EPILOGUE_B3_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B2_L09        00000E4C        CModbusRTU::Execution() (ModbusRTU)
-                                                   CModbusRTU::FrameIsReceived() (ModbusRTU)
-                                                   CTimer::~CTimer() (Timer)
+           ?EPILOGUE_B2_L09        00000B16        CModbus::SendMessage(uint8_t *, uint16_t) (Modbus)
+                                                   CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
                                                    usCrc16(unsigned char *, unsigned short) (Crc)
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E4E - 00000E4F (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B18 - 00000B19 (0x2 bytes), align: 1
   Segment part 15.            Intra module refs:   ?EPILOGUE_B2_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B1_L09        00000E4E 
+           ?EPILOGUE_B1_L09        00000B18 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E50 - 00000E59 (0xa bytes), align: 1
+  Relative segment, address: CODE 00000B1A - 00000B23 (0xa bytes), align: 1
   Segment part 16.            Intra module refs:   ?EPILOGUE_B1_L09
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?EPILOGUE_B0_L09        00000E50 
+           ?EPILOGUE_B0_L09        00000B1A 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?REGISTER_CGREGR4_L10
@@ -2575,38 +2243,13 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000E5A, align: 1
+  Relative segment, address: CODE 00000B24, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            ?Register_R4_is_cg_reg
-                                   00000E5A        CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *) (Modbus)
-                                                   CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
+                                   00000B24        CModbus::ByteToBitPack(uint16_t, uint16_t, uint8_t *, uint8_t *, uint16_t) (Modbus)
                                                    CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
-                                                   CUart::Read(uint8_t *, uint16_t) (Platform)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR5_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R5_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *) (Modbus)
-                                                   CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-                                                   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
-                                                   CUart::Read(uint8_t *, uint16_t) (Platform)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?REGISTER_CGREGR6_L10
@@ -2614,17 +2257,12 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000E5A, align: 1
+  Relative segment, address: CODE 00000B24, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            ?Register_R6_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::ResponseException(uint8_t, uint8_t, uint8_t, uint8_t *) (Modbus)
-                                                   CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-                                                   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
+                                   00000B24        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?REGISTER_CGREGR7_L10
@@ -2632,135 +2270,12 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000E5A, align: 1
+  Relative segment, address: CODE 00000B24, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            ?Register_R7_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::FrameCheck(uint8_t *, uint16_t) (ModbusRTU)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-                                                   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR8_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R8_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-                                                   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR9_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R9_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-                                                   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR10_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R10_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-                                                   CUart::Init(uint32_t, uint8_t, uint8_t, uint8_t, uint8_t *, uint8_t *) (Platform)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR11_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R11_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR12_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R12_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR13_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R13_is_cg_reg
-                                   00000E5A        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbus::Reply(uint8_t *, uint8_t *, uint16_t) (Modbus)
-                                                   CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR14_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R14_is_cg_reg
-                                   00000E5A        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?REGISTER_CGREGR15_L10
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000E5A, align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?Register_R15_is_cg_reg
-                                   00000E5A        CModbusRTU::Init(CUart *, uint32_t, char, uint8_t, uint8_t, uint8_t *, uint8_t *, uint8_t *, uint8_t *, uint16_t *, uint16_t *, uint16_t, uint16_t, uint16_t, uint16_t) (ModbusRTU)
+                                   00000B24        CModbus::ReadDiscreteInputs(uint8_t *, uint8_t *, uint16_t) (Modbus)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?low_level_init
@@ -2768,11 +2283,11 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000E5A - 00000E5D (0x4 bytes), align: 1
+  Relative segment, address: CODE 00000B24 - 00000B27 (0x4 bytes), align: 1
   Segment part 3.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __low_level_init        00000E5A        ?call_low_level_init (?C_STARTUP)
+           __low_level_init        00000B24        ?call_low_level_init (?C_STARTUP)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?segment_init
@@ -2780,25 +2295,25 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000E5E - 00000E69 (0xc bytes), align: 1
+  Relative segment, address: CODE 00000B28 - 00000B33 (0xc bytes), align: 1
   Segment part 3.             Intra module refs:   __segment_init
            LOCAL                   ADDRESS         
            =====                   =======         
-           __memclr                00000E5E 
+           __memclr                00000B28 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E6A - 00000E75 (0xc bytes), align: 1
+  Relative segment, address: CODE 00000B34 - 00000B3F (0xc bytes), align: 1
   Segment part 4.             Intra module refs:   __segment_init
            LOCAL                   ADDRESS         
            =====                   =======         
-           __flashcpy              00000E6A 
+           __flashcpy              00000B34 
     -------------------------------------------------------------------------
 CODE
-  Relative segment, address: CODE 00000E76 - 00000EA9 (0x34 bytes), align: 1
+  Relative segment, address: CODE 00000B40 - 00000B73 (0x34 bytes), align: 1
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __segment_init          00000E76        ?need_segment_init (?C_STARTUP)
+           __segment_init          00000B40        ?need_segment_init (?C_STARTUP)
                calls direct
 
     -------------------------------------------------------------------------
@@ -2807,39 +2322,11 @@ CODE
   SEGMENTS IN THE MODULE
   ======================
 CODE
-  Relative segment, address: CODE 00000EAA - 00000EAB (0x2 bytes), align: 1
+  Relative segment, address: CODE 00000B74 - 00000B75 (0x2 bytes), align: 1
   Segment part 3.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __exit                  00000EAA        Segment part 5 (?_exit)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?xxmemxfree
-
-  SEGMENTS IN THE MODULE
-  ======================
-CODE
-  Relative segment, address: CODE 00000EAC - 00000F81 (0xd6 bytes), align: 1
-  Segment part 3.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           free                    00000EAC        operator delete(void *) (?delop_0)
-    -------------------------------------------------------------------------
-CODE
-  Relative segment, address: CODE 00000F82 - 00000F8B (0xa bytes), align: 1
-  Segment part 4.             Intra module refs:   free
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?xxmemxmalloc
-
-  SEGMENTS IN THE MODULE
-  ======================
-NEAR_Z
-  Relative segment, address: DATA 00000237 - 0000023A (0x4 bytes), align: 0
-  Segment part 3.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           __near_Aldata           00000237        free (?xxmemxfree)
+           __exit                  00000B74        Segment part 5 (?_exit)
 
     *************************************************************************
 
@@ -2870,9 +2357,10 @@ SEGMENT              SPACE    START ADDRESS   END ADDRESS     SIZE  TYPE  ALIGN
 =======              =====    =============   ===========     ====  ====  =====
 INTVEC               CODE          00000000 - 00000029          2A   com    1
 ?FILL1               CODE          0000002A - 00000033           A   rel    0
-NEAR_F               CODE          00000034 - 0000003D           A   rel    0
-INITTAB              CODE          0000003E - 00000043           6   rel    0
-CODE                 CODE          00000044 - 00000F8B         F48   rel    1
+NEAR_F               CODE          00000034 - 00000039           6   rel    0
+SWITCH               CODE          0000003A - 0000004F          16   rel    1
+INITTAB              CODE          00000050 - 00000055           6   rel    0
+CODE                 CODE          00000056 - 00000B75         B20   rel    1
 ABSOLUTE             DATA               0000001F                     rel    0
                      DATA               00000020                   
                      DATA               00000021                   
@@ -2899,7 +2387,7 @@ ABSOLUTE             DATA               0000001F                     rel    0
 CSTACK               DATA          00000100 - 0000013F          40   dse    0
 RSTACK               DATA          00000140 - 0000015F          20   dse    0
 NEAR_I               DATA               00000160                     dse    0
-NEAR_Z               DATA          00000160 - 0000023A          DB   rel    0
+NEAR_Z               DATA          00000160 - 000001FC          9D   rel    0
 
                 ****************************************
                 *                                      *
@@ -2907,8 +2395,8 @@ NEAR_Z               DATA          00000160 - 0000023A          DB   rel    0
                 *                                      *
                 ****************************************
 
- 3 970 bytes of CODE memory (+             10 range fill )
-   315 bytes of DATA memory (+ 87 absolute )
+ 2 924 bytes of CODE memory (+             10 range fill )
+   253 bytes of DATA memory (+ 87 absolute )
 
 Errors: none
 Warnings: none

@@ -44,9 +44,9 @@ public:
     enum INPUT_STATE_CODE
     {
         WIRE_BREAK	= 0x02,			// Обрыв линии
-        ON		= 0x01,			// Срабатывание датчика
-        OFF		= 0x00,			// Дективация датчика
-        SHORT_CIRCUIT	= 0x03			// Короткое замыкание
+        ON = 0x01,			// Срабатывание датчика
+        OFF = 0x00,			// Дективация датчика
+        SHORT_CIRCUIT = 0x03			// Короткое замыкание
     };
 
     enum STATUS_CODE

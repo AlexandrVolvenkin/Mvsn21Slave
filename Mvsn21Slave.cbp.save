@@ -40,31 +40,19 @@
 		</Linker>
 		<Unit filename="Modbus/Modbus.cpp" />
 		<Unit filename="Modbus/Modbus.h" />
-		<Unit filename="Modbus/ModbusMT.cpp" />
-		<Unit filename="Modbus/ModbusMT.h" />
 		<Unit filename="Modbus/ModbusRTU.cpp" />
 		<Unit filename="Modbus/ModbusRTU.h" />
 		<Unit filename="Modbus/errno-base.h" />
-		<Unit filename="include/Config.h" />
 		<Unit filename="include/Configuration.h" />
 		<Unit filename="include/Crc.h" />
 		<Unit filename="include/DataTypes.h" />
-		<Unit filename="include/Device.h" />
-		<Unit filename="include/Driver.h" />
-		<Unit filename="include/InputDevice.h" />
 		<Unit filename="include/MeasurementChannel.h" />
 		<Unit filename="include/Mvsn21.h" />
 		<Unit filename="include/Platform.h" />
-		<Unit filename="include/Task.h" />
-		<Unit filename="include/Timer.h" />
 		<Unit filename="src/Crc.cpp" />
-		<Unit filename="src/Device.cpp" />
-		<Unit filename="src/Driver.cpp" />
 		<Unit filename="src/MeasurementChannel.cpp" />
 		<Unit filename="src/Mvsn21.cpp" />
 		<Unit filename="src/Platform.cpp" />
-		<Unit filename="src/Task.cpp" />
-		<Unit filename="src/Timer.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />

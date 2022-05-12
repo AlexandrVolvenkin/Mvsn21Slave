@@ -2174,7 +2174,4 @@
     <file>
         <name>$PROJ_DIR$\src\Platform.cpp</name>
     </file>
-    <file>
-        <name>$PROJ_DIR$\src\Timer.cpp</name>
-    </file>
 </project>

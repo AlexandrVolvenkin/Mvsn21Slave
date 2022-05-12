@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          07/May/2022  19:13:32
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          10/May/2022  07:08:49
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Timer.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EW4B6.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EWB3CE.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Timer.cpp --cpu=m48
 //        -ms -o D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\Obj -lB
@@ -17,7 +17,7 @@
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include\ -I
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ --eeprom_size
 //        256 --dlib --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded
-//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -On --eec++)
+//        Workbench 8.0\avr\LIB\DLIB\dlAVR-1s-ec_mul-n.h" -Ol --eec++)
 //    Locale       =  Russian_RUS.1251
 //    List file    =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\List\Timer.s90
@@ -616,20 +616,16 @@ _A_PINB:
 //   26 CTimer::~CTimer()
 `?~CTimer`:
 //   27 {
-        RCALL   ?PROLOGUE2_L09
-        MOVW    R25:R24, R17:R16
-        MOV     R16, R24
-        OR      R16, R25
+        MOV     R20, R16
+        OR      R20, R17
         BREQ    `?~CTimer_1`
         BST     R18, 0
         BRTC    `?~CTimer_1`
 //   28 
 //   29 }
-        MOVW    R17:R16, R25:R24
         RCALL   `??operator delete`
 `?~CTimer_1`:
-        LDI     R30, 2
-        RJMP    ?EPILOGUE_B2_L09
+        RET
 //   30 
 //   31 ////-----------------------------------------------------------------------------------------------------
 //   32 //void CTimer::Set(uint16_t uiTime)
@@ -673,7 +669,6 @@ _A_PINB:
         SBC     R17, R19
         LD      R18, X+
         LD      R19, X
-        SBIW    R27:R26, 1
         CP      R16, R18
         CPC     R17, R19
         BRCS    ??IsOverflow_1
@@ -713,10 +708,10 @@ __?EEARL:
 //   59 
 // 
 //  87 bytes in segment ABSOLUTE
-// 152 bytes in segment CODE
+// 142 bytes in segment CODE
 //   2 bytes in segment NEAR_F
 // 
-// 142 bytes of CODE memory (+ 12 bytes shared)
+// 132 bytes of CODE memory (+ 12 bytes shared)
 //   0 bytes of DATA memory (+ 87 bytes shared)
 //
 //Errors: none

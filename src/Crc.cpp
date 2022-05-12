@@ -154,21 +154,21 @@ unsigned short usCrc16(unsigned char *puiSourse, unsigned short uiLength)
 //    return 0;
 //}
 
-//-----------------------------------------------------------------------------------------------------
-// вычисл€ет однобайтовую контрольную сумму.
-uint8_t usCrcSummOneByteCalculation(
-    uint8_t *puiSourse,
-    uint16_t nuiNbyte)
-{
-    uint8_t uiData = 0;
-
-    for (int8_t i = 0; i < nuiNbyte; i++)
-    {
-        uiData += puiSourse[i];
-    }
-
-    return uiData;
-}
+////-----------------------------------------------------------------------------------------------------
+//// вычисл€ет однобайтовую контрольную сумму.
+//uint8_t usCrcSummOneByteCalculation(
+//    uint8_t *puiSourse,
+//    uint16_t nuiNbyte)
+//{
+//    uint8_t uiData = 0;
+//
+//    for (int8_t i = 0; i < nuiNbyte; i++)
+//    {
+//        uiData += puiSourse[i];
+//    }
+//
+//    return uiData;
+//}
 
 ////-----------------------------------------------------------------------------------------------------
 //// сравнивает однобайтовую контрольную сумму.

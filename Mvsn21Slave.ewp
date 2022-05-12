@@ -335,7 +335,7 @@
                 <option>
                     <name>CCAllowList</name>
                     <version>3</version>
-                    <state>000000</state>
+                    <state>101010</state>
                 </option>
                 <option>
                     <name>CCCrossCallPassesList</name>
@@ -496,11 +496,11 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>0</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>0</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>IccLang</name>
@@ -2122,8 +2122,5 @@
     </file>
     <file>
         <name>$PROJ_DIR$\src\Platform.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\src\Timer.cpp</name>
     </file>
 </project>

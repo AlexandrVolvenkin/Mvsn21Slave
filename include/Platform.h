@@ -153,7 +153,7 @@ public:
 //    virtual ~CAdc();
     static void Init();
     static void ChannelSelect(uint8_t );
-    static void StartSingle(void);
+//    static void StartSingle(void);
     static void Start(void);
     static void Stop(void);
     static void Enable(void);
@@ -274,8 +274,10 @@ public:
                      uint8_t *,
                      uint8_t *);
     static void Reset(void);
-    static void Enable(void);
-    static void Disable(void);
+    static void ReceiveEnable(void);
+    static void ReceiveDisable(void);
+    static void TransmitEnable(void);
+    static void TransmitDisable(void);
 //    static void Rs485RtsOn(void);
 //    static void Rs485RtsOff(void);
     static int16_t Write(uint8_t * , uint16_t );
@@ -345,97 +347,97 @@ private:
 
 
 
-////-----------------------------------------------------------------------------------------------------
-//enum
-//{
-//    SPI_SS5 = 2,     // PD2 - Вход прерывания от Master
-//    SPI_MOSI = 3,    // PB2 - Вход SPI
-//    SPI_MISO = 4,    // PB3 - Выход SPI
-//    SPI_SCK = 5     // PB5 - Вход для синхроимпульсов
-//};
-//
-//enum
-//{
-//    SPI_MAX_BUFF_LENGTH = 64,
-//};
-//
-//class CSpi
-//{
-//public:
-//    CSpi();
-//    virtual ~CSpi();
-//
-//    static void Init(uint8_t * , uint8_t * );
-//    static void Enable(void);
-//    static void Disable(void);
+//-----------------------------------------------------------------------------------------------------
+enum
+{
+    SPI_SS5 = 2,     // PD2 - Вход прерывания от Master
+    SPI_MOSI = 3,    // PB2 - Вход SPI
+    SPI_MISO = 4,    // PB3 - Выход SPI
+    SPI_SCK = 5     // PB5 - Вход для синхроимпульсов
+};
+
+enum
+{
+    SPI_MAX_BUFF_LENGTH = 64,
+};
+
+class CSpi
+{
+public:
+    CSpi();
+    virtual ~CSpi();
+
+    static void Init(uint8_t * , uint8_t * );
+    static void Enable(void);
+    static void Disable(void);
 //    static void RecvInterruptHandler(void);
-//    static int16_t Exchange(void);
+    static int16_t Exchange(void);
 //    static uint8_t Read(uint8_t * , uint16_t , uint16_t );
 //    static uint8_t Write(uint16_t , uint8_t * , uint16_t );
-//    static void Reset(void);
-////-----------------------------------------------------------------------------------------------------
-//    static uint8_t DataExchangeInProgress(void)
-//    {
-//        return m_bfDataExchangeInProgress;
-//    }
-////-----------------------------------------------------------------------------------------------------
-//    static void DataExchangeInProgressClear(void)
-//    {
-//        m_bfDataExchangeInProgress = 0;
-//    }
-////-----------------------------------------------------------------------------------------------------
-//    static void DataExchangeInProgressSet(void)
-//    {
-//        m_bfDataExchangeInProgress = 1;
-//    }
-////-----------------------------------------------------------------------------------------------------
-//    static uint8_t DataExchangeIsOccur(void)
-//    {
-//        return m_bfDataExchangeIsOccur;
-//    }
-////-----------------------------------------------------------------------------------------------------
-//    static void DataExchangeIsOccurSet(void)
-//    {
-//        m_bfDataExchangeIsOccur = 1;
-//    };
-////-----------------------------------------------------------------------------------------------------
-//    static void DataExchangeIsOccurClear(void)
-//    {
-//        m_bfDataExchangeIsOccur = 0;
-//    }
-////-----------------------------------------------------------------------------------------------------
-//    static uint8_t ByteIsReceived(void)
-//    {
-//        return m_bfByteIsReceived;
-//    }
-////-----------------------------------------------------------------------------------------------------
-//    static void ByteIsReceivedClear(void)
-//    {
-//        m_bfByteIsReceived = 0;
-//    }
-////-----------------------------------------------------------------------------------------------------
-//    static uint16_t GetFrameLength(void)
-//    {
-//        return m_nuiBuffByteCounter;
-//    }
-//
-//    static const uint8_t BUFFER_LENGTH = 16;
-////-----------------------------------------------------------------------------------------------------
-////private:
-//    static uint8_t m_uiExchangeByte;
-//    static uint8_t* m_puiRxBuffer;
-//    static uint8_t* m_puiTxBuffer;
-//    static uint16_t m_nuiBuffByteCounter;
-//    static uint16_t m_uiReceivedByteCounter;
-//    static bool m_bfByteIsReceived;
-//    static bool m_bfByteIsTransmited;
-//    static bool m_bfDataExchangeInProgress;
-//    static bool m_bfDataExchangeIsOccur;
-//    static bool m_bfRxBuffOverflow;
-//    static uint8_t m_auiSpiRxBuffer[BUFFER_LENGTH];
-//    static uint8_t m_auiSpiTxBuffer[BUFFER_LENGTH];
-//
-//};
+    static void Reset(void);
+//-----------------------------------------------------------------------------------------------------
+    static uint8_t DataExchangeInProgress(void)
+    {
+        return m_bfDataExchangeInProgress;
+    }
+//-----------------------------------------------------------------------------------------------------
+    static void DataExchangeInProgressClear(void)
+    {
+        m_bfDataExchangeInProgress = 0;
+    }
+//-----------------------------------------------------------------------------------------------------
+    static void DataExchangeInProgressSet(void)
+    {
+        m_bfDataExchangeInProgress = 1;
+    }
+//-----------------------------------------------------------------------------------------------------
+    static uint8_t DataExchangeIsOccur(void)
+    {
+        return m_bfDataExchangeIsOccur;
+    }
+//-----------------------------------------------------------------------------------------------------
+    static void DataExchangeIsOccurSet(void)
+    {
+        m_bfDataExchangeIsOccur = 1;
+    };
+//-----------------------------------------------------------------------------------------------------
+    static void DataExchangeIsOccurClear(void)
+    {
+        m_bfDataExchangeIsOccur = 0;
+    }
+//-----------------------------------------------------------------------------------------------------
+    static uint8_t ByteIsReceived(void)
+    {
+        return m_bfByteIsReceived;
+    }
+//-----------------------------------------------------------------------------------------------------
+    static void ByteIsReceivedClear(void)
+    {
+        m_bfByteIsReceived = 0;
+    }
+//-----------------------------------------------------------------------------------------------------
+    static uint16_t GetFrameLength(void)
+    {
+        return m_nuiBuffByteCounter;
+    }
+
+    static const uint8_t BUFFER_LENGTH = 16;
+//-----------------------------------------------------------------------------------------------------
+//private:
+    static uint8_t m_uiExchangeByte;
+    static uint8_t* m_puiRxBuffer;
+    static uint8_t* m_puiTxBuffer;
+    static uint16_t m_nuiBuffByteCounter;
+    static uint16_t m_uiReceivedByteCounter;
+    static bool m_bfByteIsReceived;
+    static bool m_bfByteIsTransmited;
+    static bool m_bfDataExchangeInProgress;
+    static bool m_bfDataExchangeIsOccur;
+    static bool m_bfRxBuffOverflow;
+    static uint8_t m_auiSpiRxBuffer[BUFFER_LENGTH];
+    static uint8_t m_auiSpiTxBuffer[BUFFER_LENGTH];
+
+};
 //-----------------------------------------------------------------------------------------------------
 
 
@@ -518,23 +520,23 @@ public:
 //    {
 //        PORTD |=  BIT(PD3);
 //    };
-////-----------------------------------------------------------------------------------------------------------------
-//    static void TxLedSetPinOutput(void)
-//    {
-//        DDRD |=  BIT(DDD3);
-//    };
-//
-////-----------------------------------------------------------------------------------------------------------------
-//    static void TxLedOn(void)
-//    {
-//        PORTD &= ~BIT(PD3);
-//    };
-//
-////-----------------------------------------------------------------------------------------------------------------
-//    static void TxLedOff(void)
-//    {
-//        PORTD |=  BIT(PD3);
-//    };
+//-----------------------------------------------------------------------------------------------------------------
+    static void TxLedSetPinOutput(void)
+    {
+        DDRD |=  BIT(DDD3);
+    };
+
+//-----------------------------------------------------------------------------------------------------------------
+    static void TxLedOn(void)
+    {
+        PORTD &= ~BIT(PD3);
+    };
+
+//-----------------------------------------------------------------------------------------------------------------
+    static void TxLedOff(void)
+    {
+        PORTD |=  BIT(PD3);
+    };
 
 
 //-----------------------------------------------------------------------------------------------------
@@ -542,8 +544,8 @@ public:
     static void Int0InterruptEnable(void);
     static void Int0InterruptDisable(void);
 
-    static CUart* m_pxUart0;
-    static CUart* m_pxUart1;
+//    static CUart* m_pxUart0;
+//    static CUart* m_pxUart1;
 //    static CSpi* m_pxSpi;
     static uint8_t uiSlaveSelectIsHigh;
 
