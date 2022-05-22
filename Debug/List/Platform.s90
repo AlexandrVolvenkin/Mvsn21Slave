@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          12/May/2022  18:15:08
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          21/May/2022  23:17:19
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Platform.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EWF861.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EWF666.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Platform.cpp
 //        --cpu=m48 -ms -o
@@ -1040,8 +1040,8 @@ _A_PINB:
         MOVW    R21:R20, R17:R16
         MOVW    R23:R22, R19:R18
         LDI     R16, 0
-        LDI     R17, 128
-        LDI     R18, 112
+        LDI     R17, 0
+        LDI     R18, 225
         LDI     R19, 0
         RCALL   ?UL_DIVMOD_L03
         MOVW    R19:R18, R17:R16
@@ -2094,7 +2094,7 @@ _A_PINB:
 //  794 #ifdef TIMER2_INTERRUPT
 //  795 
 //  796     OCR2A = (((F_CPU / MAIN_TIMER_TICK_RATE_HZ) / 128) - 1);
-        LDI     R16, 56
+        LDI     R16, 114
         STS     _A_OCR2A, R16
 //  797     TCCR2A |= (Bit(WGM21));
         LDS     R16, 176

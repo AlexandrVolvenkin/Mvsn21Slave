@@ -24,8 +24,8 @@
 #include <yfuns.h>
 
 //-----------------------------------------------------------------------------------------------------
-//#define F_CPU 14745600UL
-#define F_CPU 7372800UL
+#define F_CPU 14745600UL
+//#define F_CPU 7372800UL
 // изменить тактовую частоту?
 
 
@@ -192,15 +192,15 @@ private:
 
 
 //---------------------------------------- UART -------------------------------------------------------------------------------
-//#define ttyO0 USART0
-//#define ttyO1 USART1
-//#define MODBUS_RTU_BAUD_RATE          9600
-//#define DEBUG_PORT_BAUD_RATE          9600
-#define UART_BAUD_CALC(MODBUS_RTU_BAUD_RATE,F_OSC) \
-    ( ( F_OSC ) / ( ( MODBUS_RTU_BAUD_RATE ) * 16UL ) - 1 )
-#define UART_BUFFER_LENGTH 260
-#define UART_INTERMEDIATE_BUFFER_LENGTH 16
-#define RTS_ENABLE
+////#define ttyO0 USART0
+////#define ttyO1 USART1
+////#define MODBUS_RTU_BAUD_RATE          9600
+////#define DEBUG_PORT_BAUD_RATE          9600
+//#define UART_BAUD_CALC(MODBUS_RTU_BAUD_RATE,F_CPU) \
+//    ( ( F_CPU ) / ( ( MODBUS_RTU_BAUD_RATE ) * 16UL ) - 1 )
+//#define UART_BUFFER_LENGTH 260
+//#define UART_INTERMEDIATE_BUFFER_LENGTH 16
+//#define RTS_ENABLE
 
 ////extern uint8_t *pucUsartTxBuff;
 ////extern uint16_t nuiUsartTxBuffByteCounter;

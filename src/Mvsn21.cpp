@@ -26,8 +26,8 @@ void CMvsn21::MeasureFsm(void)
 
     case FSM_START:
         m_uiChannel = 0;
-        CAdc::ChannelSelect(m_uiChannel);
         CAdc::Enable();
+        CAdc::ChannelSelect(m_uiChannel);
         CAdc::Start();
         m_uiMeasureFlowControl = FSM_CONTINUOUS_MEASURE;
         break;
@@ -37,8 +37,8 @@ void CMvsn21::MeasureFsm(void)
         {
             uint8_t uiState =
                 CMeasurementChannel::StatusCheck(CAdc::GetMeasureValue());
-            m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (uiState & 0x01);
-            m_aucRtuDiscreteInputsArray[(m_uiChannel * 2) + 1] = ((uiState >> 1) & 0x01);
+            m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (uiState & 0x01);//(uiState & 0x01);
+            m_aucRtuDiscreteInputsArray[(m_uiChannel * 2) + 1] = ((uiState >> 1) & 0x01);//((uiState >> 1) & 0x01);
 
             m_uiChannel++;
             if (m_uiChannel < MEASURE_CHANNEL_NUMBER)
