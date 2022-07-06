@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          22/May/2022  19:38:51
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          06/Jul/2022  10:10:53
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Mvsn21.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EW520B.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EW470.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Mvsn21.cpp --cpu=m48
 //        -ms -o D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\Obj -lB
@@ -39,9 +39,11 @@
         PUBWEAK `?<Segment init: NEAR_Z>`
         PUBLIC ??MeasureFsm
         PUBWEAK ??MeasureIsComlete
+        PUBWEAK ??WatchdogReset
         PUBLIC ??m_aucRtuDiscreteInputsArray
         PUBLIC ??m_aui8ReceiveMessageBuff
         PUBLIC ??m_aui8TransmitMessageBuff
+        PUBLIC ??m_axSameStateCheck
         PUBLIC ??m_uiChannel
         PUBLIC ??m_uiFlowControl
         PUBLIC ??m_uiMeasureFlowControl
@@ -132,6 +134,7 @@
 ??m_aucRtuDiscreteInputsArray SYMBOL "m_aucRtuDiscreteInputsArray", `?<Name CMvsn21 19>`
 ??m_aui8ReceiveMessageBuff SYMBOL "m_aui8ReceiveMessageBuff", `?<Name CMvsn21 19>`
 ??m_aui8TransmitMessageBuff SYMBOL "m_aui8TransmitMessageBuff", `?<Name CMvsn21 19>`
+??m_axSameStateCheck SYMBOL "m_axSameStateCheck", `?<Name CMvsn21 19>`
 ??m_uiChannel       SYMBOL "m_uiChannel", `?<Name CMvsn21 19>`
 ??m_uiFlowControl   SYMBOL "m_uiFlowControl", `?<Name CMvsn21 19>`
 ??m_uiMeasureFlowControl SYMBOL "m_uiMeasureFlowControl", `?<Name CMvsn21 19>`
@@ -141,7 +144,7 @@
         EXTERN ??Enable
         EXTERN ??GetMeasureValue
         EXTERN ??Start
-        EXTERN ??StatusCheck
+        EXTERN ??StateCheck
         EXTERN ??Stop
 
 // D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\Mvsn21.cpp
@@ -567,6 +570,12 @@ _A_PINB:
         LDI     R16, 0
         RET
         REQUIRE _A_ADCSRA
+
+        RSEG CODE:CODE:NOROOT(1)
+// __version_3 void CPlatform::WatchdogReset()
+??WatchdogReset:
+        WDR
+        RET
 //   11 #include "Crc.h"
 //   12 
 
@@ -583,6 +592,11 @@ _A_PINB:
 //   16 uint8_t CMvsn21::m_aucRtuDiscreteInputsArray[];
 ??m_aucRtuDiscreteInputsArray:
         DS8 16
+//   17 uint8_t CMvsn21::m_aui8ReceiveMessageBuff[];
+//   18 uint8_t CMvsn21::m_aui8TransmitMessageBuff[];
+//   19 TSameStateCheck CMvsn21::m_axSameStateCheck[];
+??m_axSameStateCheck:
+        DS8 16
 ??m_uiChannel:
         DS8 1
 ??m_uiMeasureFlowControl:
@@ -590,114 +604,156 @@ _A_PINB:
 
         RSEG NEAR_Z:DATA:ROOT(0)
         REQUIRE `?<Segment init: NEAR_Z>`
-//   17 uint8_t CMvsn21::m_aui8ReceiveMessageBuff[];
 ??m_aui8ReceiveMessageBuff:
         DS8 32
 
         RSEG NEAR_Z:DATA:ROOT(0)
         REQUIRE `?<Segment init: NEAR_Z>`
-//   18 uint8_t CMvsn21::m_aui8TransmitMessageBuff[];
 ??m_aui8TransmitMessageBuff:
         DS8 32
-//   19 //-----------------------------------------------------------------------------------------------------
+//   20 
+//   21 //-----------------------------------------------------------------------------------------------------
 
         RSEG CODE:CODE:NOROOT(1)
-//   20 void CMvsn21::MeasureFsm(void)
+//   22 void CMvsn21::MeasureFsm(void)
 ??MeasureFsm:
-//   21 {
-        LDS     R16, (??m_aucRtuDiscreteInputsArray + 17)
-        SUBI    R16, 1
+//   23 {
+        LDS     R16, (??m_aucRtuDiscreteInputsArray + 33)
+        SUBI    R16, 0
         BREQ    ??MeasureFsm_1
-        SUBI    R16, 9
+        DEC     R16
         BREQ    ??MeasureFsm_2
+        SUBI    R16, 9
+        BREQ    ??MeasureFsm_3
         RET
-//   22     switch (m_uiMeasureFlowControl)
-//   23     {
-//   24     case FSM_IDDLE:
-//   25         break;
-//   26 
-//   27     case FSM_START:
-//   28         m_uiChannel = 0;
+//   24     switch (m_uiMeasureFlowControl)
+//   25     {
+//   26     case FSM_IDDLE:
+//   27         CPlatform::WatchdogReset();
 ??MeasureFsm_1:
-        LDI     R16, 0
-        STS     (??m_aucRtuDiscreteInputsArray + 16), R16
-//   29         CAdc::Enable();
-        RCALL   ??Enable
-//   30         CAdc::ChannelSelect(m_uiChannel);
-        LDS     R16, (??m_aucRtuDiscreteInputsArray + 16)
-        RCALL   ??ChannelSelect
-//   31         CAdc::Start();
-        RCALL   ??Start
-//   32         m_uiMeasureFlowControl = FSM_CONTINUOUS_MEASURE;
-        LDI     R16, 10
-        STS     (??m_aucRtuDiscreteInputsArray + 17), R16
-//   33         break;
+        RCALL   ??WatchdogReset
+//   28         break;
         RET
-//   34 
-//   35     case FSM_CONTINUOUS_MEASURE:
-//   36         if (CAdc::MeasureIsComlete())
+//   29 
+//   30     case FSM_START:
+//   31         m_uiChannel = 0;
 ??MeasureFsm_2:
+        LDI     R16, 0
+        STS     (??m_aucRtuDiscreteInputsArray + 32), R16
+//   32         CAdc::Enable();
+        RCALL   ??Enable
+//   33         CAdc::ChannelSelect(m_uiChannel);
+        LDS     R16, (??m_aucRtuDiscreteInputsArray + 32)
+        RCALL   ??ChannelSelect
+//   34         CAdc::Start();
+        RCALL   ??Start
+//   35         m_uiMeasureFlowControl = FSM_CONTINUOUS_MEASURE;
+        LDI     R16, 10
+        STS     (??m_aucRtuDiscreteInputsArray + 33), R16
+//   36         break;
+        RET
+//   37 
+//   38     case FSM_CONTINUOUS_MEASURE:
+//   39         if (CAdc::MeasureIsComlete())
+??MeasureFsm_3:
         RCALL   ??MeasureIsComlete
         TST     R16
-        BREQ    ??MeasureFsm_3
-//   37         {
-//   38             uint8_t uiState =
-//   39                 CMeasurementChannel::StatusCheck(CAdc::GetMeasureValue());
+        BREQ    ??MeasureFsm_4
+//   40         {
+//   41             uint8_t uiState =
+//   42                 CMeasurementChannel::StateCheck(CAdc::GetMeasureValue());
         RCALL   ??GetMeasureValue
-        RCALL   ??StatusCheck
-//   40             m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (uiState & 0x01);//(uiState & 0x01);
-        LDS     R17, (??m_aucRtuDiscreteInputsArray + 16)
+        RCALL   ??StateCheck
+//   43 
+//   44             // Предыдущее состояние дискретного входа совпадает с текущим?
+//   45             if (m_axSameStateCheck[m_uiChannel].uiState == uiState)
+        LDS     R17, (??m_aucRtuDiscreteInputsArray + 32)
         LDI     R18, 2
         MUL     R17, R18
         LDI     R30, LOW(??m_aucRtuDiscreteInputsArray)
         LDI     R31, (??m_aucRtuDiscreteInputsArray) >> 8
         ADD     R30, R0
         ADC     R31, R1
-        MOV     R17, R16
-        ANDI    R17, 0x01
-        ST      Z, R17
-//   41             m_aucRtuDiscreteInputsArray[(m_uiChannel * 2) + 1] = ((uiState >> 1) & 0x01);//((uiState >> 1) & 0x01);
-        MOV     R17, R16
-        BST     R17, 1
-        LDI     R17, 0
-        BLD     R17, 0
-        STD     Z+1, R17
-//   42 
-//   43             m_uiChannel++;
-        LDS     R16, (??m_aucRtuDiscreteInputsArray + 16)
+        LDD     R17, Z+16
+        CP      R17, R16
+        BRNE    ??MeasureFsm_5
+//   46             {
+//   47                 // Cостояние дискретного входа изменилось не в результате помехи?
+//   48                 if (m_axSameStateCheck[m_uiChannel].uiSameStateCounter >= SAME_STATE_CHECK_NUMBER)
+        LDD     R16, Z+17
+        CPI     R16, 3
+        BRCS    ??MeasureFsm_6
+//   49                 {
+//   50                     m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (m_axSameStateCheck[m_uiChannel].uiState & 0x01);
+        LDD     R16, Z+16
+        ANDI    R16, 0x01
+        ST      Z, R16
+//   51                     m_aucRtuDiscreteInputsArray[m_uiChannel * 2 + 1] = ((m_axSameStateCheck[m_uiChannel].uiState >> 1) & 0x01);
+        LDD     R16, Z+16
+        BST     R16, 1
+        LDI     R16, 0
+        BLD     R16, 0
+        STD     Z+1, R16
+        RJMP    ??MeasureFsm_7
+//   52                 }
+//   53                 else
+//   54                 {
+//   55                     m_axSameStateCheck[m_uiChannel].uiSameStateCounter += 1;
+??MeasureFsm_6:
+        LDD     R16, Z+17
         INC     R16
-        STS     (??m_aucRtuDiscreteInputsArray + 16), R16
-//   44             if (m_uiChannel < MEASURE_CHANNEL_NUMBER)
-        LDS     R16, (??m_aucRtuDiscreteInputsArray + 16)
+        RJMP    ??MeasureFsm_8
+//   56                 }
+//   57             }
+//   58             else
+//   59             {
+//   60                 // Предыдущее состояние дискретного входа не совпадает с текущим.
+//   61                 // Сохраним новое состояние.
+//   62                 m_axSameStateCheck[m_uiChannel].uiState = uiState;
+??MeasureFsm_5:
+        STD     Z+16, R16
+//   63                 m_axSameStateCheck[m_uiChannel].uiSameStateCounter = 0;
+        LDI     R16, 0
+??MeasureFsm_8:
+        STD     Z+17, R16
+//   64             }
+//   65 
+//   66             m_uiChannel++;
+??MeasureFsm_7:
+        LDS     R16, (??m_aucRtuDiscreteInputsArray + 32)
+        INC     R16
+        STS     (??m_aucRtuDiscreteInputsArray + 32), R16
+//   67             if (m_uiChannel < MEASURE_CHANNEL_NUMBER)
+        LDS     R16, (??m_aucRtuDiscreteInputsArray + 32)
         CPI     R16, 8
-        BRCC    ??MeasureFsm_4
-//   45             {
-//   46                 CAdc::Stop();
+        BRCC    ??MeasureFsm_9
+//   68             {
+//   69                 CAdc::Stop();
         RCALL   ??Stop
-//   47                 CAdc::ChannelSelect(m_uiChannel);
-        LDS     R16, (??m_aucRtuDiscreteInputsArray + 16)
+//   70                 CAdc::ChannelSelect(m_uiChannel);
+        LDS     R16, (??m_aucRtuDiscreteInputsArray + 32)
         RCALL   ??ChannelSelect
-//   48                 CAdc::Start();
+//   71                 CAdc::Start();
         RCALL   ??Start
         RET
-//   49             }
-//   50             else
-//   51             {
-//   52                 CAdc::Disable();
-??MeasureFsm_4:
+//   72             }
+//   73             else
+//   74             {
+//   75                 CAdc::Disable();
+??MeasureFsm_9:
         RCALL   ??Disable
-//   53                 m_uiMeasureFlowControl = FSM_IDDLE;
+//   76                 m_uiMeasureFlowControl = FSM_IDDLE;
         LDI     R16, 0
-        STS     (??m_aucRtuDiscreteInputsArray + 17), R16
-//   54             }
-//   55         }
-//   56         break;
-//   57 
-//   58     default:
-//   59         break;
-//   60     }
-//   61 }
-??MeasureFsm_3:
+        STS     (??m_aucRtuDiscreteInputsArray + 33), R16
+//   77             }
+//   78         }
+//   79         break;
+//   80 
+//   81     default:
+//   82         break;
+//   83     }
+//   84 }
+??MeasureFsm_4:
         RET
 
         ASEGN ABSOLUTE:DATA:NOROOT,01fH
@@ -719,12 +775,12 @@ __?EEARL:
         END
 // 
 //  87 bytes in segment ABSOLUTE
-// 148 bytes in segment CODE
+// 186 bytes in segment CODE
 //   6 bytes in segment INITTAB
-//  83 bytes in segment NEAR_Z
+//  99 bytes in segment NEAR_Z
 // 
-// 120 bytes of CODE memory (+ 34 bytes shared)
-//  83 bytes of DATA memory (+ 87 bytes shared)
+// 154 bytes of CODE memory (+ 38 bytes shared)
+//  99 bytes of DATA memory (+ 87 bytes shared)
 //
 //Errors: none
 //Warnings: none

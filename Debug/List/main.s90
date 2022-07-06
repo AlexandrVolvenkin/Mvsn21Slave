@@ -1,11 +1,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          22/May/2022  19:39:39
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          06/Jul/2022  10:11:59
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\main.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EWBDD.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EW6F7.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\main.cpp --cpu=m48
 //        -ms -o D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Debug\Obj -lB
@@ -36,7 +36,7 @@
         PUBWEAK ??FlowControlSet
         PUBWEAK ??InterruptEnable
         PUBWEAK ??MeasureFlowControlSet
-        PUBWEAK ??WatchdogReset
+        PUBWEAK ??WatchdogEnable
         PUBWEAK _A_ACSR
         PUBWEAK _A_ADC
         PUBWEAK _A_ADCSRA
@@ -126,6 +126,7 @@
 ??m_aucRtuDiscreteInputsArray SYMBOL "m_aucRtuDiscreteInputsArray", `?<Name CMvsn21 17>`
 ??m_aui8ReceiveMessageBuff SYMBOL "m_aui8ReceiveMessageBuff", `?<Name CMvsn21 17>`
 ??m_aui8TransmitMessageBuff SYMBOL "m_aui8TransmitMessageBuff", `?<Name CMvsn21 17>`
+??m_axSameStateCheck SYMBOL "m_axSameStateCheck", `?<Name CMvsn21 17>`
 ??m_uiFlowControl   SYMBOL "m_uiFlowControl", `?<Name CModbus 1>`
 ??m_uiMeasureFlowControl SYMBOL "m_uiMeasureFlowControl", `?<Name CMvsn21 17>`
 
@@ -139,8 +140,10 @@
         EXTERN ??m_aucRtuDiscreteInputsArray
         EXTERN ??m_aui8ReceiveMessageBuff
         EXTERN ??m_aui8TransmitMessageBuff
+        EXTERN ??m_axSameStateCheck
         EXTERN ??m_uiFlowControl
         EXTERN ??m_uiMeasureFlowControl
+        EXTERN memset
 
 // D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\main.cpp
 //    1 //-----------------------------------------------------------------------------------------------------
@@ -548,10 +551,17 @@ _A_PINB:
         DS8 1
 
         RSEG CODE:CODE:NOROOT(1)
-// __version_3 void CPlatform::WatchdogReset()
-??WatchdogReset:
+// __version_3 void CPlatform::WatchdogEnable()
+??WatchdogEnable:
         WDR
+        LDS     R16, _A_WDTCSR
+        ORI     R16, 0x18
+        STS     _A_WDTCSR, R16
+        LDS     R16, _A_WDTCSR
+        ORI     R16, 0x07
+        STS     _A_WDTCSR, R16
         RET
+        REQUIRE _A_WDTCSR
 
         RSEG CODE:CODE:NOROOT(1)
 // __version_3 void CPlatform::InterruptEnable()
@@ -593,7 +603,8 @@ main:
 //   26         MAIN_STOP
 //   27     };
 //   28 
-//   29 //    CPlatform::WatchdogEnable();
+//   29     CPlatform::WatchdogEnable();
+        RCALL   ??WatchdogEnable
 //   30     CPlatform::Init();
         RCALL   ??Init
 //   31     CPlatform::InterruptEnable();
@@ -678,51 +689,53 @@ main:
         LDI     R16, 0
         LDI     R17, 0
         RCALL   ??Init_1
-//   49     CModbusRTU::SlaveSet(2);
-        LDI     R16, 2
+//   49     // Адреса slave-микроконтроллеров модуля: DD1 - 1, DD2 - 2.
+//   50     CModbusRTU::SlaveSet(1);
+        LDI     R16, 1
         RCALL   ??SlaveSet
-//   50     CModbusRTU::FlowControlSet(CModbus::START_REQUEST);
+//   51     CModbusRTU::FlowControlSet(CModbus::START_REQUEST);
         LDI     R16, 2
         RCALL   ??FlowControlSet
-//   51 
-//   52     CAdc::Init();
+//   52 
+//   53     CAdc::Init();
         RCALL   ??Init_2
-//   53     CMvsn21::MeasureFlowControlSet(CMvsn21::FSM_IDDLE);
+//   54     memset((reinterpret_cast<uint8_t*>(CMvsn21::m_aucRtuDiscreteInputsArray)), 0, sizeof(CMvsn21::m_aucRtuDiscreteInputsArray));
+        LDI     R20, 16
+        LDI     R21, 0
+        LDI     R18, 0
+        LDI     R19, 0
+        LDI     R16, LOW(??m_aucRtuDiscreteInputsArray)
+        LDI     R17, (??m_aucRtuDiscreteInputsArray) >> 8
+        RCALL   memset
+//   55     memset((reinterpret_cast<uint8_t*>(CMvsn21::m_axSameStateCheck)), 0, sizeof(CMvsn21::m_axSameStateCheck));
+        LDI     R20, 16
+        LDI     R21, 0
+        LDI     R18, 0
+        LDI     R19, 0
+        LDI     R16, LOW(??m_axSameStateCheck)
+        LDI     R17, (??m_axSameStateCheck) >> 8
+        RCALL   memset
+//   56     CMvsn21::MeasureFlowControlSet(CMvsn21::FSM_IDDLE);
         LDI     R16, 0
         RCALL   ??MeasureFlowControlSet
-//   54 
-//   55     uint8_t uiMainFsmState = MAIN_START;
-//   56     uint8_t uiStatusLedState = 0;;
-//   57     uint8_t uiLedState = 0;
-//   58     uint8_t uiWatchDogStepID = 0;
-//   59 
-//   60     while(1)
-//   61     {
-//   62         CModbusRTU::Execution();
+//   57 
+//   58     while(1)
+//   59     {
+//   60         CModbusRTU::Execution();
 ??main_0:
         RCALL   ??Execution
-//   63         CMvsn21::MeasureFsm();
+//   61         CMvsn21::MeasureFsm();
         RCALL   ??MeasureFsm
-//   64 
-//   65 //        // все задачи программы ответили?
-//   66 //        if (uiWatchDogStepID == 0x03)
-//   67 //        {
-//   68 //            uiWatchDogStepID = 0;
-//   69         CPlatform::WatchdogReset();
-        RCALL   ??WatchdogReset
         RJMP    ??main_0
         REQUIRE _A_UBRR0
         REQUIRE _A_UCSR0A
         REQUIRE _A_UCSR0B
         REQUIRE _A_UCSR0C
         REQUIRE _A_UDR0
-//   70 //        }
-//   71 
-//   72 
-//   73     }
-//   74 
-//   75     return 0;
-//   76 }
+//   62     }
+//   63 
+//   64     return 0;
+//   65 }
 
         ASEGN ABSOLUTE:DATA:NOROOT,01fH
 __?EECR:
@@ -739,11 +752,11 @@ __?EEARL:
         END
 // 
 //  87 bytes in segment ABSOLUTE
-// 172 bytes in segment CODE
+// 220 bytes in segment CODE
 //   2 bytes in segment NEAR_F
 // 
-// 154 bytes of CODE memory (+ 20 bytes shared)
+// 182 bytes of CODE memory (+ 40 bytes shared)
 //   0 bytes of DATA memory (+ 87 bytes shared)
 //
 //Errors: none
-//Warnings: 8
+//Warnings: 4

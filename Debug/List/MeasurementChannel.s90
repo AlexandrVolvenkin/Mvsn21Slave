@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          21/May/2022  23:17:17
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          06/Jul/2022  10:10:52
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\MeasurementChannel.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EWF1C1.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EW24C.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\src\MeasurementChannel.cpp
 //        --cpu=m48 -ms -o
@@ -35,7 +35,7 @@
 //      not produce an equivalent object file to the one produced
 //      by the C++ compiler.
 
-        PUBLIC ??StatusCheck
+        PUBLIC ??StateCheck
         PUBWEAK _A_ACSR
         PUBWEAK _A_ADC
         PUBWEAK _A_ADCSRA
@@ -526,11 +526,11 @@ _A_PINB:
         DS8 1
 //   10 
 //   11 //-----------------------------------------------------------------------------------------------------
-//   12 // РћР±СЂР°Р±РѕС‚РєР° Р±Р»РѕРєР° РґР°РЅРЅС‹С… РѕС‚ РђР¦Рџ.
+//   12 // Обработка блока данных от АЦП.
 
         RSEG CODE:CODE:NOROOT(1)
-//   13 uint8_t CMeasurementChannel::StatusCheck(uint16_t uiValue)
-??StatusCheck:
+//   13 uint8_t CMeasurementChannel::StateCheck(uint16_t uiValue)
+??StateCheck:
 //   14 {
 //   15     uint8_t uiState = CMeasurementChannel::SHORT_CIRCUIT;
         LDI     R18, 3
@@ -539,44 +539,44 @@ _A_PINB:
         CPI     R16, 23
         LDI     R19, 0
         CPC     R17, R19
-        BRCC    ??StatusCheck_1
+        BRCC    ??StateCheck_1
 //   18     {
-//   19         uiState = CMeasurementChannel::WIRE_BREAK;	// РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕРґР° СЃРѕСЃС‚РѕСЏРЅРёСЏ РІС…РѕРґР°
+//   19         uiState = CMeasurementChannel::WIRE_BREAK;	// Определение кода состояния входа
         LDI     R18, 2
-        RJMP    ??StatusCheck_2
+        RJMP    ??StateCheck_2
 //   20     }
 //   21     else if(uiValue < CMeasurementChannel::ON_LEVEL)
-??StatusCheck_1:
+??StateCheck_1:
         CPI     R16, 143
         CPC     R17, R19
-        BRCC    ??StatusCheck_3
+        BRCC    ??StateCheck_3
 //   22     {
 //   23         uiState = CMeasurementChannel::ON;
         LDI     R18, 1
-        RJMP    ??StatusCheck_2
+        RJMP    ??StateCheck_2
 //   24     }
 //   25     else if(uiValue < CMeasurementChannel::OFF_LEVEL)
-??StatusCheck_3:
+??StateCheck_3:
         CPI     R16, 161
         CPC     R17, R19
-        BRCS    ??StatusCheck_4
+        BRCS    ??StateCheck_4
 //   26     {
-//   27         return;		// РџРѕРїР°РґР°РЅРёРµ РІ РјРµСЂС‚РІСѓСЋ Р·РѕРЅСѓ
+//   27         return;		// Попадание в мертвую зону
 //   28     }
 //   29     else if(uiValue < CMeasurementChannel::SC_LEVEL)
         CPI     R16, 42
         LDI     R19, 2
         CPC     R17, R19
-        BRCC    ??StatusCheck_2
+        BRCC    ??StateCheck_2
 //   30     {
 //   31         uiState = CMeasurementChannel::OFF;
         LDI     R18, 0
 //   32     }
 //   33 
 //   34     return uiState;
-??StatusCheck_2:
+??StateCheck_2:
         MOV     R16, R18
-??StatusCheck_4:
+??StateCheck_4:
         RET
 //   35 };
 

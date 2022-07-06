@@ -34,8 +34,8 @@ void CModbusRTU::Init(CUart* pxDevice,
                       uint16_t *pui16InputRegisters,
                       uint16_t uiCoilsNumber,
                       uint16_t uiDiscreteInputsNumber,
-                      uint16_t uiInputRegistersNumber,
-                      uint16_t uiHoldingRegistersNumber)
+                      uint16_t uiHoldingRegistersNumber,
+                      uint16_t uiInputRegistersNumber)
 {
 //    m_pxDevice = pxDevice;
     m_uiBaudRate = uiBaudRate;
@@ -50,8 +50,8 @@ void CModbusRTU::Init(CUart* pxDevice,
 //    m_pui16InputRegisters = pui16InputRegisters;
 //    m_uiCoilsNumber = uiCoilsNumber;
     m_uiDiscreteInputsNumber = uiDiscreteInputsNumber;
-//    m_uiInputRegistersNumber = uiInputRegistersNumber;
 //    m_uiHoldingRegistersNumber = uiHoldingRegistersNumber;
+//    m_uiInputRegistersNumber = uiInputRegistersNumber;
 
     CUart::Init(m_uiBaudRate,
                 m_cParity,

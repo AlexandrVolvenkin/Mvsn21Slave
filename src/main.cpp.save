@@ -26,7 +26,7 @@ int main()
         MAIN_STOP
     };
 
-//    CPlatform::WatchdogEnable();
+    CPlatform::WatchdogEnable();
     CPlatform::Init();
     CPlatform::InterruptEnable();
     CUart::UartBind(&UBRR0H, &UBRR0L, &UCSR0A, &UCSR0B, &UCSR0C, &UDR0, 0, 0, 0, 0);
@@ -46,85 +46,20 @@ int main()
                      DISCRETE_INPUTS_ARRAY_LENGTH,
                      0,//HOLDING_REGISTERS_ARRAY_LENGTH,
                      0);//INPUT_REGISTERS_ARRAY_LENGTH);
+    // Адреса slave-микроконтроллеров модуля: DD1 - 1, DD2 - 2.
     CModbusRTU::SlaveSet(2);
     CModbusRTU::FlowControlSet(CModbus::START_REQUEST);
 
     CAdc::Init();
+    memset((reinterpret_cast<uint8_t*>(CMvsn21::m_aucRtuDiscreteInputsArray)), 0, sizeof(CMvsn21::m_aucRtuDiscreteInputsArray));
+    memset((reinterpret_cast<uint8_t*>(CMvsn21::m_axSameStateCheck)), 0, sizeof(CMvsn21::m_axSameStateCheck));
     CMvsn21::MeasureFlowControlSet(CMvsn21::FSM_IDDLE);
 
-    uint8_t uiMainFsmState = MAIN_START;
-    uint8_t uiStatusLedState = 0;;
-    uint8_t uiLedState = 0;
-    uint8_t uiWatchDogStepID = 0;
 
     while(1)
     {
         CModbusRTU::Execution();
         CMvsn21::MeasureFsm();
-
-//        switch (uiMainFsmState)
-//        {
-//        case MAIN_START:
-//            uiMainFsmState = MAIN_FIRST_STEP;
-//            break;
-//
-//        case MAIN_FIRST_STEP:
-//////            MainCycle();
-////            if (xStatusLedTimer.IsOverflow())
-////            {
-////                xStatusLedTimer.Reset();
-////                if (uiStatusLedState)
-////                {
-////        CPlatform::TxLedOff();
-//////                    CPlatform::StatusLedOff();
-////                    uiStatusLedState = 0;
-////                }
-////                else
-////                {
-////        CPlatform::TxLedOn();
-//////                    CPlatform::StatusLedOn();
-////                    uiStatusLedState = 1;
-////                }
-////                uiWatchDogStepID |= 0x03;
-////            }
-//
-////            if (xLedTimer.IsOverflow())
-////            {
-////                xLedTimer.Reset();
-////                if (uiLedState)
-////                {
-////                    CPlatform::TxLedOff();
-////                    uiLedState = 0;
-////                }
-////                else
-////                {
-////                    CPlatform::TxLedOn();
-////                    uiLedState = 1;
-////                }
-////            }
-//
-//        case MAIN_SECOND_STEP:
-//            break;
-//
-//        case MAIN_THIRD_REBOOT:
-//            MainReboot();
-//            break;
-//
-//        case MAIN_STOP:
-//            break;
-//
-//        default:
-//            break;
-//        }
-
-//        // все задачи программы ответили?
-//        if (uiWatchDogStepID == 0x03)
-//        {
-//            uiWatchDogStepID = 0;
-        CPlatform::WatchdogReset();
-//        }
-
-
     }
 
     return 0;

@@ -51,8 +51,8 @@ public:
                      uint16_t *pui16InputRegisters,
                      uint16_t uiCoilsNumber,
                      uint16_t uiDiscreteInputsNumber,
-                     uint16_t uiInputRegistersNumber,
-                     uint16_t uiHoldingRegistersNumber);
+                     uint16_t uiHoldingRegistersNumber,
+                     uint16_t uiInputRegistersNumber);
     static void Reset(void);
     static void ReceiveEnable(void);
     static void ReceiveDisable(void);

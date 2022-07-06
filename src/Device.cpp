@@ -29,9 +29,9 @@
 ////-----------------------------------------------------------------------------------------------------
 //uint16_t CPss7::TypeReport(uint8_t *puiDestination, uint16_t uiLength)
 //{
-//    puiDestination[uiLength++] = 3;			// Р§РёСЃР»Рѕ Р±Р°Р№С‚ РґР°РЅРЅС‹С…
-//    puiDestination[uiLength++] = 32;			// РљРѕР»РёС‡РµСЃС‚РІРѕ РѕРєРѕРЅ СЃРёРіРЅР°Р»РёР·Р°С†РёРё
-//    puiDestination[uiLength++] = 7;			// РљРѕРґ РјРѕРґРёС„РёРєР°С†РёРё
-//    puiDestination[uiLength++] = 50;			// РљРѕРґ СѓСЃС‚СЂРѕР№СЃС‚РІР°
+//    puiDestination[uiLength++] = 3;			// Число байт данных
+//    puiDestination[uiLength++] = 32;			// Количество окон сигнализации
+//    puiDestination[uiLength++] = 7;			// Код модификации
+//    puiDestination[uiLength++] = 50;			// Код устройства
 //    return uiLength;
 //}

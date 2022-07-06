@@ -128,12 +128,12 @@
             <name>$PROJ_DIR$\src\Crc.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 92</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 101 15</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 92</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -155,12 +155,12 @@
             <name>$PROJ_DIR$\src\main.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 83</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 102 96</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 83</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -174,7 +174,7 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 80 73 77 23 54 53 60 24 9 8 78 39 7 58 26 30 59 31 36 28 20 22 55 56 27 57 25 21 86 29 71 72 63</file>
+                    <file> 73 77 86 58 23 54 53 60 24 9 8 21 59 72 78 39 7 26 30 31 36 28 20 22 55 56 27 57 25 80 29 71 63</file>
                 </tool>
             </inputs>
         </file>
@@ -182,12 +182,12 @@
             <name>$PROJ_DIR$\src\MeasurementChannel.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 82</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 104 10</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 82</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -209,12 +209,12 @@
             <name>$PROJ_DIR$\Modbus\Modbus.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 100</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 105 32</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 100</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -236,12 +236,12 @@
             <name>$PROJ_DIR$\Modbus\ModbusRTU.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 98</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 99 65</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 98</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -255,7 +255,7 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 39 55 27 21 77 59 53 54 7 78 72 56 57 9 29 58 73 24 23 8 36 108 31 20 63 26 28 22 30 86 80 60 25 71</file>
+                    <file> 39 55 27 21 77 59 53 54 7 86 78 72 56 57 9 29 58 73 24 23 30 80 108 31 20 63 26 28 22 8 36 60 25 71</file>
                 </tool>
             </inputs>
         </file>
@@ -263,12 +263,12 @@
             <name>$PROJ_DIR$\src\Mvsn21.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 76</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 103 13</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 76</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -282,7 +282,7 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 54 39 24 59 73 23 108 80 58 53 72 7 77 25 21 29 71 55 56 27 57 28 9 20 22 26 8 30 86 78</file>
+                    <file> 54 26 39 9 71 59 22 30 108 58 53 72 28 20 8 21 29 80 55 56 27 57 73 7 24 77 23 25 86 78</file>
                 </tool>
             </inputs>
         </file>
@@ -290,12 +290,12 @@
             <name>$PROJ_DIR$\src\Platform.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 75</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 106 11</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 75</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -309,7 +309,7 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 54 21 23 53 73 24 9 8 39 7 77 58 26 30 80 78 59 28 20 22 55 56 27 57 25 86 29 71 72</file>
+                    <file> 22 54 59 56 9 57 24 86 28 20 53 55 27 25 21 72 78 39 73 7 77 23 58 26 8 30 80 29 71</file>
                 </tool>
             </inputs>
         </file>
@@ -368,12 +368,12 @@
             <name>$PROJ_DIR$\src\Device.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 89</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 16</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 89</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -395,12 +395,12 @@
             <name>$PROJ_DIR$\src\DataBase.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 87</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 14</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 87</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -422,12 +422,12 @@
             <name>$PROJ_DIR$\src\Driver.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 90</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 17</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 90</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -472,12 +472,12 @@
             <name>$PROJ_DIR$\src\InputDevice.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 91</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 18</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 91</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -499,12 +499,12 @@
             <name>$PROJ_DIR$\src\Timer.cpp</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 79</file>
-                </tool>
-                <tool>
                     <name>ICCAVR</name>
                     <file> 97 12</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 79</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>

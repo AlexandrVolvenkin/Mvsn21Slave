@@ -16,12 +16,15 @@ uint8_t CMvsn21::m_uiMeasureFlowControl;
 uint8_t CMvsn21::m_aucRtuDiscreteInputsArray[];
 uint8_t CMvsn21::m_aui8ReceiveMessageBuff[];
 uint8_t CMvsn21::m_aui8TransmitMessageBuff[];
+TSameStateCheck CMvsn21::m_axSameStateCheck[];
+
 //-----------------------------------------------------------------------------------------------------
 void CMvsn21::MeasureFsm(void)
 {
     switch (m_uiMeasureFlowControl)
     {
     case FSM_IDDLE:
+        CPlatform::WatchdogReset();
         break;
 
     case FSM_START:
@@ -36,9 +39,29 @@ void CMvsn21::MeasureFsm(void)
         if (CAdc::MeasureIsComlete())
         {
             uint8_t uiState =
-                CMeasurementChannel::StatusCheck(CAdc::GetMeasureValue());
-            m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (uiState & 0x01);//(uiState & 0x01);
-            m_aucRtuDiscreteInputsArray[(m_uiChannel * 2) + 1] = ((uiState >> 1) & 0x01);//((uiState >> 1) & 0x01);
+                CMeasurementChannel::StateCheck(CAdc::GetMeasureValue());
+
+            // Предыдущее состояние дискретного входа совпадает с текущим?
+            if (m_axSameStateCheck[m_uiChannel].uiState == uiState)
+            {
+                // Cостояние дискретного входа изменилось не в результате помехи?
+                if (m_axSameStateCheck[m_uiChannel].uiSameStateCounter >= SAME_STATE_CHECK_NUMBER)
+                {
+                    m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (m_axSameStateCheck[m_uiChannel].uiState & 0x01);
+                    m_aucRtuDiscreteInputsArray[m_uiChannel * 2 + 1] = ((m_axSameStateCheck[m_uiChannel].uiState >> 1) & 0x01);
+                }
+                else
+                {
+                    m_axSameStateCheck[m_uiChannel].uiSameStateCounter += 1;
+                }
+            }
+            else
+            {
+                // Предыдущее состояние дискретного входа не совпадает с текущим.
+                // Сохраним новое состояние.
+                m_axSameStateCheck[m_uiChannel].uiState = uiState;
+                m_axSameStateCheck[m_uiChannel].uiSameStateCounter = 0;
+            }
 
             m_uiChannel++;
             if (m_uiChannel < MEASURE_CHANNEL_NUMBER)

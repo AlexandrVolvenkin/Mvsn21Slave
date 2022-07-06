@@ -232,7 +232,7 @@ void CUart::Init(uint32_t ulBaudRate,
     /* Stop bit (1 or 2) */
     if (ucStopBit == 1)
     {
-
+        *m_UCSRC &= ~(1 << USBS0);
     }
     else if (ucStopBit == 2) /* 2 */
     {

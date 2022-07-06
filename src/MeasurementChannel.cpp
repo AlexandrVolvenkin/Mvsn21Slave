@@ -9,14 +9,14 @@
 #include "Platform.h"
 
 //-----------------------------------------------------------------------------------------------------
-// РћР±СЂР°Р±РѕС‚РєР° Р±Р»РѕРєР° РґР°РЅРЅС‹С… РѕС‚ РђР¦Рџ.
-uint8_t CMeasurementChannel::StatusCheck(uint16_t uiValue)
+// Обработка блока данных от АЦП.
+uint8_t CMeasurementChannel::StateCheck(uint16_t uiValue)
 {
     uint8_t uiState = CMeasurementChannel::SHORT_CIRCUIT;
 
     if(uiValue < CMeasurementChannel::WB_LEVEL)
     {
-        uiState = CMeasurementChannel::WIRE_BREAK;	// РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕРґР° СЃРѕСЃС‚РѕСЏРЅРёСЏ РІС…РѕРґР°
+        uiState = CMeasurementChannel::WIRE_BREAK;
     }
     else if(uiValue < CMeasurementChannel::ON_LEVEL)
     {
@@ -24,7 +24,7 @@ uint8_t CMeasurementChannel::StatusCheck(uint16_t uiValue)
     }
     else if(uiValue < CMeasurementChannel::OFF_LEVEL)
     {
-        return;		// РџРѕРїР°РґР°РЅРёРµ РІ РјРµСЂС‚РІСѓСЋ Р·РѕРЅСѓ
+        return;		// Попадание в мертвую зону
     }
     else if(uiValue < CMeasurementChannel::SC_LEVEL)
     {

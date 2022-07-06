@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          21/May/2022  23:17:18
+// IAR C/C++ Compiler V7.10.6.1378 for Atmel AVR          06/Jul/2022  10:10:53
 // Copyright 1996-2018 IAR Systems AB.
 //
 //    Source file  =  
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ModbusRTU.cpp
 //    Command line =  
-//        -f C:\Users\ghost\AppData\Local\Temp\EWF3D5.tmp
+//        -f C:\Users\ghost\AppData\Local\Temp\EW328.tmp
 //        (--string_literals_in_flash
 //        D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus\ModbusRTU.cpp
 //        --cpu=m48 -ms -o
@@ -683,8 +683,8 @@ _A_PINB:
 //   34                       uint16_t *pui16InputRegisters,
 //   35                       uint16_t uiCoilsNumber,
 //   36                       uint16_t uiDiscreteInputsNumber,
-//   37                       uint16_t uiInputRegistersNumber,
-//   38                       uint16_t uiHoldingRegistersNumber)
+//   37                       uint16_t uiHoldingRegistersNumber,
+//   38                       uint16_t uiInputRegistersNumber)
 //   39 {
         RCALL   ?PROLOGUE4_L09
 //   40 //    m_pxDevice = pxDevice;
@@ -734,8 +734,8 @@ _A_PINB:
         LDI     R27, (??m_uiDiscreteInputsNumber) >> 8
         ST      X+, R20
         ST      X, R21
-//   53 //    m_uiInputRegistersNumber = uiInputRegistersNumber;
-//   54 //    m_uiHoldingRegistersNumber = uiHoldingRegistersNumber;
+//   53 //    m_uiHoldingRegistersNumber = uiHoldingRegistersNumber;
+//   54 //    m_uiInputRegistersNumber = uiInputRegistersNumber;
 //   55 
 //   56     CUart::Init(m_uiBaudRate,
 //   57                 m_cParity,

@@ -28,23 +28,23 @@ enum
 };
 
 //-----------------------------------------------------------------------------------------------------
-// РћР±РјРµРЅ РґР°РЅРЅС‹РјРё РјРѕРґСѓР»СЏ РІРІРѕРґР° РґРёСЃРєСЂРµС‚РЅС‹С… СЃРёРіРЅР°Р»РѕРІ РњР’Р”РЎ9 СЃ РњР¦Рџ
-// * Р—Р°РїСЂРѕСЃ РЅР° С†РёРєР»РёС‡РµСЃРєРёР№ РѕР±РјРµРЅ:$42
-// РћС‚РІРµС‚:$42-РґР°РЅРЅС‹Рµ РіРѕС‚РѕРІС‹(Р­РҐРћ), $24-РґР°РЅРЅС‹Рµ РЅРµ РіРѕС‚РѕРІС‹, РєРѕРЅРµС† СЃРІСЏР·Рё
-// * РќР° РІС‹С…РѕРґРµ:СЃРѕСЃС‚.РІС…РѕРґРѕРІ - 4Р±, РґРѕРї.Р±Р°Р№С‚ - 1Р± -> РІ sec1 - sec1+4
-// Р±Р°Р№С‚ 1:D0,D1-СЃРѕСЃС‚.РІС….1, D2,D3-СЃРѕСЃС‚.РІС….2,D4,D5-СЃРѕСЃС‚.РІС….3,D6,D7-СЃРѕСЃС‚.РІС….4
-// Р±Р°Р№С‚ 2:D0,D1-СЃРѕСЃС‚.РІС….5, D2,D3-СЃРѕСЃС‚.РІС….6,D4,D5-СЃРѕСЃС‚.РІС….7,D6,D7-СЃРѕСЃС‚.РІС….8
-// Р±Р°Р№С‚ 3:D0,D1-СЃРѕСЃС‚.РІС….9, D2,D3-СЃРѕСЃС‚.РІС….10,D4,D5-СЃРѕСЃС‚.РІС….11,D6,D7-СЃРѕСЃС‚.РІС….12
-// Р±Р°Р№С‚ 4:D0,D1-СЃРѕСЃС‚.РІС….13, D2,D3-СЃРѕСЃС‚.РІС….14,D4,D5-СЃРѕСЃС‚.РІС….15,D6,D7-СЃРѕСЃС‚.РІС….16
-// Р±Р°Р№С‚ 4:D0,D1-СЃРѕСЃС‚.РІС….17, D2,D3-СЃРѕСЃС‚.РІС….18,D4,D5-СЃРѕСЃС‚.РІС….19,D6,D7-СЃРѕСЃС‚.РІС….20
-// Р±Р°Р№С‚ 6:D0,D1-СЃРѕСЃС‚.РІС….21, D2,D3-СЃРѕСЃС‚.РІС….22,D4,D5-СЃРѕСЃС‚.РІС….23,D6,D7-СЃРѕСЃС‚.РІС….24
-// Р±Р°Р№С‚ 7: РІ РџРђРЎ-05 РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
-// Р±Р°Р№С‚ 8: РґРѕРї. Р±Р°Р№С‚
-// Р±Р°Р№С‚ 9: РљРЎ Р±Р°Р№С‚РѕРІ 1-9
+// Обмен данными модуля ввода дискретных сигналов МВДС9 с МЦП
+// * Запрос на циклический обмен:$42
+// Ответ:$42-данные готовы(ЭХО), $24-данные не готовы, конец связи
+// * На выходе:сост.входов - 4б, доп.байт - 1б -> в sec1 - sec1+4
+// байт 1:D0,D1-сост.вх.1, D2,D3-сост.вх.2,D4,D5-сост.вх.3,D6,D7-сост.вх.4
+// байт 2:D0,D1-сост.вх.5, D2,D3-сост.вх.6,D4,D5-сост.вх.7,D6,D7-сост.вх.8
+// байт 3:D0,D1-сост.вх.9, D2,D3-сост.вх.10,D4,D5-сост.вх.11,D6,D7-сост.вх.12
+// байт 4:D0,D1-сост.вх.13, D2,D3-сост.вх.14,D4,D5-сост.вх.15,D6,D7-сост.вх.16
+// байт 4:D0,D1-сост.вх.17, D2,D3-сост.вх.18,D4,D5-сост.вх.19,D6,D7-сост.вх.20
+// байт 6:D0,D1-сост.вх.21, D2,D3-сост.вх.22,D4,D5-сост.вх.23,D6,D7-сост.вх.24
+// байт 7: в ПАС-05 не используется
+// байт 8: доп. байт
+// байт 9: КС байтов 1-9
 
-//  СЃРѕСЃС‚РѕСЏРЅРёРµ РІС…РѕРґРѕРІ РІ Р±Р°Р№С‚Р°С… 1-3:
-//  С‡РµС‚РЅС‹Рµ Р±РёС‚С‹ (D0,D2,D4,D6) =0 - СЂР°Р·РѕРјРєРЅСѓС‚Рѕ (OFF), =1 - Р·Р°РјРєРЅСѓС‚Рѕ (ON)
-//  РЅРµС‡РµС‚РЅС‹Рµ Р±РёС‚С‹ (D1,D3,D5,D7) =0 - РґРѕСЃС‚РѕРІРµСЂРЅРѕ, =1 - РЅРµРґРѕСЃС‚РѕРІРµСЂРЅРѕ
+//  состояние входов в байтах 1-3:
+//  четные биты (D0,D2,D4,D6) =0 - разомкнуто (OFF), =1 - замкнуто (ON)
+//  нечетные биты (D1,D3,D5,D7) =0 - достоверно, =1 - недостоверно
 
 class CMvsn21
 {
@@ -74,6 +74,11 @@ public:
         COMMAND_REPORT_TYPE = 0x91,
     };
 
+    enum
+    {
+        SAME_STATE_CHECK_NUMBER = 3,
+    };
+
     static void MeasureFsm(void);
     static uint8_t FlowControlGet(void)
     {
@@ -97,38 +102,14 @@ private:
     static uint8_t m_uiFlowControl;
     static uint8_t m_uiMeasureFlowControl;
 //-----------------------------------------------------------------------------------------------------
-//    static uint16_t m_uiMessageLength;
     static uint8_t m_uiChannel;
-//    static TChipChannelData axChipsChannelsData[CHIP_NUMBER];
-//    static CMeasurementChannel axMasterMeasurementChannels[MEASURE_CHANNEL_NUMBER];
-//    static CMeasurementChannel axSlave1MeasurementChannels[MEASURE_CHANNEL_NUMBER];
-//    static CMeasurementChannel axSlave2MeasurementChannels[MEASURE_CHANNEL_NUMBER];
-//    static TChannelRemap axMeasurementChannelRemap[DISCRETE_INPUT_NUMBER];
-//    static uint8_t auiDiscreteInputBitData[12];
 
 public:
-//    static uint8_t m_aucRtuCoilsArray[COILS_WORK_ARRAY_LENGTH];
+    static TSameStateCheck m_axSameStateCheck[MEASURE_CHANNEL_NUMBER];
     static uint8_t m_aucRtuDiscreteInputsArray[DISCRETE_INPUTS_ARRAY_LENGTH];
-//    static uint16_t m_aucRtuHoldingRegistersArray[HOLDING_REGISTERS_ARRAY_LENGTH];
-//    static uint16_t m_aucRtuInputRegistersArray[INPUT_REGISTERS_ARRAY_LENGTH];
     static uint8_t m_aui8ReceiveMessageBuff[MODBUS_RTU_MAX_ADU_LENGTH];
     static uint8_t m_aui8TransmitMessageBuff[MODBUS_RTU_MAX_ADU_LENGTH];
-//    static uint8_t m_auiSpiRxBuffer[SPI_BUFFER_LENGTH];
-//    static uint8_t m_auiSpiTxBuffer[SPI_BUFFER_LENGTH];
-
 };
-
-////-----------------------------------------------------------------------------------------------------
-//class CMvsn21Driver : virtual public CDriver
-//{
-//public:
-//    CMvsn21Driver(uint8_t uiType);
-//    virtual ~CMvsn21Driver();
-//    uint16_t TypeReport(uint8_t * , uint16_t );
-//
-//protected:
-//private:
-//};
 
 #endif // CMVSN21_H
 
