@@ -47,7 +47,7 @@ int main()
                      0,//HOLDING_REGISTERS_ARRAY_LENGTH,
                      0);//INPUT_REGISTERS_ARRAY_LENGTH);
     // Адреса slave-микроконтроллеров модуля: DD1 - 1, DD2 - 2.
-    CModbusRTU::SlaveSet(1);
+    CModbusRTU::SlaveSet(2);
     CModbusRTU::FlowControlSet(CModbus::START_REQUEST);
 
     CAdc::Init();

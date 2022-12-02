@@ -290,13 +290,13 @@ void CUart::TransmitDisable(void)
 //-----------------------------------------------------------------------------------------------------
 int16_t CUart::Write(uint8_t *puiSource, uint16_t uiLength)
 {
-    m_puiTxBuffer = (uint8_t*)puiSource;
-    m_nuiTxBuffByteCounter = uiLength;
-
 ////    if (m_rs485ddr)
 ////    {
 ////        Rs485RtsOn();
 ////    }
+
+    m_puiTxBuffer = (uint8_t*)puiSource;
+    m_nuiTxBuffByteCounter = uiLength;
 
     return 1;
 }
