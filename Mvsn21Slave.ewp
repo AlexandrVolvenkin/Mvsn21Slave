@@ -408,8 +408,8 @@
                 </option>
                 <option>
                     <name>newCCIncludePaths</name>
-                    <state>D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\include</state>
-                    <state>D:\Projects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus</state>
+                    <state>D:\Projects\CurrentProjects\CautoProjects\Mvsn21\Mvsn21Slave\include</state>
+                    <state>D:\Projects\CurrentProjects\CautoProjects\Mvsn21\Mvsn21Slave\Modbus</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>

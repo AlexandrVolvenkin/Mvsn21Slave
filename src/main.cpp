@@ -53,7 +53,7 @@ int main()
     CAdc::Init();
     memset((reinterpret_cast<uint8_t*>(CMvsn21::m_aucRtuDiscreteInputsArray)), 0, sizeof(CMvsn21::m_aucRtuDiscreteInputsArray));
     memset((reinterpret_cast<uint8_t*>(CMvsn21::m_axSameStateCheck)), 0, sizeof(CMvsn21::m_axSameStateCheck));
-    CMvsn21::MeasureFlowControlSet(CMvsn21::FSM_IDDLE);
+    CMvsn21::MeasureFlowControlSet(CMvsn21::FSM_START);
 
     while(1)
     {

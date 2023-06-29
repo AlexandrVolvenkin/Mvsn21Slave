@@ -1,0 +1,87 @@
+//-----------------------------------------------------------------------------------------------------
+//  Source      : FileName.cpp
+//  Created     : 01.06.2022
+//  Author      : Alexandr Volvenkin
+//  email       : aav-36@mail.ru
+//  GitHub      : https://github.com/AlexandrVolvenkin
+//-----------------------------------------------------------------------------------------------------
+
+#include "Mvsn21.h"
+#include "Platform.h"
+#include "Crc.h"
+
+uint8_t CMvsn21::m_uiFlowControl;
+uint8_t CMvsn21::m_uiChannel;
+uint8_t CMvsn21::m_uiMeasureFlowControl;
+uint8_t CMvsn21::m_aucRtuDiscreteInputsArray[];
+uint8_t CMvsn21::m_aui8ReceiveMessageBuff[];
+uint8_t CMvsn21::m_aui8TransmitMessageBuff[];
+TSameStateCheck CMvsn21::m_axSameStateCheck[];
+
+//-----------------------------------------------------------------------------------------------------
+void CMvsn21::MeasureFsm(void)
+{
+    switch (m_uiMeasureFlowControl)
+    {
+    case FSM_IDDLE:
+        CPlatform::WatchdogReset();
+        break;
+
+    case FSM_START:
+        m_uiChannel = 0;
+        CAdc::Enable();
+        CAdc::ChannelSelect(m_uiChannel);
+        CAdc::Start();
+        m_uiMeasureFlowControl = FSM_CONTINUOUS_MEASURE;
+        break;
+
+    case FSM_CONTINUOUS_MEASURE:
+        if (CAdc::MeasureIsComlete())
+        {
+            uint8_t uiState =
+                CMeasurementChannel::StateCheck(CAdc::GetMeasureValue());
+
+            // Предыдущее состояние дискретного входа совпадает с текущим?
+            if (m_axSameStateCheck[m_uiChannel].uiState == uiState)
+            {
+                // Cостояние дискретного входа изменилось не в результате помехи?
+                if (m_axSameStateCheck[m_uiChannel].uiSameStateCounter >= SAME_STATE_CHECK_NUMBER)
+                {
+                    m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (m_axSameStateCheck[m_uiChannel].uiState & 0x01);
+                    m_aucRtuDiscreteInputsArray[m_uiChannel * 2 + 1] = ((m_axSameStateCheck[m_uiChannel].uiState >> 1) & 0x01);
+                }
+                else
+                {
+                    m_axSameStateCheck[m_uiChannel].uiSameStateCounter += 1;
+                }
+            }
+            else
+            {
+                // Предыдущее состояние дискретного входа не совпадает с текущим.
+                // Сохраним новое состояние.
+                m_axSameStateCheck[m_uiChannel].uiState = uiState;
+                m_axSameStateCheck[m_uiChannel].uiSameStateCounter = 0;
+            }
+
+//            m_aucRtuDiscreteInputsArray[m_uiChannel * 2] = (uiState & 0x01);//(uiState & 0x01);
+//            m_aucRtuDiscreteInputsArray[(m_uiChannel * 2) + 1] = ((uiState >> 1) & 0x01);//((uiState >> 1) & 0x01);
+
+            m_uiChannel++;
+            if (m_uiChannel < MEASURE_CHANNEL_NUMBER)
+            {
+                CAdc::Stop();
+                CAdc::ChannelSelect(m_uiChannel);
+                CAdc::Start();
+            }
+            else
+            {
+                CAdc::Disable();
+                m_uiMeasureFlowControl = FSM_IDDLE;
+            }
+        }
+        break;
+
+    default:
+        break;
+    }
+}
